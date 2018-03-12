@@ -1,0 +1,25 @@
+@extends('app')
+
+@section('title', 'Manga list')
+
+@section('content')
+    <h1>Manga list</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Volume</th>
+            </tr>
+        </thead>
+
+        @foreach ($mangas as $manga)
+            <tbody>
+                <tr>
+                    <td>{{ $manga->name }}</td>
+                    <td>{{ $manga->number }}</td>
+                </tr>
+            </tbody>
+        @endforeach
+    </table>
+@endsection
