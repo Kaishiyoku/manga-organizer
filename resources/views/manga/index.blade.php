@@ -13,13 +13,13 @@
             </tr>
         </thead>
 
+        <tbody>
         @foreach ($mangas as $manga)
-            <tbody>
-                <tr>
-                    <td>{{ $manga->name }}</td>
-                    <td>{{ $manga->number }}</td>
-                </tr>
-            </tbody>
+            <tr>
+                <td>{{ $manga->name }}</td>
+                <td>{{ $manga->number }}</td>
+            </tr>
         @endforeach
+        </tbody>
     </table>
 @endsection
