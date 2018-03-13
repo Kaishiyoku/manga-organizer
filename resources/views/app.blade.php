@@ -10,12 +10,33 @@
         -
         @yield('title')
     </title>
+
+    <link media="all" type="text/css" rel="stylesheet" href="{{ url('css/app.css') }}">
 </head>
 <body>
 
-<div>
+<div class="container">
+    <img src="{{ url('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
+</div>
+
+<div class="container">
     @yield('content')
 </div>
+
+<div class="container text-muted">
+    <footer>
+        @if (env('APP_CREATION_YEAR') == date('Y'))
+            {{ env('APP_CREATION_YEAR') }},
+        @else
+            {{ env('APP_CREATION_YEAR') }} - {{ date('Y') }},
+        @endif
+
+        {{ env('APP_AUTHOR') }},
+        v{{ env('APP_VERSION') }}
+    </footer>
+</div>
+
+<script src="{{ url('js/app.js') }}"></script>
 
 </body>
 </html>

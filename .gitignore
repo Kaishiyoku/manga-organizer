@@ -3,3 +3,8 @@
 Homestead.json
 Homestead.yaml
 .env
+/node_modules
+/public/css
+/public/img
+/public/js
+/public/mix-manifest.json

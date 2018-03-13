@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "manga-organizer",
+  "version": "1.0.0",
+  "description": "A simple, personal manga organizer and visualizer.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaishiyoku/manga-organizer.git"
+  },
+  "keywords": [],
+  "author": "Kaishiyoku <dmp@nfze.de> (https://www.andreas-wiedel.de)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kaishiyoku/manga-organizer/issues"
+  },
+  "homepage": "https://github.com/Kaishiyoku/manga-organizer#readme",
+  "devDependencies": {
+    "bootstrap": "4.0.0",
+    "laravel-mix": "^2.1.0"
+  },
+  "dependencies": {
+    "cross-env": "^5.1.4"
+  }
+}
