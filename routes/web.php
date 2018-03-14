@@ -1,7 +1,3 @@
 <?php
 
-/*$router->get('/', function () use ($router) {
-    return $router->app->version();
-});*/
-
-$router->get('/', ['uses' => 'MangaController@index', 'as' => 'manga.index']);
+Route::get('/', 'MangaController@index')->name('manga.index');

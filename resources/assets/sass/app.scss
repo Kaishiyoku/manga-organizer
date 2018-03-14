@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+@import "bootstrap";
+
+body {
+  padding-bottom: 2em;
+}
+
+footer {
+  @extend .font-sm;
+
+  padding-top: 1em;
+}
+
+.cover {
+  padding-bottom: 2em;
+}
+
+.font-sm {
+  font-size: $font-size-sm;
+}

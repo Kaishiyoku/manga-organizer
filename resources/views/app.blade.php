@@ -11,12 +11,12 @@
         @yield('title')
     </title>
 
-    <link media="all" type="text/css" rel="stylesheet" href="{{ url('css/app.css') }}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
 
 <div class="container">
-    <img src="{{ url('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
+    <img src="{{ asset('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
 </div>
 
 <div class="container">
@@ -36,7 +36,7 @@
     </footer>
 </div>
 
-<script src="{{ url('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>
