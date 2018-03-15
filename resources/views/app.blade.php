@@ -16,7 +16,9 @@
 <body>
 
 <div class="container">
-    <img src="{{ asset('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
+    <a href="{{ route('manga.index') }}">
+        <img src="{{ asset('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
+    </a>
 </div>
 
 <div class="container">
@@ -31,8 +33,10 @@
             {{ env('APP_CREATION_YEAR') }} - {{ date('Y') }},
         @endif
 
-        {{ env('APP_AUTHOR') }},
-        v{{ env('APP_VERSION') }}
+        {{ env('APP_AUTHOR') }} &#8226;
+        v{{ env('APP_VERSION') }} &#8226;
+
+        {{ Html::linkRoute('auth.login_form', 'Login') }}
     </footer>
 </div>
 
