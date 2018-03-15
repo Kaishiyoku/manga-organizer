@@ -16,7 +16,7 @@ class CreateVolumesTable extends Migration
         Schema::create('volumes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('manga_id')->unsigned();
-            $table->integer('no')->unique();
+            $table->integer('no');
             $table->timestamps();
 
             $table->foreign('manga_id')->references('id')->on('mangas');
