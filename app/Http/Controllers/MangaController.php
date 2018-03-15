@@ -30,7 +30,7 @@ class MangaController extends Controller
      */
     public function index()
     {
-        $mangas = Manga::all();
+        $mangas = Manga::orderBy('name')->get();
 
         return view('manga.index', compact('mangas'));
     }
@@ -42,7 +42,7 @@ class MangaController extends Controller
      */
     public function manage()
     {
-        $mangas = Manga::all();
+        $mangas = Manga::orderBy('name')->get();
 
         return view('manga.manage', compact('mangas'));
     }
