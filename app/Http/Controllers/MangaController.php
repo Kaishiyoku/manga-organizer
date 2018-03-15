@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Manga;
+
 class MangaController extends Controller
 {
     public function index()
     {
-        $mangas = app('db')
-            ->table('mangas')
-            ->select('mangas.*', 'volumes.*')
-            ->join('volumes as volumes', 'mangas.id', '=', 'volumes.manga_id')
-            ->orderBy('mangas.name', 'asc')
-            ->orderBy('volumes.number', 'asc')
-            ->get();
+        $mangas = Manga::all();
 
         return view('manga.index', compact('mangas'));
     }
