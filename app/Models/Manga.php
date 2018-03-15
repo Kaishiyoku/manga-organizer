@@ -40,6 +40,6 @@ class Manga extends Model
 
     public function volumes()
     {
-        return $this->hasMany(Volume::class);
+        return $this->hasMany(Volume::class)->orderBy('no');
     }
 }
