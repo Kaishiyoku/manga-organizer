@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
         {{ env('APP_NAME', 'Laravel') }}
@@ -36,7 +37,16 @@
         {{ env('APP_AUTHOR') }} &#8226;
         v{{ env('APP_VERSION') }} &#8226;
 
-        {{ Html::linkRoute('auth.login_form', 'Login') }}
+        @if (auth()->check())
+            <a href="#" data-submit="#logout-form">
+                Logout
+            </a>
+
+            {{ Form::open(['route' => 'auth.logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
+            {{ Form::close() }}
+        @else
+            {{ Html::linkRoute('auth.login_form', 'Login') }}
+        @endif
     </footer>
 </div>
 

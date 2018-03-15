@@ -6,3 +6,17 @@
  */
 
 require('./bootstrap');
+
+$(document).ready(function () {
+    $('[data-submit]').each(function () {
+        const $this = $(this);
+
+        $this.click(function (event) {
+            alert('TEST');
+
+            event.preventDefault();
+
+            $($this.attr('data-submit')).submit();
+        });
+    });
+});
