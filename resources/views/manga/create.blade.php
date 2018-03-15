@@ -8,4 +8,6 @@
     {{ Form::open(['route' => 'mangas.store', 'method' => 'post', 'role' => 'form']) }}
         @include('manga._form', ['submitTitle' => __('common.create')])
     {{ Form::close() }}
+
+    {{ Html::linkRoute('mangas.manage', __('common.back')) }}
 @endsection

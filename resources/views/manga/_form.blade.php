@@ -13,11 +13,7 @@
 </div>
 
 <div class="form-group row">
-    <div class="col-md-6">
+    <div class="col-lg-12">
         {{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-    </div>
-
-    <div class="col-md-6 text-right">
-        {{ Html::linkRoute('mangas.manage', __('common.back'), [], ['class' => 'btn btn-link']) }}
     </div>
 </div>

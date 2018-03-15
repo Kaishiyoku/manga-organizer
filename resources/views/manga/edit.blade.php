@@ -16,4 +16,6 @@
             @include('manga._volumes')
         </div>
     </div>
+
+    {{ Html::linkRoute('mangas.manage', __('common.back')) }}
 @endsection
