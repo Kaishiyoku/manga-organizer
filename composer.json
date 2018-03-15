@@ -16,6 +16,7 @@
     "laravelcollective/html": "5.5.3"
   },
   "require-dev": {
+    "barryvdh/laravel-debugbar": "^3.1",
     "barryvdh/laravel-ide-helper": "2.4.3",
     "filp/whoops": "2.1.14",
     "fzaninotto/faker": "1.7.1",

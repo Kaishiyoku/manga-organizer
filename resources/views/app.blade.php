@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-    <a href="{{ route('manga.index') }}">
+    <a href="{{ route('mangas.index') }}">
         <img src="{{ asset('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
     </a>
 </div>
@@ -42,10 +42,10 @@
                 Logout
             </a>
 
-            {{ Form::open(['route' => 'auth.logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
+            {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
             {{ Form::close() }}
         @else
-            {{ Html::linkRoute('auth.login_form', 'Login') }}
+            {{ Html::linkRoute('login_form', 'Login') }}
         @endif
     </footer>
 </div>
