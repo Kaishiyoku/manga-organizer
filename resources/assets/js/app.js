@@ -12,8 +12,6 @@ $(document).ready(function () {
         const $this = $(this);
 
         $this.click(function (event) {
-            alert('TEST');
-
             event.preventDefault();
 
             $($this.attr('data-submit')).submit();
