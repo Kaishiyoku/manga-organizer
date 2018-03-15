@@ -8,6 +8,7 @@ return [
     'edit' => [
         'title' => 'Edit manga “:name”',
         'success' => 'Manga updated.',
+        'no_volumes_yet' => 'No volumes yet.',
     ],
     'index' => [
         'title' => 'Manga list',

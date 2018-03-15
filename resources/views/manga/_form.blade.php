@@ -18,6 +18,6 @@
     </div>
 
     <div class="col-md-6 text-right">
-        {{ Html::linkRoute('mangas.manage', __('common.cancel'), [], ['class' => 'btn btn-link']) }}
+        {{ Html::linkRoute('mangas.manage', __('common.back'), [], ['class' => 'btn btn-link']) }}
     </div>
 </div>

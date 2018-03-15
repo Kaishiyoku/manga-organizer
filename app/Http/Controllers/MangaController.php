@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manga;
+use App\Models\Volume;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -84,7 +85,9 @@ class MangaController extends Controller
      */
     public function edit(Manga $manga)
     {
-        return view('manga.edit', compact('manga'));
+        $newVolume = new Volume();
+
+        return view('manga.edit', compact('manga', 'newVolume'));
     }
 
     /**

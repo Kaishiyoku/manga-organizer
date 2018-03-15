@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('mangas/{manga}')->group(function () {
         Route::get('volumes/create', 'VolumeController@create')->name('volumes.create');
+        Route::post('volumes', 'VolumeController@store')->name('volumes.store');
         Route::delete('volumes/{volume}', 'VolumeController@destroy')->name('volumes.destroy');
     });
 });

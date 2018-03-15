@@ -6,4 +6,7 @@ return [
     'destroy' => [
         'success' => 'Volume deleted.',
     ],
+    'create' => [
+        'success' => 'Volume added.',
+    ],
 ];

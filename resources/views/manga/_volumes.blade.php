@@ -1,21 +1,41 @@
 <h2>{{ __('volume.title') }}</h2>
 
-<table class="table table-bordered table-striped table-sm">
-    <thead>
-    <tr>
-        <th>{{ __('validation.attributes.no') }}</th>
-        <th></th>
-    </tr>
-    </thead>
-
-    @foreach ($manga->volumes as $volume)
+@if ($manga->volumes->count() == 0)
+    <p><i>{{ __('manga.edit.no_volumes_yet') }}</i></p>
+@else
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
         <tr>
-            <td>{{ $volume->no }}</td>
-            <td>
-                @include('shared._delete_link', ['route' => ['volumes.destroy', $manga, $volume]])
-            </td>
+            <th>{{ __('validation.attributes.no') }}</th>
+            <th></th>
         </tr>
-    @endforeach
-</table>
+        </thead>
 
-{{ Html::linkRoute('volumes.create', __('volume.new'), [$manga]) }}
+        <tbody>
+        @foreach ($manga->volumes as $volume)
+            <tr>
+                <td>{{ $volume->no }}</td>
+                <td>
+                    @include('shared._delete_link', ['route' => ['volumes.destroy', $manga, $volume]])
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+@endif
+
+{{ Form::open(['route' => ['volumes.store', $manga], 'method' => 'post', 'role' => 'form']) }}
+    <div class="input-group">
+        {{ Form::number('no', old('no', $newVolume->no), ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'required' => true]) }}
+
+        <div class="input-group-append">
+            {{ Form::submit(__('volume.new'), ['class' => 'btn btn-primary']) }}
+        </div>
+
+        @if ($errors->has('no'))
+            <div class="invalid-feedback">
+                {{ $errors->first('no') }}
+            </div>
+        @endif
+    </div>
+{{ Form::close() }}
