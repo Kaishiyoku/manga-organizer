@@ -12,6 +12,9 @@
         @yield('title')
     </title>
 
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+
     <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
