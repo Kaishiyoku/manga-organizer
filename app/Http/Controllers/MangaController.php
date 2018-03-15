@@ -29,8 +29,11 @@ class MangaController extends Controller
     public function index()
     {
         $mangas = Manga::all();
+        $mangasWithoutVolumes = $mangas->filter(function ($manga) {
+            return $manga->volumes->count() == 0;
+        });
 
-        return view('manga.index', compact('mangas'));
+        return view('manga.index', compact('mangas', 'mangasWithoutVolumes'));
     }
 
     /**
@@ -61,12 +64,40 @@ class MangaController extends Controller
         return redirect()->route($this->redirectRoute);
     }
 
-    private function getValidationRulesWithNameUniqueness($id = null)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Manga  $manga
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Manga $manga)
+    {
+        return view('manga.edit', compact('manga'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Manga  $manga
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Manga $manga)
+    {
+        $request->validate($this->getValidationRulesWithNameUniqueness($manga));
+
+        $manga->fill($request->all());
+        $manga->save();
+
+        return redirect()->route($this->redirectRoute);
+    }
+
+    private function getValidationRulesWithNameUniqueness(Manga $manga)
     {
         $nameUniquessRule = Rule::unique('mangas', 'name');
 
-        if ($id != null) {
-            $nameUniquessRule = $nameUniquessRule->ignore($id);
+        if ($manga->id != null) {
+            $nameUniquessRule = $nameUniquessRule->ignore($manga->id);
         }
 
         $validationRules = $this->validationRules;
