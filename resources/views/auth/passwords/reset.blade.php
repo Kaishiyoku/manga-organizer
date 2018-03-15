@@ -3,60 +3,57 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
-            <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                {{ csrf_field() }}
+            {{ Form::open(['route' => 'password.request', 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal']) }}
+                {{ Form::hidden('token', $token) }}
 
-                <input type="hidden" name="token" value="{{ $token }}">
-
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email" class="col-md-12 control-label">E-Mail Address</label>
+                <div class="form-group">
+                    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-md-12 control-label']) }}
 
                     <div class="col-md-12">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                        {{ Form::email('email', old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true, 'autofocus' => true]) }}
 
                         @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
                         @endif
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password" class="col-md-12 control-label">Password</label>
+                <div class="form-group">
+                    {{ Form::label('password', __('validation.attributes.password'), ['class' => 'col-md-12 control-label']) }}
 
                     <div class="col-md-12">
-                        <input id="password" type="password" class="form-control" name="password" required>
+                        {{ Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required' => true]) }}
 
                         @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password') }}
+                            </div>
                         @endif
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                    <label for="password-confirm" class="col-md-12 control-label">Confirm Password</label>
+                <div class="form-group">
+                    {{ Form::label('password_confirmation', __('validation.attributes.password_confirmation'), ['class' => 'col-md-12 control-label']) }}
+
                     <div class="col-md-12">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        {{ Form::password('password_confirmation', ['class' => 'form-control' . ($errors->has('password_confirmation') ? ' is-invalid' : ''), 'required' => true]) }}
 
                         @if ($errors->has('password_confirmation'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password_confirmation') }}
+                            </div>
                         @endif
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">
-                            Reset Password
-                        </button>
+                        {{ Form::submit(__('auth.passwords.reset_password'), ['class' => 'btn btn-primary']) }}
                     </div>
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
     </div>
 @endsection

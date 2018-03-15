@@ -71,7 +71,7 @@ class MangaController extends Controller
         $manga = new Manga($request->all());
         $manga->save();
 
-        flash('Manga created.')->success();
+        flash(__('manga.create.success'))->success();
 
         return redirect()->route($this->redirectRoute);
     }
@@ -101,7 +101,7 @@ class MangaController extends Controller
         $manga->fill($request->all());
         $manga->save();
 
-        flash('Manga updated.')->success();
+        flash(__('manga.edit.success'))->success();
 
         return redirect()->route($this->redirectRoute);
     }
@@ -114,10 +114,10 @@ class MangaController extends Controller
      */
     public function destroy(Manga $manga)
     {
-        handleIntegrityConstraintViolation('Manga still has volumes. Delete them first.', function () use ($manga) {
+        handleIntegrityConstraintViolation(__('manga.destroy.still_has_volumes'), function () use ($manga) {
             $manga->delete();
 
-            flash('Manga deleted.')->success();
+            flash(__('manga.destroy.success'))->success();
         });
 
         return redirect()->route($this->redirectRoute);

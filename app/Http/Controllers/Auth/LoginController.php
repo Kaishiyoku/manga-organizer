@@ -54,13 +54,11 @@ class LoginController extends Controller
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
-            flash('Too many login attempts.')->error();
-
             return $this->sendLockoutResponse($request);
         }
 
         if ($this->attemptLogin($request)) {
-            flash('Login successful.')->success();
+            flash(__('auth.login.success'))->success();
 
             return $this->sendLoginResponse($request);
         }
@@ -85,7 +83,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        flash('Logout succesful.')->success();
+        flash(__('auth.logout.success'))->success();
 
         return redirect('/');
     }

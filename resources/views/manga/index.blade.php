@@ -1,12 +1,12 @@
 @extends('app')
 
-@section('title', 'Manga list')
+@section('title', __('manga.index.title'))
 
 @section('content')
-    <h1>Manga list</h1>
+    <h1>{{ __('manga.index.title') }}</h1>
 
     @auth
-        {{ Html::linkRoute('mangas.manage', 'Manage', [], ['class' => 'btn btn-secondary btn-sm']) }}
+        {{ Html::linkRoute('mangas.manage', __('manga.index.manage'), [], ['class' => 'btn btn-secondary btn-sm']) }}
     @endauth
 
     <div class="row">
@@ -14,8 +14,8 @@
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Volume</th>
+                    <th>{{ __('validation.attributes.name') }}</th>
+                    <th>{{ __('validation.attributes.volume') }}</th>
                 </tr>
                 </thead>
 

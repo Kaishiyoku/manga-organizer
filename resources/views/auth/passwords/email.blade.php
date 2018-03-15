@@ -9,31 +9,27 @@
                 </div>
             @endif
 
-                <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
-                    {{ csrf_field() }}
+            {{ Form::open(['route' => 'password.email', 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal']) }}
+                <div class="form-group">
+                    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-md-12 control-label']) }}
 
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-12 control-label">E-Mail Address</label>
+                    <div class="col-md-12">
+                        {{ Form::email('email', old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true]) }}
 
-                        <div class="col-md-12">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                            @if ($errors->has('email'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
+                        @if ($errors->has('email'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">
-                                Send Password Reset Link
-                            </button>
-                        </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {{ Form::submit(__('auth.passwords.send_password_reset_link'), ['class' => 'btn btn-primary']) }}
                     </div>
-                </form>
+                </div>
+            {{ Form::close() }}
         </div>
     </div>
 @endsection

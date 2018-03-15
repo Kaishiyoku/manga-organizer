@@ -44,13 +44,13 @@
 
         @if (auth()->check())
             <a href="#" data-submit="#logout-form">
-                Logout
+                {{ __('common.logout') }}
             </a>
 
             {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
             {{ Form::close() }}
         @else
-            {{ Html::linkRoute('login_form', 'Login') }}
+            {{ Html::linkRoute('login_form', __('common.login')) }}
         @endif
     </footer>
 </div>
