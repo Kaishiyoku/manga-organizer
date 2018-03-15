@@ -17,6 +17,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereMangaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereUpdatedAt($value)
+ * @property int $id
+ * @property int $no
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereNo($value)
  */
 class Volume extends Model
 {
@@ -26,7 +30,7 @@ class Volume extends Model
      * @var array
      */
     protected $fillable = [
-        'number',
+        'no',
     ];
 
     /**

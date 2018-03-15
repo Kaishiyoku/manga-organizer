@@ -122,6 +122,7 @@ return [
         'password_confirmation' => 'Confirm password',
         'name' => 'Name',
         'volume' => 'Volume',
+        'no' => 'Number',
     ],
 
 ];

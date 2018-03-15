@@ -16,4 +16,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('mangas', 'MangaController', ['except' => ['index', 'show']]);
     Route::get('mangas/manage', 'MangaController@manage')->name('mangas.manage');
+
+    Route::prefix('mangas/{manga}')->group(function () {
+        Route::get('volumes/create', 'VolumeController@create')->name('volumes.create');
+        Route::delete('volumes/{volume}', 'VolumeController@destroy')->name('volumes.destroy');
+    });
 });

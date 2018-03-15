@@ -14,11 +14,11 @@ class CreateVolumesTable extends Migration
     public function up()
     {
         Schema::create('volumes', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('manga_id')->unsigned();
-            $table->integer('number');
+            $table->integer('no')->unique();
             $table->timestamps();
 
-            $table->primary(['manga_id', 'number']);
             $table->foreign('manga_id')->references('id')->on('mangas');
         });
     }

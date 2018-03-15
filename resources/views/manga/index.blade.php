@@ -24,7 +24,7 @@
                     @foreach ($manga->volumes as $volume)
                         <tr>
                             <td>{{ $manga->name }}</td>
-                            <td>{{ $volume->number }}</td>
+                            <td>{{ $volume->no }}</td>
                         </tr>
                     @endforeach
                 @endforeach
