@@ -17,4 +17,16 @@ $(document).ready(function () {
             $($this.attr('data-submit')).submit();
         });
     });
+
+    $('[data-confirm]').click(function () {
+        let confirmationText = $(this).attr('data-confirm');
+
+        if (_.isEmpty(confirmationText) || confirmationText == 1) {
+            confirmationText = 'Are you sure?';
+        }
+
+        if (!confirm(confirmationText)) {
+            return false;
+        }
+    });
 });

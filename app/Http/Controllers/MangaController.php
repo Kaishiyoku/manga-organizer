@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manga;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -12,7 +13,7 @@ class MangaController extends Controller
     /**
      * @var string
      */
-    private $redirectRoute = 'mangas.index';
+    private $redirectRoute = 'mangas.manage';
 
     /**
      * @var array
@@ -29,11 +30,20 @@ class MangaController extends Controller
     public function index()
     {
         $mangas = Manga::all();
-        $mangasWithoutVolumes = $mangas->filter(function ($manga) {
-            return $manga->volumes->count() == 0;
-        });
 
-        return view('manga.index', compact('mangas', 'mangasWithoutVolumes'));
+        return view('manga.index', compact('mangas'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function manage()
+    {
+        $mangas = Manga::all();
+
+        return view('manga.manage', compact('mangas'));
     }
 
     /**
@@ -92,6 +102,23 @@ class MangaController extends Controller
         $manga->save();
 
         flash('Manga updated.')->success();
+
+        return redirect()->route($this->redirectRoute);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Manga  $manga
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Manga $manga)
+    {
+        handleIntegrityConstraintViolation('Manga still has volumes. Delete them first.', function () use ($manga) {
+            $manga->delete();
+
+            flash('Manga deleted.')->success();
+        });
 
         return redirect()->route($this->redirectRoute);
     }

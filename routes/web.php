@@ -14,5 +14,6 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('mangas', 'MangaController', ['only' => ['create', 'store', 'edit', 'update']]);
+    Route::resource('mangas', 'MangaController', ['except' => ['index', 'show']]);
+    Route::get('mangas/manage', 'MangaController@manage')->name('mangas.manage');
 });

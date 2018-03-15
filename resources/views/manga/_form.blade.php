@@ -16,6 +16,6 @@
     </div>
 
     <div class="col-md-3 text-right">
-        {{ Html::linkRoute('mangas.index', 'Cancel', [], ['class' => 'btn btn-link']) }}
+        {{ Html::linkRoute('mangas.manage', 'Cancel', [], ['class' => 'btn btn-link']) }}
     </div>
 </div>

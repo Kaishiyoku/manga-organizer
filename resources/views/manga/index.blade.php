@@ -6,7 +6,7 @@
     <h1>Manga list</h1>
 
     @auth
-        {{ Html::linkRoute('mangas.create', 'New manga', [], ['class' => 'btn btn-secondary btn-sm']) }}
+        {{ Html::linkRoute('mangas.manage', 'Manage', [], ['class' => 'btn btn-secondary btn-sm']) }}
     @endauth
 
     <div class="row">
@@ -23,45 +23,13 @@
                 @foreach ($mangas as $manga)
                     @foreach ($manga->volumes as $volume)
                         <tr>
-                            <td>
-                                {{ $manga->name }}
-
-                                @auth
-                                    {{ Html::linkRoute('mangas.edit', 'Edit', [$manga->id]) }}
-                                @endauth
-                            </td>
+                            <td>{{ $manga->name }}</td>
                             <td>{{ $volume->number }}</td>
                         </tr>
                     @endforeach
                 @endforeach
                 </tbody>
             </table>
-
-            @auth
-                <p class="lead">
-                    Mangas without volumes
-                </p>
-
-                <table class="table table-bordered table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($mangasWithoutVolumes as $manga)
-                        <tr>
-                            <td>
-                                {{ $manga->name }}
-
-                                {{ Html::linkRoute('mangas.edit', 'Edit', [$manga->id]) }}
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            @endauth
         </div>
     </div>
 @endsection
