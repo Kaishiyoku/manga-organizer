@@ -44,13 +44,13 @@
 
         @if (auth()->check())
             <a href="#" data-submit="#logout-form">
-                {{ __('common.logout') }}
+                <i class="fas fa-sign-out"></i> {{ __('common.logout') }}
             </a>
 
             {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
             {{ Form::close() }}
         @else
-            {{ Html::linkRoute('login_form', __('common.login')) }}
+            {!! Html::decode(Html::linkRoute('login_form', '<i class="fas fa-sign-in"></i> ' . __('common.login'))) !!}
         @endif
     </footer>
 </div>

@@ -6,7 +6,7 @@
     <h1>{{ __('manga.manage.title') }}</h1>
 
     @auth
-        {{ Html::linkRoute('mangas.create', __('manga.manage.new'), [], ['class' => 'btn btn-secondary btn-sm']) }}
+        {!! Html::decode(Html::linkRoute('mangas.create', '<i class="fas fa-plus"></i> ' . __('manga.manage.new'), [], ['class' => 'btn btn-secondary btn-sm'])) !!}
     @endauth
 
     <div class="row">
@@ -27,7 +27,7 @@
                         <td>{{ $manga->name }}</td>
                         <td>{{ $manga->volumes->count() }}</td>
                         <td>
-                            {{ Html::linkRoute('mangas.edit', __('common.edit'), [$manga->id]) }}
+                            {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id])) !!}
                         </td>
                         <td>
                             @include('shared._delete_link', ['route' => ['mangas.destroy', $manga]])

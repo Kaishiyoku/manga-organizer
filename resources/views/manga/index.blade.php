@@ -6,7 +6,7 @@
     <h1>{{ __('manga.index.title') }}</h1>
 
     @auth
-        {{ Html::linkRoute('mangas.manage', __('manga.index.manage'), [], ['class' => 'btn btn-secondary btn-sm']) }}
+        {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-wrench"></i> ' . __('manga.index.manage'), [], ['class' => 'btn btn-secondary btn-sm'])) !!}
     @endauth
 
     <div class="row">

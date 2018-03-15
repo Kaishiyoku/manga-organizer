@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+@import "~@fortawesome/fontawesome-pro-webfonts/scss/fontawesome";
+
+//$fa-font-path: "../fonts";
+
+@import "~@fortawesome/fontawesome-pro-webfonts/scss/fa-brands";
+@import "~@fortawesome/fontawesome-pro-webfonts/scss/fa-light";
+@import "~@fortawesome/fontawesome-pro-webfonts/scss/fa-regular";
+@import "~@fortawesome/fontawesome-pro-webfonts/scss/fa-solid";
+
 @import "bootstrap";
 
 body {

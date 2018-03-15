@@ -6,8 +6,8 @@
     <h1>{{ __('manga.create.title') }}</h1>
 
     {{ Form::open(['route' => 'mangas.store', 'method' => 'post', 'role' => 'form']) }}
-        @include('manga._form', ['submitTitle' => __('common.create')])
+        @include('manga._form', ['submitTitle' => '<i class="fas fa-save"></i> ' . __('common.create')])
     {{ Form::close() }}
 
-    {{ Html::linkRoute('mangas.manage', __('common.back')) }}
+    {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-arrow-left"></i> ' . __('common.back'))) !!}
 @endsection
