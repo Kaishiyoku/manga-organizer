@@ -61,6 +61,8 @@ class MangaController extends Controller
         $manga = new Manga($request->all());
         $manga->save();
 
+        flash('Manga created.')->success();
+
         return redirect()->route($this->redirectRoute);
     }
 
@@ -89,14 +91,16 @@ class MangaController extends Controller
         $manga->fill($request->all());
         $manga->save();
 
+        flash('Manga updated.')->success();
+
         return redirect()->route($this->redirectRoute);
     }
 
-    private function getValidationRulesWithNameUniqueness(Manga $manga)
+    private function getValidationRulesWithNameUniqueness(Manga $manga = null)
     {
         $nameUniquessRule = Rule::unique('mangas', 'name');
 
-        if ($manga->id != null) {
+        if ($manga != null) {
             $nameUniquessRule = $nameUniquessRule->ignore($manga->id);
         }
 

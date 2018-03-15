@@ -26,7 +26,9 @@
                             <td>
                                 {{ $manga->name }}
 
-                                {{ Html::linkRoute('mangas.edit', 'Edit', [$manga->id]) }}
+                                @auth
+                                    {{ Html::linkRoute('mangas.edit', 'Edit', [$manga->id]) }}
+                                @endauth
                             </td>
                             <td>{{ $volume->number }}</td>
                         </tr>

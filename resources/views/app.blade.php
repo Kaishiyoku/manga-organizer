@@ -16,13 +16,15 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container text-center">
     <a href="{{ route('mangas.index') }}">
         <img src="{{ asset('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
     </a>
 </div>
 
 <div class="container">
+    @include('flash::message')
+
     @yield('content')
 </div>
 

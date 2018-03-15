@@ -11,6 +11,7 @@
     "php": ">=7.0.0",
     "doctrine/dbal": "2.5.13",
     "fideloper/proxy": "3.3.4",
+    "laracasts/flash": "^3.0",
     "laravel/framework": "5.5.39",
     "laravel/tinker": "1.0.5",
     "laravelcollective/html": "5.5.3"
