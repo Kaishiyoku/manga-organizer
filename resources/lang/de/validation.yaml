@@ -78,3 +78,5 @@ attributes:
   name: 'Name'
   volume: 'Band'
   no: 'Nummer'
+  fullname: 'Name'
+  content: 'Inhalt'

@@ -78,3 +78,5 @@ attributes:
   name: 'Name'
   volume: 'Volume'
   no: 'Number'
+  fullname: 'Full name'
+  content: 'Content'

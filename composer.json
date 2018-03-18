@@ -9,13 +9,15 @@
   "type": "project",
   "require": {
     "php": ">=7.0.0",
+    "albertcht/invisible-recaptcha": "^1.8",
     "doctrine/dbal": "2.5.13",
     "fideloper/proxy": "3.3.4",
     "kaishiyoku/yaml-translation": "^5.5",
     "laracasts/flash": "^3.0",
     "laravel/framework": "5.5.39",
     "laravel/tinker": "1.0.5",
-    "laravelcollective/html": "5.5.3"
+    "laravelcollective/html": "5.5.3",
+    "webup/laravel-sendinblue": "^1.1"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.1",

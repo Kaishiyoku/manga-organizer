@@ -4,6 +4,9 @@ Route::get('/', 'MangaController@index')->name('mangas.index');
 
 Route::post('/lang/change', 'LanguageController@change')->name('language.change');
 
+Route::get('/contact', 'HomeController@showContactForm')->name('home.show_contact_form');
+Route::post('/contact', 'HomeController@sendContactForm')->name('home.send_contact_form');
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
 Route::post('login', 'Auth\LoginController@login')->name('login');

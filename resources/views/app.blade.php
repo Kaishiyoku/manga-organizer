@@ -41,6 +41,7 @@
 
         {{ env('APP_AUTHOR') }} &#8226;
         v{{ env('APP_VERSION') }} &#8226;
+        {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }} &#8226;
 
         @if (auth()->check())
             <a href="#" data-submit="#logout-form">
