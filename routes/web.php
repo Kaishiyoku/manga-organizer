@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'MangaController@index')->name('mangas.index');
+Route::get('/plain', 'MangaController@indexPlain')->name('mangas.index_plain');
 
 Route::post('/lang/change', 'LanguageController@change')->name('language.change');
 

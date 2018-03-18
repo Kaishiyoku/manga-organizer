@@ -14,3 +14,12 @@ if (! function_exists('handleIntegrityConstraintViolation')) {
         }
     }
 }
+
+if (! function_exists('generateAsciiHeading')) {
+    function generateAsciiHeading($str)
+    {
+        //$asciiContent =
+
+        return '#';
+    }
+}

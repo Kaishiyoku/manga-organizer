@@ -8,6 +8,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use MathieuViossat\Util\ArrayToTextTable;
 
 class MangaController extends Controller
 {
@@ -33,6 +34,25 @@ class MangaController extends Controller
         $mangas = Manga::has('volumes')->orderBy('name')->get();
 
         return view('manga.index', compact('mangas'));
+    }
+
+    public function indexPlain()
+    {
+        $mangas = Manga::with('volumes')->has('volumes')->orderBy('name')->get();
+
+        $renderer = new ArrayToTextTable($mangas->flatMap(function ($manga) {
+            return $manga->volumes->map(function ($volume) use ($manga) {
+                return [
+                    __('validation.attributes.name') => $manga->name,
+                    __('validation.attributes.volume') => $volume->no
+                ];
+            });
+        })->toArray());
+
+        $renderer->setKeysAlignment(ArrayToTextTable::AlignLeft);
+        $renderer->setDecorator(new \Zend\Text\Table\Decorator\Blank());
+
+        return response(view('manga.index_plain', ['mangaTable' => $renderer->getTable()]))->header('Content-Type', 'text/plain');
     }
 
     /**

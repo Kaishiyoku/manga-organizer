@@ -56,6 +56,10 @@
 
         &#8226;
 
+        {{ Html::linkRoute('mangas.index_plain', __('common.list_as_text')) }}
+
+        &#8226;
+
         @include('shared._language_dropdown')
     </footer>
 </div>

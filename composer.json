@@ -17,6 +17,7 @@
     "laravel/framework": "5.5.39",
     "laravel/tinker": "1.0.5",
     "laravelcollective/html": "5.5.3",
+    "mathieuviossat/arraytotexttable": "^1.0",
     "webup/laravel-sendinblue": "^1.1"
   },
   "require-dev": {
