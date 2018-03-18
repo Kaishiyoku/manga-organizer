@@ -30,7 +30,7 @@ class MangaController extends Controller
      */
     public function index()
     {
-        $mangas = Manga::orderBy('name')->get();
+        $mangas = Manga::has('volumes')->orderBy('name')->get();
 
         return view('manga.index', compact('mangas'));
     }

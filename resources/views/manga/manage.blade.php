@@ -11,31 +11,35 @@
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
-            <table class="table table-bordered table-striped table-sm">
-                <thead>
-                <tr>
-                    <th>{{ __('validation.attributes.name') }}</th>
-                    <th>{{ __('manga.manage.number_of_volumes') }}</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                @foreach ($mangas as $manga)
+            @if ($mangas->count() == 0)
+                <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
+            @else
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
                     <tr>
-                        <td>{{ $manga->name }}</td>
-                        <td>{{ $manga->volumes->count() }}</td>
-                        <td>
-                            {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id])) !!}
-                        </td>
-                        <td>
-                            @include('shared._delete_link', ['route' => ['mangas.destroy', $manga]])
-                        </td>
+                        <th>{{ __('validation.attributes.name') }}</th>
+                        <th>{{ __('manga.manage.number_of_volumes') }}</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($mangas as $manga)
+                        <tr>
+                            <td>{{ $manga->name }}</td>
+                            <td>{{ $manga->volumes->count() }}</td>
+                            <td>
+                                {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id])) !!}
+                            </td>
+                            <td>
+                                @include('shared._delete_link', ['route' => ['mangas.destroy', $manga]])
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
 @endsection

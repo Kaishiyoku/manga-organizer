@@ -11,25 +11,29 @@
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
-            <table class="table table-bordered table-striped table-sm">
-                <thead>
-                <tr>
-                    <th>{{ __('validation.attributes.name') }}</th>
-                    <th>{{ __('validation.attributes.volume') }}</th>
-                </tr>
-                </thead>
+            @if ($mangas->count() == 0)
+                <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
+            @else
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>{{ __('validation.attributes.name') }}</th>
+                        <th>{{ __('validation.attributes.volume') }}</th>
+                    </tr>
+                    </thead>
 
-                <tbody>
-                @foreach ($mangas as $manga)
-                    @foreach ($manga->volumes as $i => $volume)
-                        <tr class="{{ $i == $manga->volumes->count() - 1  ? 'bordered-bold' : ''}}">
-                            <td>{{ $manga->name }}</td>
-                            <td>{{ $volume->no }}</td>
-                        </tr>
+                    <tbody>
+                    @foreach ($mangas as $manga)
+                        @foreach ($manga->volumes as $i => $volume)
+                            <tr class="{{ $i == $manga->volumes->count() - 1  ? 'bordered-bold' : ''}}">
+                                <td>{{ $manga->name }}</td>
+                                <td>{{ $volume->no }}</td>
+                            </tr>
+                        @endforeach
                     @endforeach
-                @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
 @endsection

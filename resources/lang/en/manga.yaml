@@ -15,3 +15,4 @@ manage:
 destroy:
   still_has_volumes: Manga still has volumes. Delete them first.
   success: Manga deleted.
+no_mangas_yet: No mangas yet.
