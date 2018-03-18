@@ -20,3 +20,4 @@ MIT (https://github.com/Kaishiyoku/manga-organizer/blob/master/LICENSE)
 Author
 ======
 Twitter: [@kaishiyoku](https://twitter.com/kaishiyoku)  
+MAL: [kaishiyoku](https://myanimelist.net/profile/Kaishiyoku)
