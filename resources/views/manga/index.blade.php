@@ -21,8 +21,8 @@
 
                 <tbody>
                 @foreach ($mangas as $manga)
-                    @foreach ($manga->volumes as $volume)
-                        <tr>
+                    @foreach ($manga->volumes as $i => $volume)
+                        <tr class="{{ $i == $manga->volumes->count() - 1  ? 'bordered-bold' : ''}}">
                             <td>{{ $manga->name }}</td>
                             <td>{{ $volume->no }}</td>
                         </tr>

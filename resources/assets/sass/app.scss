@@ -50,3 +50,11 @@ footer {
 .inline {
   display: inline;
 }
+
+tr {
+  &.bordered-bold {
+    td {
+      border-bottom: 1px solid gray("500");
+    }
+  }
+}
