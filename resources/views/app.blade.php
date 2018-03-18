@@ -52,6 +52,10 @@
         @else
             {!! Html::decode(Html::linkRoute('login_form', '<i class="fas fa-sign-in"></i> ' . __('common.login'))) !!}
         @endif
+
+        &#8226;
+
+        @include('shared._language_dropdown')
     </footer>
 </div>
 

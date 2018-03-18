@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "86454dd609e438839531e26590fc0004",
+    "content-hash": "c51e863ab56fc703cf0caa92c4a0195f",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -755,6 +755,44 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "kaishiyoku/yaml-translation",
+            "version": "5.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-yaml-translation.git",
+                "reference": "1f941996d1e1299b33a62b0a6bb1513af3fd26d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-yaml-translation/zipball/1f941996d1e1299b33a62b0a6bb1513af3fd26d8",
+                "reference": "1f941996d1e1299b33a62b0a6bb1513af3fd26d8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/translation": "5.4.*|5.5.*",
+                "php": ">=7.0.0",
+                "symfony/yaml": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaishiyoku",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "Add YAML file support to Laravel TranslationServiceProvider",
+            "time": "2017-09-01T10:48:06+00:00"
         },
         {
             "name": "laracasts/flash",
@@ -2595,6 +2633,64 @@
                 "dump"
             ],
             "time": "2018-02-22T17:29:24+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "6af42631dcf89e9c616242c900d6c52bd53bd1bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/6af42631dcf89e9c616242c900d6c52bd53bd1bb",
+                "reference": "6af42631dcf89e9c616242c900d6c52bd53bd1bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2018-02-16T09:50:28+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

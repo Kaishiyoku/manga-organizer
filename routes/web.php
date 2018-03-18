@@ -2,6 +2,8 @@
 
 Route::get('/', 'MangaController@index')->name('mangas.index');
 
+Route::post('/lang/change', 'LanguageController@change')->name('language.change');
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
 Route::post('login', 'Auth\LoginController@login')->name('login');

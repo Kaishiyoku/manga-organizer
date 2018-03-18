@@ -1,0 +1,11 @@
+failed: Diese Kombination aus Zugangsdaten wurden nicht in unserer Datenbank gefunden.
+throttle: 'Zu viele Loginversuche. Versuchen Sie es bitte in :seconds Sekunden nochmal.'
+login:
+  success: Login erfolgreich.
+logout:
+  success: Logout erfolgreich.
+passwords:
+  send_password_reset_link: Link zum Zurücksetzen des Passworts versendet
+  reset_password: Passwort zurücksetzen
+  remember_me: An mich erinnern
+  forgot_your_password: Passwort vergessen?

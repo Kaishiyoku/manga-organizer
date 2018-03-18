@@ -24,6 +24,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
+ * @property string $locale
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLocale($value)
  */
 class User extends Authenticatable
 {

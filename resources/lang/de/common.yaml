@@ -1,0 +1,12 @@
+logout: Logout
+login: Login
+cancel: Abbrechen
+create: Erstellen
+update: Speichern
+edit: Ändern
+delete: Löschen
+back: Zurück
+language: Sprache
+languages:
+  de: Deutsch
+  en: English

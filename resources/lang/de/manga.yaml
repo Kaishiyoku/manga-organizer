@@ -1,0 +1,17 @@
+create:
+  title: Neuer Manga
+  success: Manga erstellt.
+edit:
+  title: 'Manga „:name” ändern'
+  success: Manga geändert.
+  no_volumes_yet: Noch keine Bände vorhanden.
+index:
+  title: Mangaliste
+  manage: Verwalten
+manage:
+  title: Mangaliste verwalten
+  new: Neuer Manga
+  number_of_volumes: '# Bände'
+destroy:
+  still_has_volumes: Manga hat noch Bände. Löschen Sie diese zuerst.
+  success: Manga gelöscht.
