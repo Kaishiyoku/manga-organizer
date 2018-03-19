@@ -16,6 +16,8 @@ Screenshots
 
 ![Edit manga](https://i.imgur.com/0JhKzTK.png)
 
+![Plain text list](https://i.imgur.com/XORokMA.png)
+
 License
 =======
 MIT (https://github.com/Kaishiyoku/manga-organizer/blob/master/LICENSE)
