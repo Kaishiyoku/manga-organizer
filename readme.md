@@ -1,3 +1,5 @@
+<img align="right" src="https://i.imgur.com/p8UGVQb.jpg" alt="Astolfo"/>
+
 Table of contents
 =================
   * [About](#about)
@@ -7,8 +9,6 @@ Table of contents
 About
 =====
 A self-hostable, simple web service to keep track of your owned mangas.
-
-![Astolfo](https://i.imgur.com/p8UGVQb.jpg)
 
 Screenshots
 ===========
