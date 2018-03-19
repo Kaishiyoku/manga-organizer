@@ -41,7 +41,6 @@
 
         {{ env('APP_AUTHOR') }} &#8226;
         v{{ env('APP_VERSION') }} &#8226;
-        {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }} &#8226;
 
         @if (auth()->check())
             <a href="#" data-submit="#logout-form">
@@ -56,11 +55,15 @@
 
         &#8226;
 
-        {{ Html::linkRoute('mangas.index_plain', __('common.list_as_text')) }}
+        @include('shared._language_dropdown')
 
         &#8226;
 
-        @include('shared._language_dropdown')
+        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="far fa-envelope"></i> ' . __('common.contact'))) !!}
+
+        &#8226;
+
+        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="far fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
     </footer>
 </div>
 
