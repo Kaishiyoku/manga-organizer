@@ -1,7 +1,3 @@
-A simple, personal manga organizer and visualizer.
-
-![Astolfo](https://i.imgur.com/p8UGVQb.jpg)
-
 Table of contents
 =================
   * [About](#about)
@@ -10,7 +6,9 @@ Table of contents
 
 About
 =====
-This is a self-hostable, simple web service to keep track of your owned mangas.
+A self-hostable, simple web service to keep track of your owned mangas.
+
+![Astolfo](https://i.imgur.com/p8UGVQb.jpg)
 
 Screenshots
 ===========
