@@ -17,16 +17,27 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereUpdatedAt($value)
+ * @property int $is_completed
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereIsCompleted($value)
  */
 class Manga extends Model
 {
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_completed' => 'boolean',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
+        'name', 'is_completed',
     ];
 
     /**

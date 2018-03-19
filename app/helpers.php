@@ -23,3 +23,10 @@ if (! function_exists('generateAsciiHeading')) {
         return '#';
     }
 }
+
+if (! function_exists('formatBool')) {
+    function formatBool($bool)
+    {
+        return __('common.boolean.' . ($bool ? 'true' : 'false'));
+    }
+}

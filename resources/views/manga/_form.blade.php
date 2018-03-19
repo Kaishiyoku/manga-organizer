@@ -12,6 +12,18 @@
     </div>
 </div>
 
+<div class="form-group form-check">
+    {{ Form::checkbox('is_completed', true, old('is_completed', $manga->is_completed), ['id' => 'is_completed', 'class' => 'form-check-input']) }}
+
+    {{ Form::label('is_completed', __('validation.attributes.is_completed'), ['class' => 'form-check-label']) }}
+
+    @if ($errors->has('is_completed'))
+        <div class="invalid-feedback">
+            {{ $errors->first('is_completed') }}
+        </div>
+    @endif
+</div>
+
 <div class="form-group row">
     <div class="col-lg-12">
         {!! Html::decode(Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary'])) !!}

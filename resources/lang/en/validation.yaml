@@ -80,3 +80,4 @@ attributes:
   no: 'Number'
   fullname: 'Full name'
   content: 'Content'
+  is_completed: 'Completed'

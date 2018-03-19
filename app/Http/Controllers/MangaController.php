@@ -22,6 +22,7 @@ class MangaController extends Controller
      */
     private $validationRules = [
         'name' => ['required'],
+        'is_completed' => 'boolean',
     ];
 
     /**
@@ -122,6 +123,7 @@ class MangaController extends Controller
         $request->validate($this->getValidationRulesWithNameUniqueness($manga));
 
         $manga->fill($request->all());
+        $manga->is_completed = $request->get('is_completed', false);
         $manga->save();
 
         flash(__('manga.edit.success'))->success();

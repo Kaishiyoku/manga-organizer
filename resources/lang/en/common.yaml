@@ -13,3 +13,6 @@ languages:
 contact_me_now: Contact me now
 contact: Contact
 list_as_text: List as text
+boolean:
+  'true': Yes
+  'false': No

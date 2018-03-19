@@ -19,6 +19,7 @@
                     <tr>
                         <th>{{ __('validation.attributes.name') }}</th>
                         <th>{{ __('manga.manage.number_of_volumes') }}</th>
+                        <th>{{ __('validation.attributes.is_completed') }}</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -29,6 +30,7 @@
                         <tr>
                             <td>{{ $manga->name }}</td>
                             <td>{{ $manga->volumes->count() }}</td>
+                            <td>{{ formatBool($manga->is_completed) }}</td>
                             <td>
                                 {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id])) !!}
                             </td>
