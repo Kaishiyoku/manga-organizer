@@ -12,6 +12,12 @@ About
 =====
 This is a self-hostable, simple web service to keep track of your owned mangas.
 
+Screenshots
+===========
+![Manga list](https://i.imgur.com/9Yaj94p.png)
+
+![Edit manga](https://i.imgur.com/0JhKzTK.png)
+
 License
 =======
 MIT (https://github.com/Kaishiyoku/manga-organizer/blob/master/LICENSE)
