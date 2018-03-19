@@ -1,3 +1,3 @@
-# {{ env('APP_NAME_LONG') }}
+{{ generateAsciiHeading(env('APP_NAME_LONG')) }}
 
 {{ $mangaTable }}

@@ -15,12 +15,17 @@ if (! function_exists('handleIntegrityConstraintViolation')) {
     }
 }
 
+if (! function_exists('generateHeadingLine')) {
+    function generateHeadingLine($length, $char = '=')
+    {
+        return implode('', array_fill(0, $length, $char));
+    }
+}
+
 if (! function_exists('generateAsciiHeading')) {
     function generateAsciiHeading($str)
     {
-        //$asciiContent =
-
-        return '#';
+        return $str . "\n" . generateHeadingLine(strlen($str));
     }
 }
 
