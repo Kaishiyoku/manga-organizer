@@ -8,7 +8,7 @@ Table of contents
 
 About
 =====
-A self-hostable, simple web service to keep track of your owned mangas.
+**A self-hostable, simple web service to keep track of your owned mangas.**
 
 Screenshots
 ===========
