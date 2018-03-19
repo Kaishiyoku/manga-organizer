@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manga;
+use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -32,22 +33,27 @@ class MangaController extends Controller
      */
     public function index()
     {
-        $mangas = Manga::has('volumes')->orderBy('name')->get();
+        $mangas = Manga::has('volumes')->orHas('specials')->orderBy('name')->get();
 
         return view('manga.index', compact('mangas'));
     }
 
     public function indexPlain()
     {
-        $mangas = Manga::with('volumes')->has('volumes')->orderBy('name')->get();
+        $mangas = Manga::with('volumes')->with('specials')->has('volumes')->orHas('specials')->orderBy('name')->get();
 
         $renderer = new ArrayToTextTable($mangas->flatMap(function ($manga) {
-            return $manga->volumes->map(function ($volume) use ($manga) {
+            return array_merge($manga->volumes->map(function ($volume) use ($manga) {
                 return [
                     __('validation.attributes.name') => $manga->name,
                     __('validation.attributes.volume') => $volume->no
                 ];
-            });
+            })->toArray(), $manga->specials->map(function ($special) use ($manga) {
+                return [
+                    __('validation.attributes.name') => $manga->name,
+                    __('validation.attributes.volume') => $special->name
+                ];
+            })->toArray());
         })->toArray());
 
         $renderer->setKeysAlignment(ArrayToTextTable::AlignLeft);
@@ -107,8 +113,9 @@ class MangaController extends Controller
     public function edit(Manga $manga)
     {
         $newVolume = new Volume();
+        $newSpecial = new Special();
 
-        return view('manga.edit', compact('manga', 'newVolume'));
+        return view('manga.edit', compact('manga', 'newVolume', 'newSpecial'));
     }
 
     /**

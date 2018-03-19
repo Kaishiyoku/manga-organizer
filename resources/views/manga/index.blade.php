@@ -40,6 +40,18 @@
                                 <td>{{ $volume->no }}</td>
                             </tr>
                         @endforeach
+
+                        @foreach ($manga->specials as $i => $special)
+                            <tr class="{{ $i == $manga->specials->count() - 1  ? 'bordered-bold' : ''}}">
+                                <td>
+                                    @if ($i == 0)
+                                        <strong>{{ $manga->name }}</strong>
+                                    @endif
+                                </td>
+                                <td></td>
+                                <td>{{ $special->name }}</td>
+                            </tr>
+                        @endforeach
                     @endforeach
                     </tbody>
                 </table>

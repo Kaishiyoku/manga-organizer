@@ -10,7 +10,7 @@
     @endauth
 
     <div class="row">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-8 offset-lg-2">
             @if ($mangas->count() == 0)
                 <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
             @else
@@ -19,6 +19,7 @@
                     <tr>
                         <th>{{ __('validation.attributes.name') }}</th>
                         <th>{{ __('manga.manage.number_of_volumes') }}</th>
+                        <th>{{ __('manga.manage.number_of_specials') }}</th>
                         <th>{{ __('validation.attributes.is_completed') }}</th>
                         <th></th>
                         <th></th>
@@ -30,6 +31,7 @@
                         <tr>
                             <td>{{ $manga->name }}</td>
                             <td>{{ $manga->volumes->count() }}</td>
+                            <td>{{ $manga->specials->count() }}</td>
                             <td>{{ formatBool($manga->is_completed) }}</td>
                             <td>
                                 {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id])) !!}

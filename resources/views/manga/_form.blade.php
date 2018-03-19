@@ -19,7 +19,7 @@
 
     @if ($errors->has('is_completed'))
         <div class="invalid-feedback">
-            {{ $errors->first('is_completed') }}
+            {{ $errors->first('') }}
         </div>
     @endif
 </div>

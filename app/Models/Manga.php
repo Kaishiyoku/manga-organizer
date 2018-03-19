@@ -53,4 +53,9 @@ class Manga extends Model
     {
         return $this->hasMany(Volume::class)->orderBy('no');
     }
+
+    public function specials()
+    {
+        return $this->hasMany(Special::class)->orderBy('name');
+    }
 }
