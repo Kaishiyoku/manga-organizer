@@ -18,6 +18,7 @@
                     <thead>
                     <tr>
                         <th>{{ __('validation.attributes.name') }}</th>
+                        <th>{{ __('validation.attributes.is_completed') }}</th>
                         <th>{{ __('validation.attributes.volume') }}</th>
                     </tr>
                     </thead>
@@ -26,7 +27,16 @@
                     @foreach ($mangas as $manga)
                         @foreach ($manga->volumes as $i => $volume)
                             <tr class="{{ $i == $manga->volumes->count() - 1  ? 'bordered-bold' : ''}}">
-                                <td>{{ $manga->name }}</td>
+                                <td>
+                                    @if ($i == 0)
+                                        <strong>{{ $manga->name }}</strong>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($i == 0)
+                                        {{ formatBool($manga->is_completed) }}
+                                    @endif
+                                </td>
                                 <td>{{ $volume->no }}</td>
                             </tr>
                         @endforeach
