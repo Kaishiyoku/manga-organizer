@@ -3,6 +3,7 @@
 Table of contents
 =================
   * [About](#about)
+  * [Screenshots](#screenshots)
   * [License](#license)
   * [Author](#author)
 
