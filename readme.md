@@ -1,16 +1,23 @@
-A simple, personal manga organizer and visualizer.
-
-![Astolfo](https://i.imgur.com/p8UGVQb.jpg)
+<img align="right" src="https://i.imgur.com/p8UGVQb.jpg" alt="Astolfo"/>
 
 Table of contents
 =================
   * [About](#about)
+  * [Screenshots](#screenshots)
   * [License](#license)
   * [Author](#author)
 
 About
 =====
-This is a self-hostable, simple web service to keep track of your owned mangas.
+**A self-hostable, simple web service to keep track of your owned mangas.**
+
+Screenshots
+===========
+![Manga list](https://i.imgur.com/9Yaj94p.png)
+
+![Edit manga](https://i.imgur.com/0JhKzTK.png)
+
+![Plain text list](https://i.imgur.com/XORokMA.png)
 
 License
 =======
