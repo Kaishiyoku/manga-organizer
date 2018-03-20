@@ -16,3 +16,4 @@ list_as_text: Liste als Text
 boolean:
   'true': Ja
   'false': Nein
+statistics: Statistiken

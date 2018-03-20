@@ -18,3 +18,9 @@ destroy:
   still_has_volumes: Manga hat noch Bände. Löschen Sie diese zuerst.
   success: Manga gelöscht.
 no_mangas_yet: Noch keine Mangas vorhanden.
+statistics:
+  title: Statistiken
+  latest_volumes_and_specials: Letzte Bände und Specials
+  mangas: Manga|Mangas
+  volumes: Band|Bände
+  specials: Special|Specials

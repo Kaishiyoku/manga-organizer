@@ -59,6 +59,10 @@
 
         &#8226;
 
+        {!! Html::decode(Html::linkRoute('mangas.statistics', '<i class="far fa-info"></i> ' . __('common.statistics'))) !!}
+
+        &#8226;
+
         {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="far fa-envelope"></i> ' . __('common.contact'))) !!}
 
         &#8226;

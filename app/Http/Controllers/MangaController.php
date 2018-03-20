@@ -33,14 +33,14 @@ class MangaController extends Controller
      */
     public function index()
     {
-        $mangas = Manga::has('volumes')->orHas('specials')->orderBy('name')->get();
+        $mangas = $this->mangas()->get();
 
         return view('manga.index', compact('mangas'));
     }
 
     public function indexPlain()
     {
-        $mangas = Manga::with('volumes')->with('specials')->has('volumes')->orHas('specials')->orderBy('name')->get();
+        $mangas = $this->mangas()->get();
 
         $renderer = new ArrayToTextTable($mangas->flatMap(function ($manga) {
             return array_merge($manga->volumes->map(function ($volume) use ($manga) {
@@ -72,6 +72,32 @@ class MangaController extends Controller
         $mangas = Manga::orderBy('name')->get();
 
         return view('manga.manage', compact('mangas'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function statistics()
+    {
+        $mangas = $this->mangas()->get();
+        $volumes = Volume::orderBy('created_at', 'desc');
+        $specials = Special::orderBy('created_at', 'desc');
+
+        $latestVolumesAndSpecials = $volumes->take(5)->get()->map(function ($volume) {
+            return [
+                'created_at' => $volume->created_at,
+                'name' => $volume->manga->name . ' - ' . $volume->no
+            ];
+        })->merge($specials->take(5)->get()->map(function ($special) {
+            return [
+                'created_at' => $special->created_at,
+                'name' => $special->manga->name . ' - ' . $special->name
+            ];
+        }))->sortByDesc('created_at')->take(5);
+
+        return view('manga.statistics', compact('mangas', 'volumes', 'specials', 'latestVolumesAndSpecials'));
     }
 
     /**
@@ -153,6 +179,11 @@ class MangaController extends Controller
         });
 
         return redirect()->route($this->redirectRoute);
+    }
+
+    private function mangas()
+    {
+        return Manga::with('volumes')->with('specials')->has('volumes')->orHas('specials')->orderBy('name');
     }
 
     private function getValidationRulesWithNameUniqueness(Manga $manga = null)

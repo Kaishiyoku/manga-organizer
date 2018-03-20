@@ -18,3 +18,9 @@ destroy:
   still_has_volumes: Manga still has volumes. Delete them first.
   success: Manga deleted.
 no_mangas_yet: No mangas yet.
+statistics:
+  title: Statistics
+  latest_volumes_and_specials: Latest volumes and specials
+  mangas: manga|mangas
+  volumes: volume|volumes
+  specials: special|specials
