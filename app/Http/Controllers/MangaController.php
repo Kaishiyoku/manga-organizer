@@ -101,7 +101,7 @@ class MangaController extends Controller
 
         flash(__('manga.create.success'))->success();
 
-        return redirect()->route($this->redirectRoute);
+        return redirect()->route('mangas.edit', [$manga]);
     }
 
     /**
