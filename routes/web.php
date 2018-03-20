@@ -4,6 +4,8 @@ Route::get('/', 'MangaController@index')->name('mangas.index');
 Route::get('/plain', 'MangaController@indexPlain')->name('mangas.index_plain');
 Route::get('/statistics', 'MangaController@statistics')->name('mangas.statistics');
 
+Route::resource('recommendations', 'RecommendationController', ['only' => ['create', 'store']]);
+
 Route::post('/lang/change', 'LanguageController@change')->name('language.change');
 
 Route::get('/contact', 'HomeController@showContactForm')->name('home.show_contact_form');

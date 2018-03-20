@@ -5,9 +5,13 @@
 @section('content')
     <h1>{{ __('manga.index.title') }}</h1>
 
-    @auth
-        {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-wrench"></i> ' . __('manga.index.manage'), [], ['class' => 'btn btn-secondary btn-sm'])) !!}
-    @endauth
+    <p>
+        @auth
+            {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-wrench"></i> ' . __('manga.index.manage'), [], ['class' => 'btn btn-secondary btn-sm'])) !!}
+        @endauth
+
+            {!! Html::decode(Html::linkRoute('recommendations.create', '<i class="far fa-envelope-open"></i> ' . __('manga.index.recommend_me_a_manga'), [], ['class' => 'btn btn-primary btn-sm'])) !!}
+    </p>
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3">

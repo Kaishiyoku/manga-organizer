@@ -9,6 +9,7 @@ edit:
 index:
   title: Manga list
   manage: Manage
+  recommend_me_a_manga: Recommend me a manga
 manage:
   title: Manage manga list
   new: New manga

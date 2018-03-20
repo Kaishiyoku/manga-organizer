@@ -81,3 +81,4 @@ attributes:
   fullname: 'Full name'
   content: 'Content'
   is_completed: 'Completed'
+  manga: Manga

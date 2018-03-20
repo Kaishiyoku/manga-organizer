@@ -9,6 +9,7 @@ edit:
 index:
   title: Mangaliste
   manage: Verwalten
+  recommend_me_a_manga: Mir einen Manga vorschlagen
 manage:
   title: Mangaliste verwalten
   new: Neuer Manga

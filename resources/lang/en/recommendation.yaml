@@ -1,0 +1,4 @@
+create:
+  title: Recommend manga
+  submit: Send
+  success: Recommendation sent.
