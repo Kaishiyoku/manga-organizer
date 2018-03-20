@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class RecommendationController extends Controller
 {
     /**
+     * @var string
+     */
+    private $redirectRoute = 'mangas.manage';
+
+    /**
      * @var array
      */
     private $validationRules = [
@@ -43,5 +48,20 @@ class RecommendationController extends Controller
         flash(__('recommendation.create.success'))->success();
 
         return redirect('/');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Recommendation  $recommendation
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Recommendation $recommendation)
+    {
+        $recommendation->delete();
+
+        flash(__('recommendation.destroy.success'))->success();
+
+        return redirect()->route($this->redirectRoute);
     }
 }

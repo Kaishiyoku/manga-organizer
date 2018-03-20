@@ -81,4 +81,5 @@ attributes:
   fullname: 'Name'
   content: 'Inhalt'
   is_completed: 'Komplett'
-  manga: Manga
+  manga: 'Manga'
+  created_at: 'Erstellt am'

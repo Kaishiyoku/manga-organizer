@@ -46,4 +46,36 @@
             @endif
         </div>
     </div>
+
+    <h2>{{ __('manga.manage.recommendations') }}</h2>
+
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            @if ($recommendations->count() == 0)
+                <p class="lead"><i>{{ __('manga.no_recommendations') }}</i></p>
+            @else
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>{{ __('validation.attributes.manga') }}</th>
+                        <th>{{ __('validation.attributes.created_at') }}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($recommendations as $recommendation)
+                        <tr>
+                            <td>{{ $recommendation->manga }}</td>
+                            <td>{{ $recommendation->created_at->format(__('date.datetime')) }}</td>
+                            <td>
+                                @include('shared._delete_link', ['route' => ['recommendations.destroy', $recommendation]])
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
+        </div>
+    </div>
 @endsection

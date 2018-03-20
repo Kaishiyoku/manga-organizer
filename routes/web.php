@@ -33,4 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('specials', 'SpecialController@store')->name('specials.store');
         Route::delete('specials/{special}', 'SpecialController@destroy')->name('specials.destroy');
     });
+
+    Route::resource('recommendations', 'RecommendationController', ['only' => 'destroy']);
 });

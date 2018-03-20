@@ -15,6 +15,7 @@ manage:
   new: New manga
   number_of_volumes: '# Volumes'
   number_of_specials: '# Specials'
+  recommendations: Recommendations
 destroy:
   still_has_volumes: Manga still has volumes. Delete them first.
   success: Manga deleted.
@@ -25,3 +26,4 @@ statistics:
   mangas: manga|mangas
   volumes: volume|volumes
   specials: special|specials
+no_recommendations: No recommendations.

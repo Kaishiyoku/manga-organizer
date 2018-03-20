@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manga;
+use App\Models\Recommendation;
 use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Database\QueryException;
@@ -70,8 +71,9 @@ class MangaController extends Controller
     public function manage()
     {
         $mangas = Manga::orderBy('name')->get();
+        $recommendations = Recommendation::orderBy('created_at', 'desc')->get();
 
-        return view('manga.manage', compact('mangas'));
+        return view('manga.manage', compact('mangas', 'recommendations'));
     }
 
     /**
