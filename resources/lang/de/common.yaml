@@ -17,3 +17,7 @@ boolean:
   'true': Ja
   'false': Nein
 statistics: Statistiken
+toggle_navigation: Navigation wechseln
+manga_list: Mangaliste
+recommend_manga: Manga vorschlagen
+manage_mangas: Mangas verwalten

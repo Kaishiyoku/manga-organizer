@@ -11,7 +11,7 @@
         @endauth
 
         @guest
-                {!! Html::decode(Html::linkRoute('recommendations.create', '<i class="far fa-envelope-open"></i> ' . __('manga.index.recommend_me_a_manga'), [], ['class' => 'btn btn-primary btn-sm'])) !!}
+            {!! Html::decode(Html::linkRoute('recommendations.create', '<i class="far fa-envelope-open"></i> ' . __('manga.index.recommend_me_a_manga'), [], ['class' => 'btn btn-primary btn-sm'])) !!}
         @endguest
     </p>
 

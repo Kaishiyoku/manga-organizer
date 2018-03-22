@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "289625d28433e81409b3810635c4035b",
+    "content-hash": "2744385a54589274a582459afbf493e4",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -703,6 +703,50 @@
             "time": "2018-03-08T01:11:30+00:00"
         },
         {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "ae1828d955112356f7677c465f94f7deb7d27a40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/ae1828d955112356f7677c465f94f7deb7d27a40",
+                "reference": "ae1828d955112356f7677c465f94f7deb7d27a40",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2015-08-05T01:03:42+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "3.3.4",
             "source": {
@@ -1026,6 +1070,84 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "kaishiyoku/laravel-html-purifier",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-html-purifier.git",
+                "reference": "478e8461e819f6fabebdcf8ef421ed5fdc1cf8e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-html-purifier/zipball/478e8461e819f6fabebdcf8ef421ed5fdc1cf8e0",
+                "reference": "478e8461e819f6fabebdcf8ef421ed5fdc1cf8e0",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": "4.7.0",
+                "illuminate/support": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Wiedel",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "A HTML filter using htmlpurifier with additional HTML5 rules.",
+            "time": "2018-03-22T19:50:53+00:00"
+        },
+        {
+            "name": "kaishiyoku/laravel-menu",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-menu.git",
+                "reference": "6a7062750576231b73b380093b2cda4a63f5ec9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-menu/zipball/6a7062750576231b73b380093b2cda4a63f5ec9c",
+                "reference": "6a7062750576231b73b380093b2cda4a63f5ec9c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.*",
+                "illuminate/routing": "5.*",
+                "illuminate/support": "5.*",
+                "kaishiyoku/laravel-html-purifier": "1.*",
+                "laravelcollective/html": "5.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaishiyoku",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "Create menus for Laravel 5 with css-class highlighting support",
+            "time": "2018-03-19T11:06:58+00:00"
         },
         {
             "name": "kaishiyoku/yaml-translation",
@@ -1679,16 +1801,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.24.2",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875"
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bba6c6e410c6b4317e37a9474aeaa753808c3875",
-                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
                 "shasum": ""
             },
             "require": {
@@ -1728,7 +1850,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-03-10T10:10:14+00:00"
+            "time": "2018-03-19T15:50:49+00:00"
         },
         {
             "name": "nikic/php-parser",

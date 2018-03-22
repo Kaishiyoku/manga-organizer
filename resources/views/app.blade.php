@@ -19,10 +19,28 @@
 </head>
 <body>
 
-<div class="container text-center">
+<div class="container cover">
     <a href="{{ route('mangas.index') }}">
-        <img src="{{ asset('img/cover.png') }}" class="cover img-fluid" alt="Cover"/>
+        <img src="{{ asset('img/cover.png') }}" class="img-fluid" alt="Cover"/>
     </a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {!! Html::decode(Html::link('/', '<i class="fas fa-home"></i>', ['class' => 'navbar-brand'])) !!}
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('common.toggle_navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {!! Menu::render() !!}
+            </ul>
+
+            <ul class="navbar-nav">
+                {!! Menu::render('right') !!}
+            </ul>
+        </div>
+    </nav>
 </div>
 
 <div class="container">
@@ -55,23 +73,26 @@
 
         &#8226;
 
-        @include('shared._language_dropdown')
-
-        &#8226;
-
-        {!! Html::decode(Html::linkRoute('mangas.statistics', '<i class="far fa-info"></i> ' . __('common.statistics'))) !!}
-
-        &#8226;
-
         {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="far fa-envelope"></i> ' . __('common.contact'))) !!}
-
-        &#8226;
-
-        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="far fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
     </footer>
 </div>
 
+@foreach (config('app.available_locales') as $locale)
+    {{ Form::open(['route' => 'language.change', 'method' => 'post', 'id' => 'lang-form-' . $locale, 'style' => 'display: none;']) }}
+        {{ Form::hidden('locale', $locale) }}
+    {{ Form::close() }}
+@endforeach
+
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script type="text/javascript">
+    $("[id^=lang-link-]").click(function (e) {
+        $this = $(this);
+        e.preventDefault();
+
+        $('#' + $this.attr('id').replace('link', 'form')).submit();
+    });
+</script>
 
 </body>
 </html>

@@ -38,6 +38,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Language::class,
         ],
 
+        'menus' => [
+            \App\Http\Middleware\Menus::class,
+        ],
+
         'api' => [
             'throttle:60,1',
             'bindings',

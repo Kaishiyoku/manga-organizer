@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereUpdatedAt($value)
  * @property int $is_completed
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereIsCompleted($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Special[] $specials
  */
 class Manga extends Model
 {
