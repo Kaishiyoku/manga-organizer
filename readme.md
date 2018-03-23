@@ -18,6 +18,8 @@ Installation
 2. run `composer install --no-dev --no-scripts`
 3. run `php artisan migrate`
 4. run `php artisan user:create`
+5. run `npm install`
+6. run `npm run prod`
 
 Screenshots
 ===========
