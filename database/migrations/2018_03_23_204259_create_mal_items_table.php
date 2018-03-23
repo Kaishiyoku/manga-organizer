@@ -24,23 +24,23 @@ class CreateMalItemsTable extends Migration
 
         Schema::create('mal_items', function (Blueprint $table) {
             $table->integer('mal_id')->unsigned();
-            $table->string('link_canonical', 191);
-            $table->string('title', 191);
-            $table->string('title_english', 191);
-            $table->string('title_japanese', 191);
-            $table->string('title_synonyms', 191);
-            $table->string('status', 191);
-            $table->string('image_url', 191);
-            $table->string('volumes', 191);
-            $table->string('chapters', 191);
-            $table->boolean('publishing');
-            $table->integer('rank');
-            $table->float('score');
-            $table->integer('scored_by');
-            $table->integer('popularity');
-            $table->integer('members');
-            $table->integer('favorites');
-            $table->text('synopsis');
+            $table->string('link_canonical', 191)->nullable();
+            $table->string('title', 191)->nullable();
+            $table->string('title_english', 191)->nullable();
+            $table->string('title_japanese', 191)->nullable();
+            $table->string('title_synonyms', 191)->nullable();
+            $table->string('status', 191)->nullable();
+            $table->string('image_url', 191)->nullable();
+            $table->string('volumes', 191)->nullable();
+            $table->string('chapters', 191)->nullable();
+            $table->boolean('publishing')->default(false);
+            $table->integer('rank')->nullable();
+            $table->float('score')->nullable();
+            $table->integer('scored_by')->nullable();
+            $table->integer('popularity')->nullable();
+            $table->integer('members')->nullable();
+            $table->integer('favorites')->nullable();
+            $table->text('synopsis')->nullable();
             $table->timestamps();
 
             $table->primary('mal_id');

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class MalItem extends Model
 {
+    protected $primaryKey = 'mal_id';
+
+    public $incrementing = false;
+
     /**
      * The attributes that should be cast to native types.
      *

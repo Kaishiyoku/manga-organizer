@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MalItem;
 use App\Models\Manga;
 use App\Models\Recommendation;
 use App\Models\Special;
@@ -135,6 +136,8 @@ class MangaController extends Controller
     {
         $request->validate($this->getValidationRulesWithNameUniqueness());
 
+        $this->createMalItemIfNecessary($request);
+
         $manga = new Manga($request->all());
         $manga->save();
 
@@ -167,6 +170,8 @@ class MangaController extends Controller
     public function update(Request $request, Manga $manga)
     {
         $request->validate($this->getValidationRulesWithNameUniqueness($manga));
+
+        $this->createMalItemIfNecessary($request);
 
         $manga->fill($request->all());
         $manga->is_completed = $request->get('is_completed', false);
@@ -211,5 +216,14 @@ class MangaController extends Controller
         $validationRules['name'][] = $nameUniquessRule;
 
         return $validationRules;
+    }
+
+    private function createMalItemIfNecessary($request)
+    {
+        if ($request->get('mal_id', null) != null) {
+            $malItem = new MalItem();
+            $malItem->mal_id = $request->get('mal_id');
+            $malItem->save();
+        }
     }
 }

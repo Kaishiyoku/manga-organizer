@@ -27,6 +27,8 @@ class AddMalIdForeignKeyConstraintToMangasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('mangas', function (Blueprint $table) {
+            $table->dropForeign(['mal_id']);
+        });
     }
 }
