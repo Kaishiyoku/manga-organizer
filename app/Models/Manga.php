@@ -59,4 +59,9 @@ class Manga extends Model
     {
         return $this->hasMany(Special::class)->orderBy('name');
     }
+
+    public function malItem()
+    {
+        return $this->hasOne(MalItem::class);
+    }
 }
