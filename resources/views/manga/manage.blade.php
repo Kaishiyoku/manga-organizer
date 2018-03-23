@@ -14,7 +14,7 @@
             @if ($mangas->count() == 0)
                 <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
             @else
-                <table class="table table-bordered table-striped table-sm">
+                <table class="table table-bordered table-striped table-sm table-responsive-sm">
                     <thead>
                     <tr>
                         <th>{{ __('validation.attributes.name') }}</th>
