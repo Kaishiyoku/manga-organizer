@@ -9,7 +9,6 @@ use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Jikan\Jikan;
 use MathieuViossat\Util\ArrayToTextTable;
 
 class MangaController extends Controller
@@ -35,16 +34,7 @@ class MangaController extends Controller
      */
     public function index()
     {
-        $jikan = new Jikan();
-
         $mangas = $this->mangas()->get();
-
-        $mangas = $mangas->map(function ($manga) use ($jikan) {
-            return [
-                'manga' => $manga,
-                'malData' => $manga->mal_id != null ? $jikan->Manga($manga->mal_id)->response :  null,
-            ];
-        });
 
         return view('manga.index', compact('mangas'));
     }

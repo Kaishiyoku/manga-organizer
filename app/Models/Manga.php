@@ -62,6 +62,6 @@ class Manga extends Model
 
     public function malItem()
     {
-        return $this->hasOne(MalItem::class);
+        return $this->hasOne(MalItem::class, 'mal_id', 'mal_id');
     }
 }

@@ -32,41 +32,41 @@
 
                     <tbody>
                     @foreach ($mangas as $manga)
-                        @foreach ($manga['manga']->volumes as $i => $volume)
-                            <tr class="{{ $i == $manga['manga']->volumes->count() - 1  ? 'bordered-bold' : ''}}">
+                        @foreach ($manga->volumes as $i => $volume)
+                            <tr class="{{ $i == $manga->volumes->count() - 1  ? 'bordered-bold' : ''}}">
                                 <td>
                                     @if ($i == 0)
-                                        <strong>{{ $manga['manga']->name }}</strong>
+                                        <strong>{{ $manga->name }}</strong>
 
-                                        @if ($manga['malData'] != null)
-                                            {!! Html::decode(Html::link($manga['malData']['link_canonical'], '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga['manga']->name])])) !!}
+                                        @if ($manga->malItem != null)
+                                            {!! Html::decode(Html::link($manga->malItem->link_canonical, '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
                                         @endif
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($i == 0 && $manga['malData'] != null)
-                                        {{ formatNumber($manga['malData']['score'], 2) }}
+                                    @if ($i == 0 && $manga->malItem != null)
+                                        {{ formatNumber($manga->malItem->score, 2) }}
                                     @endif
                                 </td>
                                 <td>
                                     @if ($i == 0)
-                                        {{ formatBool($manga['manga']->is_completed) }}
+                                        {{ formatBool($manga->is_completed) }}
                                     @endif
                                 </td>
                                 <td>{{ $volume->no }}</td>
                             </tr>
                         @endforeach
 
-                        @foreach ($manga['manga']->specials as $i => $special)
-                            <tr class="{{ $i == $manga['manga']->specials->count() - 1  ? 'bordered-bold' : ''}}">
+                        @foreach ($manga->specials as $i => $special)
+                            <tr class="{{ $i == $manga->specials->count() - 1  ? 'bordered-bold' : ''}}">
                                 <td>
                                     @if ($i == 0)
-                                        <strong>{{ $manga['manga']->name }}</strong>
+                                        <strong>{{ $manga->name }}</strong>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($i == 0 && $manga['malData'] != null)
-                                        {{ formatNumber($manga['malData']['score'], 2) }}
+                                    @if ($i == 0 && $manga->malItem != null)
+                                        {{ formatNumber($manga->malItem->score, 2) }}
                                     @endif
                                 </td>
                                 <td></td>
