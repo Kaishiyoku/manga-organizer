@@ -4,7 +4,9 @@ namespace App\Console\Commands;
 
 use App\Models\MalItem;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 use Jikan\Jikan;
+use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
 class FetchMalData extends Command
 {
@@ -39,14 +41,17 @@ class FetchMalData extends Command
      */
     public function handle()
     {
+        $start = microtime(true);
+
         $jikan = new Jikan();
 
         $malItems = MalItem::all();
 
-        $this->info('fetching data from MyAnimeList.net...');
+        $this->line('[' . Carbon::now() . ']');
+        $this->line('fetching data from MyAnimeList.net...');
 
         foreach ($malItems as $malItem) {
-            $this->info('  #' . $malItem->mal_id);
+            $this->line('  #' . $malItem->mal_id);
 
             $data = $jikan->Manga($malItem->mal_id)->response;
 
@@ -71,6 +76,9 @@ class FetchMalData extends Command
             $malItem->save();
         }
 
-        $this->info('...finished.');
+        $timeElapsedInSeconds = microtime(true) - $start;
+
+        $this->line('...finished. Duration: ' . number_format($timeElapsedInSeconds, 2) . ' seconds.');
+        $this->line('');
     }
 }
