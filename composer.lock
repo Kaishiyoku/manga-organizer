@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2744385a54589274a582459afbf493e4",
+    "content-hash": "78bdc3470aed3131c6a5bfd2aa74756e",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1070,6 +1070,44 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jikan-me/jikan",
+            "version": "v1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jikan-me/jikan.git",
+                "reference": "3da01ed610dbdc97d65e34b11ac10c5e764f88f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jikan-me/jikan/zipball/3da01ed610dbdc97d65e34b11ac10c5e764f88f1",
+                "reference": "3da01ed610dbdc97d65e34b11ac10c5e764f88f1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jikan\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Irfan",
+                    "email": "irfan@jikan.me"
+                }
+            ],
+            "description": "Jikan is an unofficial MyAnimeList API",
+            "time": "2018-01-27T02:53:15+00:00"
         },
         {
             "name": "kaishiyoku/laravel-html-purifier",

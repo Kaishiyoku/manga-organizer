@@ -83,3 +83,4 @@ attributes:
   is_completed: 'Completed'
   manga: 'Manga'
   created_at: 'Created at'
+  mal_id: 'MAL ID'

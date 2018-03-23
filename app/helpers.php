@@ -35,3 +35,10 @@ if (! function_exists('formatBool')) {
         return __('common.boolean.' . ($bool ? 'true' : 'false'));
     }
 }
+
+if (! function_exists('formatNumber')) {
+    function formatNumber($number, $decimals = 0)
+    {
+        return number_format($number, $decimals, __('common.number.decimal_point'), __('common.number.thousands_seperator'));
+    }
+}

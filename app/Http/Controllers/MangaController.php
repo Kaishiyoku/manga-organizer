@@ -10,6 +10,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Jikan\Jikan;
 use MathieuViossat\Util\ArrayToTextTable;
 
 class MangaController extends Controller
@@ -25,6 +26,7 @@ class MangaController extends Controller
     private $validationRules = [
         'name' => ['required'],
         'is_completed' => 'boolean',
+        'mal_id' => 'integer',
     ];
 
     /**
@@ -34,7 +36,16 @@ class MangaController extends Controller
      */
     public function index()
     {
+        $jikan = new Jikan();
+
         $mangas = $this->mangas()->get();
+
+        $mangas = $mangas->map(function ($manga) use ($jikan) {
+            return [
+                'manga' => $manga,
+                'malData' => $manga->mal_id != null ? $jikan->Manga($manga->mal_id)->response :  null,
+            ];
+        });
 
         return view('manga.index', compact('mangas'));
     }

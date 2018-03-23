@@ -21,3 +21,6 @@ toggle_navigation: Toggle navigation
 manga_list: Manga list
 recommend_manga: Recommend manga
 manage_mangas: Manage mangas
+number:
+  decimal_point: .
+  thousands_seperator: ,

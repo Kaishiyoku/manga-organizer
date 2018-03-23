@@ -12,6 +12,7 @@
     "albertcht/invisible-recaptcha": "1.8.2",
     "doctrine/dbal": "2.5.13",
     "fideloper/proxy": "3.3.4",
+    "jikan-me/jikan": "^1.7",
     "kaishiyoku/laravel-menu": "1.5.0",
     "kaishiyoku/yaml-translation": "5.5.1",
     "laracasts/flash": "3.0.2",
