@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78bdc3470aed3131c6a5bfd2aa74756e",
+    "content-hash": "52fc788fefba9de00d2c0c9de03133a2",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1073,20 +1073,17 @@
         },
         {
             "name": "jikan-me/jikan",
-            "version": "v1.7.1",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jikan-me/jikan.git",
-                "reference": "3da01ed610dbdc97d65e34b11ac10c5e764f88f1"
+                "reference": "aa866bf8470902736f596fc5e9102d91d8eb1a95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jikan-me/jikan/zipball/3da01ed610dbdc97d65e34b11ac10c5e764f88f1",
-                "reference": "3da01ed610dbdc97d65e34b11ac10c5e764f88f1",
+                "url": "https://api.github.com/repos/jikan-me/jikan/zipball/aa866bf8470902736f596fc5e9102d91d8eb1a95",
+                "reference": "aa866bf8470902736f596fc5e9102d91d8eb1a95",
                 "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "6"
             },
             "type": "library",
             "autoload": {
@@ -1107,7 +1104,7 @@
                 }
             ],
             "description": "Jikan is an unofficial MyAnimeList API",
-            "time": "2018-01-27T02:53:15+00:00"
+            "time": "2018-03-24T05:09:10+00:00"
         },
         {
             "name": "kaishiyoku/laravel-html-purifier",
@@ -1148,23 +1145,23 @@
         },
         {
             "name": "kaishiyoku/laravel-menu",
-            "version": "1.5.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kaishiyoku/laravel-menu.git",
-                "reference": "6a7062750576231b73b380093b2cda4a63f5ec9c"
+                "reference": "ec1495339810d4970eaff38e86132f2dffd1726d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kaishiyoku/laravel-menu/zipball/6a7062750576231b73b380093b2cda4a63f5ec9c",
-                "reference": "6a7062750576231b73b380093b2cda4a63f5ec9c",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-menu/zipball/ec1495339810d4970eaff38e86132f2dffd1726d",
+                "reference": "ec1495339810d4970eaff38e86132f2dffd1726d",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "5.*",
                 "illuminate/routing": "5.*",
                 "illuminate/support": "5.*",
-                "kaishiyoku/laravel-html-purifier": "1.*",
+                "kaishiyoku/laravel-html-purifier": "1.1.*",
                 "laravelcollective/html": "5.*",
                 "php": ">=5.5.9"
             },
@@ -1185,7 +1182,7 @@
                 }
             ],
             "description": "Create menus for Laravel 5 with css-class highlighting support",
-            "time": "2018-03-19T11:06:58+00:00"
+            "time": "2018-03-24T10:39:45+00:00"
         },
         {
             "name": "kaishiyoku/yaml-translation",
@@ -5468,49 +5465,6 @@
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
             "time": "2018-01-03T07:37:34+00:00"
-        },
-        {
-            "name": "symfony/thanks",
-            "version": "v1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/thanks.git",
-                "reference": "bade4992c46ed722162694b4af8d72f84402819a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/thanks/zipball/bade4992c46ed722162694b4af8d72f84402819a",
-                "reference": "bade4992c46ed722162694b4af8d72f84402819a",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.5.9|^7.0.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "class": "Symfony\\Thanks\\Thanks"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Thanks\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                }
-            ],
-            "description": "Give thanks (in the form of a GitHub ⭐) to your fellow PHP package maintainers (not limited to Symfony components)!",
-            "time": "2018-03-14T21:51:39+00:00"
         },
         {
             "name": "theseer/tokenizer",

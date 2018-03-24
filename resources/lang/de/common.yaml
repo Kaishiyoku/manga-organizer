@@ -24,3 +24,4 @@ manage_mangas: Mangas verwalten
 number:
   decimal_point: ,
   thousands_seperator: .
+social: Social

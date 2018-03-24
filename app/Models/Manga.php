@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $is_completed
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereIsCompleted($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Special[] $specials
+ * @property int|null $mal_id
+ * @property-read \App\Models\MalItem $malItem
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereMalId($value)
  */
 class Manga extends Model
 {
