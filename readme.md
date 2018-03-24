@@ -20,6 +20,18 @@ Installation
 4. run `php artisan user:create`
 5. run `npm install`
 6. run `npm run prod`
+7. copy the .env.example file and fill in the necessary values:  
+```@php -r \"file_exists('.env') || copy('.env.example', '.env');\"```
+
+If you want to use the MAL API fetching automatism you have to setup a cronjob:
+```
+$ sudo crontab -e -u www-data
+```
+
+Add the cronjob (please adjust the path if necessary):
+```
+* * * * * php /var/www/html/manga-organizter/artisan schedule:run >> /var/www/html/manga-organizer/storage/logs/scheduler.log 2>&1
+```
 
 Screenshots
 ===========
