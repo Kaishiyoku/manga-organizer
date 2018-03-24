@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/kaishiyoku/manga-organizer/tree/HEAD)
-
-[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.5.0...HEAD)
+## [1.6.0](https://github.com/kaishiyoku/manga-organizer/tree/1.6.0) (2018-03-24)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.5.0...1.6.0)
 
 **Implemented enhancements:**
 
