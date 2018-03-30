@@ -12,7 +12,7 @@
     "albertcht/invisible-recaptcha": "1.8.2",
     "doctrine/dbal": "2.5.13",
     "fideloper/proxy": "3.3.4",
-    "jikan-me/jikan": "^1.7",
+    "jikan-me/jikan": "1.15.0",
     "kaishiyoku/laravel-menu": "2.0.0",
     "kaishiyoku/yaml-translation": "5.5.1",
     "laracasts/flash": "3.0.2",
@@ -20,6 +20,7 @@
     "laravel/tinker": "1.0.5",
     "laravelcollective/html": "5.5.3",
     "mathieuviossat/arraytotexttable": "1.0.3",
+    "spatie/laravel-backup": "5.5.1",
     "webup/laravel-sendinblue": "1.1.1"
   },
   "require-dev": {

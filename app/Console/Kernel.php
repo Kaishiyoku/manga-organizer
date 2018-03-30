@@ -26,6 +26,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(FetchMalData::class)->dailyAt('03:00')->sendOutputTo('storage/logs/mal_updates.log', true);
+        $schedule->command('backup:clean')->daily()->at('01:00');
+        $schedule->command('backup:run')->daily()->at('02:00');
+        $schedule->command('backup:monitor')->daily()->at('03:00');
     }
 
     /**
