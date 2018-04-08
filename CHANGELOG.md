@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.8.1](https://github.com/kaishiyoku/manga-organizer/tree/1.8.1) (2018-04-08)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.8.0...1.8.1)
+
+**Fixed bugs:**
+
+- Mangas can't be saved because of the duplicate mal\_items entry creation [\#29](https://github.com/Kaishiyoku/manga-organizer/issues/29)
+
 ## [1.8.0](https://github.com/kaishiyoku/manga-organizer/tree/1.8.0) (2018-04-08)
 [Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.7.0...1.8.0)
 
