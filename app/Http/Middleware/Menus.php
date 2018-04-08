@@ -52,7 +52,6 @@ class Menus
 
         Menu::registerDefault([
             Menu::linkRoute('mangas.index', __('common.manga_list')),
-            Menu::linkRoute('mangas.index_plain', __('common.list_as_text')),
             Menu::linkRoute('mangas.statistics', __('common.statistics')),
             Menu::linkRoute('recommendations.create', __('common.recommend_manga')),
             Menu::linkRoute('mangas.manage', __('common.manage_mangas'), [], [], [], $this->auth->check())

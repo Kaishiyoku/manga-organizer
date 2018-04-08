@@ -73,6 +73,10 @@
 
         &#8226;
 
+        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="far fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
+
+        &#8226;
+
         {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="far fa-envelope"></i> ' . __('common.contact'))) !!}
     </footer>
 </div>
