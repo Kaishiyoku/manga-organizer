@@ -11,11 +11,47 @@
         </p>
     @endauth
 
-    <div>
-        @if ($mangas->count() == 0)
-            <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
-        @else
-            <table class="table table-bordered table-striped table-sm table-responsive-sm">
+    @if ($mangas->count() == 0)
+        <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
+    @else
+        <div class="card-columns d-block d-md-none">
+            @foreach ($mangas as $manga)
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $manga->name }}</h5>
+
+                        <div class="row">
+                            <div class="col-4 col-sm-6">{{ __('manga.manage.number_of_volumes') }}:</div>
+                            <div class="col-8 col-sm-6">{{ $manga->volumes->count() }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 col-sm-6">{{ __('manga.manage.number_of_specials') }}:</div>
+                            <div class="col-8 col-sm-6">{{ $manga->specials->count() }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 col-sm-6">{{ __('validation.attributes.mal_id') }}:</div>
+                            <div class="col-8 col-sm-6">{{ formatEmpty($manga->mal_id) }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 col-sm-6">{{ __('validation.attributes.is_completed') }}:</div>
+                            <div class="col-8 col-sm-6">{{ formatBool($manga->is_completed) }}</div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id], ['class' => 'mr-2'])) !!}
+
+                        @include('shared._delete_link', ['route' => ['mangas.destroy', $manga]])
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="d-none d-md-block">
+            <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
                     <th>{{ __('validation.attributes.name') }}</th>
@@ -46,15 +82,33 @@
                 @endforeach
                 </tbody>
             </table>
-        @endif
-    </div>
+        </div>
+    @endif
 
     <h2>{{ __('manga.manage.recommendations') }}</h2>
 
-    <div>
-        @if ($recommendations->count() == 0)
-            <p class="lead"><i>{{ __('manga.no_recommendations') }}</i></p>
-        @else
+    @if ($recommendations->count() == 0)
+        <p class="lead"><i>{{ __('manga.no_recommendations') }}</i></p>
+    @else
+        <div class="card-columns d-block d-md-none">
+            @foreach ($recommendations as $recommendation)
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $recommendation->manga }}</h5>
+
+                        <p class="card-text">
+                            {{ $recommendation->created_at->format(__('date.datetime')) }}
+                        </p>
+                    </div>
+
+                    <div class="card-footer">
+                        @include('shared._delete_link', ['route' => ['recommendations.destroy', $recommendation]])
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="d-none d-md-block">
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
@@ -76,6 +130,6 @@
                 @endforeach
                 </tbody>
             </table>
-        @endif
-    </div>
+        </div>
+    @endif
 @endsection

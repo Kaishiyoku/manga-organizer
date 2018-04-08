@@ -18,54 +18,52 @@
     @if ($mangas->count() == 0)
         <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
     @else
-        <div>
-            <div class="card-columns">
-                @foreach ($mangas as $manga)
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{ $manga->name }}
-
-                                @if ($manga->malItem && $manga->malItem->link_canonical)
-                                    {!! Html::decode(Html::link($manga->malItem->link_canonical, '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
-                                @endif
-                            </h5>
+        <div class="card-columns">
+            @foreach ($mangas as $manga)
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ $manga->name }}
 
                             @if ($manga->malItem && $manga->malItem->link_canonical)
-                                <div>{{ __('manga.index.mal_score') }}: {{ formatNumber($manga->malItem->score, 2) }}</div>
+                                {!! Html::decode(Html::link($manga->malItem->link_canonical, '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
                             @endif
+                        </h5>
 
-                            <div class="pb-3">
-                                {{ __('validation.attributes.is_completed') }}: {{ formatBool($manga->is_completed) }}
+                        @if ($manga->malItem && $manga->malItem->link_canonical)
+                            <div>{{ __('manga.index.mal_score') }}: {{ formatNumber($manga->malItem->score, 2) }}</div>
+                        @endif
+
+                        <div class="pb-3">
+                            {{ __('validation.attributes.is_completed') }}: {{ formatBool($manga->is_completed) }}
+                        </div>
+
+                        @if ($manga->malItem && $manga->malItem->image_url)
+                            <div class="text-center">
+                                {{ Html::image($manga->malItem->image_url, $manga->name, ['class' => 'img-fluid']) }}
                             </div>
+                        @endif
 
-                            @if ($manga->malItem && $manga->malItem->image_url)
-                                <div class="text-center">
-                                    {{ Html::image($manga->malItem->image_url, $manga->name, ['class' => 'img-fluid']) }}
-                                </div>
-                            @endif
+                        <div>
+                            <table class="table table-striped table-sm mt-4">
+                                <tbody>
+                                @foreach ($manga->volumes as $volume)
+                                    <tr>
+                                        <td>{{ $volume->no }}</td>
+                                    </tr>
+                                @endforeach
 
-                            <div>
-                                <table class="table table-striped table-sm mt-4">
-                                    <tbody>
-                                    @foreach ($manga->volumes as $volume)
-                                        <tr>
-                                            <td>{{ $volume->no }}</td>
-                                        </tr>
-                                    @endforeach
-
-                                    @foreach ($manga->specials as $special)
-                                        <tr>
-                                            <td>{{ $special->name }}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                @foreach ($manga->specials as $special)
+                                    <tr>
+                                        <td>{{ $special->name }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
     @endif
 @endsection

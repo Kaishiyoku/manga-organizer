@@ -42,3 +42,8 @@ if (! function_exists('formatNumber')) {
         return number_format($number, $decimals, __('common.number.decimal_point'), __('common.number.thousands_seperator'));
     }
 }
+if (! function_exists('formatEmpty')) {
+    function formatEmpty($str, $emptyStr = '/') {
+        return $str ? $str : $emptyStr;
+    }
+}
