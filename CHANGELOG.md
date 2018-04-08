@@ -1,29 +1,36 @@
 # Change Log
 
-## [1.7.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.7.0) (2018-03-30)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.6.0...1.7.0)
+## [1.8.0](https://github.com/kaishiyoku/manga-organizer/tree/1.8.0) (2018-04-08)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.7.0...1.8.0)
+
+**Implemented enhancements:**
+
+- Better manga list layout [\#28](https://github.com/Kaishiyoku/manga-organizer/issues/28)
+
+## [1.7.0](https://github.com/kaishiyoku/manga-organizer/tree/1.7.0) (2018-03-30)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.6.0...1.7.0)
 
 **Implemented enhancements:**
 
 - Add automated database backups with the help of laravel-backup [\#27](https://github.com/Kaishiyoku/manga-organizer/issues/27)
 
-## [1.6.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.6.0) (2018-03-24)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.5.0...1.6.0)
+## [1.6.0](https://github.com/kaishiyoku/manga-organizer/tree/1.6.0) (2018-03-24)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.5.0...1.6.0)
 
 **Implemented enhancements:**
 
 - Configurable links to MAL profile and Manga reading list [\#26](https://github.com/Kaishiyoku/manga-organizer/issues/26)
 - Optimize MAL API fetching performance [\#25](https://github.com/Kaishiyoku/manga-organizer/issues/25)
 
-## [1.5.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.5.0) (2018-03-23)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.4.0...1.5.0)
+## [1.5.0](https://github.com/kaishiyoku/manga-organizer/tree/1.5.0) (2018-03-23)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.4.0...1.5.0)
 
 **Implemented enhancements:**
 
 - MAL API binding [\#20](https://github.com/Kaishiyoku/manga-organizer/issues/20)
 
-## [1.4.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.4.0) (2018-03-22)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.3.0...1.4.0)
+## [1.4.0](https://github.com/kaishiyoku/manga-organizer/tree/1.4.0) (2018-03-22)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.3.0...1.4.0)
 
 **Implemented enhancements:**
 
@@ -36,8 +43,8 @@
 
 - \[Plain text list\] Special chars are being escaped [\#23](https://github.com/Kaishiyoku/manga-organizer/issues/23)
 
-## [1.3.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.3.0) (2018-03-19)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.2.0...1.3.0)
+## [1.3.0](https://github.com/kaishiyoku/manga-organizer/tree/1.3.0) (2018-03-19)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.2.0...1.3.0)
 
 **Implemented enhancements:**
 
@@ -45,18 +52,18 @@
 - Data saving mode [\#19](https://github.com/Kaishiyoku/manga-organizer/issues/19)
 - Ability to set manga as completed [\#18](https://github.com/Kaishiyoku/manga-organizer/issues/18)
 
-## [1.2.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.2.0) (2018-03-18)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.1.0...1.2.0)
+## [1.2.0](https://github.com/kaishiyoku/manga-organizer/tree/1.2.0) (2018-03-18)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.1.0...1.2.0)
 
-## [1.1.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.1.0) (2018-03-18)
-[Full Changelog](https://github.com/Kaishiyoku/manga-organizer/compare/1.0.0...1.1.0)
+## [1.1.0](https://github.com/kaishiyoku/manga-organizer/tree/1.1.0) (2018-03-18)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.0.0...1.1.0)
 
 **Implemented enhancements:**
 
 - Contact page [\#14](https://github.com/Kaishiyoku/manga-organizer/issues/14)
 - German locale [\#13](https://github.com/Kaishiyoku/manga-organizer/issues/13)
 
-## [1.0.0](https://github.com/Kaishiyoku/manga-organizer/tree/1.0.0) (2018-03-15)
+## [1.0.0](https://github.com/kaishiyoku/manga-organizer/tree/1.0.0) (2018-03-15)
 **Implemented enhancements:**
 
 - Add FontAwesome 5 icons [\#15](https://github.com/Kaishiyoku/manga-organizer/issues/15)
