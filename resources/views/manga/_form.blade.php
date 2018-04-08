@@ -20,7 +20,7 @@
             {{ Form::label('mal_id', __('validation.attributes.mal_id'), ['class' => 'col-lg-12 control-label']) }}
 
             <div class="col-lg-12">
-                {{ Form::number('mal_id', old('mal_id', $manga->mal_id), ['class' => 'form-control' . ($errors->has('mal_id') ? ' is-invalid' : ''), 'required' => true]) }}
+                {{ Form::number('mal_id', old('mal_id', $manga->mal_id), ['class' => 'form-control' . ($errors->has('mal_id') ? ' is-invalid' : '')]) }}
 
                 @if ($errors->has('mal_id'))
                     <div class="invalid-feedback">
