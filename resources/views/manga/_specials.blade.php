@@ -1,4 +1,4 @@
-<h2>{{ __('special.title') }}</h2>
+<h2 class="pt-4">{{ __('special.title') }}</h2>
 
 @if ($manga->specials->count() == 0)
     <p><i>{{ __('manga.edit.no_specials_yet') }}</i></p>

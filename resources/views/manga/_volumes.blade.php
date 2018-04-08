@@ -1,4 +1,4 @@
-<h2>{{ __('volume.title') }}</h2>
+<h2 class="pt-4">{{ __('volume.title') }}</h2>
 
 @if ($manga->volumes->count() == 0)
     <p><i>{{ __('manga.edit.no_volumes_yet') }}</i></p>
