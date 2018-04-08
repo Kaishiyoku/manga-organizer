@@ -35,7 +35,7 @@ Add the cronjob (please adjust the path if necessary):
 
 Screenshots
 ===========
-![Manga list](https://i.imgur.com/9Yaj94p.png)
+![Manga list](https://i.imgur.com/ZXY1GpV.png)
 
 ![Edit manga](https://i.imgur.com/0JhKzTK.png)
 
