@@ -24,7 +24,7 @@ class MangaController extends Controller
     private $validationRules = [
         'name' => ['required'],
         'is_completed' => 'boolean',
-        'mal_id' => 'integer',
+        'mal_id' => 'integer|nullable',
     ];
 
     /**
@@ -208,7 +208,9 @@ class MangaController extends Controller
 
     private function createMalItemIfNecessary($request)
     {
-        if ($request->get('mal_id', null) != null) {
+        $malId = $request->get('mal_id', null);
+
+        if ($malId != null && MalItem::find($malId) == null) {
             $malItem = new MalItem();
             $malItem->mal_id = $request->get('mal_id');
             $malItem->save();
