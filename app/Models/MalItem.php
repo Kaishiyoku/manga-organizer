@@ -71,7 +71,7 @@ class MalItem extends Model
      * @var array
      */
     protected $fillable = [
-        //
+        'mal_id',
     ];
 
     /**

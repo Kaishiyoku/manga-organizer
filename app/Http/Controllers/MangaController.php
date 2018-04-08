@@ -8,6 +8,7 @@ use App\Models\Recommendation;
 use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Validation\Rule;
 use MathieuViossat\Util\ArrayToTextTable;
 
@@ -209,11 +210,10 @@ class MangaController extends Controller
     private function createMalItemIfNecessary($request)
     {
         $malId = $request->get('mal_id', null);
+        $malItem = MalItem::find($malId);
 
-        if ($malId != null && MalItem::find($malId) == null) {
-            $malItem = new MalItem();
-            $malItem->mal_id = $request->get('mal_id');
-            $malItem->save();
+        if (!$malItem || !$malItem->link_canonical) {
+            Artisan::call("mal:get_item", ['mal_id' => $malId]);
         }
     }
 }
