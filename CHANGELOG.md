@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.9.0](https://github.com/kaishiyoku/manga-organizer/tree/1.9.0) (2018-04-08)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.8.1...1.9.0)
+
+**Implemented enhancements:**
+
+- Better layout for the "manage" page [\#32](https://github.com/Kaishiyoku/manga-organizer/issues/32)
+- Add feature list to readme [\#31](https://github.com/Kaishiyoku/manga-organizer/issues/31)
+- Fetch MAL data when saving a manga [\#30](https://github.com/Kaishiyoku/manga-organizer/issues/30)
+
 ## [1.8.1](https://github.com/kaishiyoku/manga-organizer/tree/1.8.1) (2018-04-08)
 [Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.8.0...1.8.1)
 
