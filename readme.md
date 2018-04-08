@@ -2,15 +2,25 @@
 
 Table of contents
 =================
-  * [About](#about)
-  * [Installaion](#installation)
-  * [Screenshots](#screenshots)
-  * [License](#license)
-  * [Author](#author)
+* [About](#about)
+* [Features](#features)
+* [Installaion](#installation)
+* [Screenshots](#screenshots)
+* [License](#license)
+* [Author](#author)
 
 About
 =====
 **A self-hostable, simple web service to keep track of your owned mangas.**
+
+Features
+========
+* manga list with owned volumes and specials
+* plain text list for data saving / fast loading times while being at a convention for example
+* people can recommend you new mangas
+* statistics about how many mangas and volumes you own
+* MyAnimeList-related data on your manga list (e.g. score, cover image)
+* mark mangas as completed
 
 Installation
 ============
