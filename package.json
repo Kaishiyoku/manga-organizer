@@ -12,11 +12,11 @@
   "devDependencies": {
     "@fortawesome/fontawesome-pro-webfonts": "1.0.5",
     "axios": "0.18.0",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.1.0",
     "cross-env": "5.1.4",
     "jquery": "3.3.1",
     "laravel-mix": "2.1.11",
     "lodash": "4.17.5",
-    "popper.js": "1.14.1"
+    "popper.js": "1.14.3"
   }
 }
