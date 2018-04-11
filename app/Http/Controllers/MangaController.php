@@ -44,24 +44,26 @@ class MangaController extends Controller
     {
         $mangas = $this->mangas()->get();
 
-        $renderer = new ArrayToTextTable($mangas->flatMap(function ($manga) {
-            return array_merge($manga->volumes->map(function ($volume) use ($manga) {
-                return [
-                    __('validation.attributes.name') => $manga->name,
-                    __('validation.attributes.volume') => $volume->no
-                ];
-            })->toArray(), $manga->specials->map(function ($special) use ($manga) {
-                return [
-                    __('validation.attributes.name') => $manga->name,
-                    __('validation.attributes.volume') => $special->name
-                ];
-            })->toArray());
-        })->toArray());
+        $volumeMapper = function ($volume) { return $volume->no; };
+        $specialMapper = function ($special) { return $special->name; };
+        $mangaMapper = function ($manga) use ($volumeMapper, $specialMapper) {
+            return generateAsciiHeading($manga->name, '-')
+                . "\n"
+                . __('manga.index.mal_score') . ': ' . ($manga->malItem && $manga->malItem->score ? formatNumber($manga->malItem->score, 2) : 'n/a')
+                . "\n"
+                . __('validation.attributes.is_completed') . ': ' . formatBool($manga->is_completed)
+                . "\n"
+                . "\n"
+                . implode("\n", $manga->volumes->map($volumeMapper)->toArray())
+                . "\n"
+                . implode("\n", $manga->specials->map($specialMapper)->toArray())
+                . "\n"
+                . "\n";
+        };
 
-        $renderer->setKeysAlignment(ArrayToTextTable::AlignLeft);
-        $renderer->setDecorator(new \Zend\Text\Table\Decorator\Blank());
+        $content = implode("\n", $mangas->map($mangaMapper)->toArray());
 
-        return response(view('manga.index_plain', ['mangaTable' => $renderer->getTable()]))->header('Content-Type', 'text/plain');
+        return response(view('manga.index_plain', compact('content')))->header('Content-Type', 'text/plain');
     }
 
     /**

@@ -23,9 +23,9 @@ if (! function_exists('generateHeadingLine')) {
 }
 
 if (! function_exists('generateAsciiHeading')) {
-    function generateAsciiHeading($str)
+    function generateAsciiHeading($str, $char = '=')
     {
-        return $str . "\n" . generateHeadingLine(strlen($str));
+        return $str . "\n" . generateHeadingLine(strlen($str), $char);
     }
 }
 
