@@ -10,7 +10,6 @@ use App\Models\Volume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Validation\Rule;
-use MathieuViossat\Util\ArrayToTextTable;
 
 class MangaController extends Controller
 {

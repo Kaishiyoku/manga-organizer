@@ -19,7 +19,6 @@
     "laravel/framework": "5.6.21",
     "laravel/tinker": "1.0.6",
     "laravelcollective/html": "5.6.7",
-    "mathieuviossat/arraytotexttable": "1.0.3",
     "spatie/laravel-backup": "5.6.6",
     "webup/laravel-sendinblue": "1.1.1"
   },
