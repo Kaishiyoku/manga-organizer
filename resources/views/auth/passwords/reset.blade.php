@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {{ Form::submit(__('auth.passwords.reset_password'), ['class' => 'btn btn-primary']) }}
+                        {{ Form::submit(__('auth.passwords.reset_password'), ['class' => 'btn btn-outline-primary']) }}
                     </div>
                 </div>
             {{ Form::close() }}

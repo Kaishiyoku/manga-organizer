@@ -29,7 +29,7 @@
         {{ Form::number('no', old('no', $newVolume->no), ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'required' => true]) }}
 
         <div class="input-group-append">
-            {{ Form::submit(__('volume.new'), ['class' => 'btn btn-primary']) }}
+            {{ Form::submit(__('volume.new'), ['class' => 'btn btn-outline-primary']) }}
         </div>
 
         @if ($errors->has('no'))

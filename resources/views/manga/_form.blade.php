@@ -48,6 +48,6 @@
 
 <div class="form-group row">
     <div class="col-lg-12">
-        {!! Html::decode(Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary'])) !!}
+        {!! Html::decode(Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-outline-primary'])) !!}
     </div>
 </div>

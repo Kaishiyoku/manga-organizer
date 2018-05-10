@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     <div class="col-md-6">
-                        {{ Form::submit(__('common.login'), ['class' => 'btn btn-primary']) }}
+                        {{ Form::submit(__('common.login'), ['class' => 'btn btn-outline-primary']) }}
 
                         {{ Html::linkRoute('password.request', __('auth.passwords.forgot_your_password'), ['class' => 'btn btn-link']) }}
                     </div>
