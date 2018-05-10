@@ -1,5 +1,23 @@
 # Change Log
 
+## [1.10.0](https://github.com/kaishiyoku/manga-organizer/tree/1.10.0) (2018-05-10)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.10.1...1.10.0)
+
+## [1.10.1](https://github.com/kaishiyoku/manga-organizer/tree/1.10.1) (2018-05-10)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.9.1...1.10.1)
+
+**Implemented enhancements:**
+
+- Upgrade to Laravel 5.6 [\#35](https://github.com/Kaishiyoku/manga-organizer/issues/35)
+- Button adjustements [\#34](https://github.com/Kaishiyoku/manga-organizer/issues/34)
+
+## [1.9.1](https://github.com/kaishiyoku/manga-organizer/tree/1.9.1) (2018-04-21)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.9.0...1.9.1)
+
+**Implemented enhancements:**
+
+- Enhance plain-text view [\#33](https://github.com/Kaishiyoku/manga-organizer/issues/33)
+
 ## [1.9.0](https://github.com/kaishiyoku/manga-organizer/tree/1.9.0) (2018-04-08)
 [Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.8.1...1.9.0)
 
