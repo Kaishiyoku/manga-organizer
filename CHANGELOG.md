@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.11.0](https://github.com/kaishiyoku/manga-organizer/tree/1.11.0) (2018-06-07)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.10.0...1.11.0)
+
 ## [1.10.0](https://github.com/kaishiyoku/manga-organizer/tree/1.10.0) (2018-05-10)
 [Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.9.1...1.10.0)
 
