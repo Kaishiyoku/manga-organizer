@@ -7,7 +7,7 @@
 
     @auth
         <p>
-            {!! Html::decode(Html::linkRoute('mangas.create', '<i class="fas fa-plus"></i> ' . __('manga.manage.new'), [], ['class' => 'btn btn-outline-secondary btn-sm'])) !!}
+            {!! Html::decode(Html::linkRoute('mangas.create', '<i class="fas fa-plus"></i> ' . __('manga.manage.new'), [], ['class' => 'btn btn-dark btn-sm'])) !!}
         </p>
     @endauth
 

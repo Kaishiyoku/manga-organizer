@@ -5,7 +5,7 @@ login:
 logout:
   success: Logout erfolgreich.
 passwords:
-  send_password_reset_link: Link zum Zurücksetzen des Passworts versendet
+  send_password_reset_link: Link zum Zurücksetzen des Passworts versenden
   reset_password: Passwort zurücksetzen
   remember_me: An mich erinnern
   forgot_your_password: Passwort vergessen?

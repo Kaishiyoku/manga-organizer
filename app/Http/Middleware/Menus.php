@@ -53,7 +53,7 @@ class Menus
         Menu::registerDefault([
             Menu::linkRoute('mangas.index', __('common.manga_list')),
             Menu::linkRoute('mangas.statistics', __('common.statistics')),
-            Menu::linkRoute('recommendations.create', __('common.recommend_manga')),
+            Menu::linkRoute('recommendations.create', __('common.recommend_manga'), [], [], [], $this->auth->guest()),
             Menu::linkRoute('mangas.manage', __('common.manage_mangas'), [], [], [], $this->auth->check())
         ], ['class' => 'nav navbar-nav']);
 

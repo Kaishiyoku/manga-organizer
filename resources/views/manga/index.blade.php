@@ -7,11 +7,11 @@
 
     <p>
         @auth
-            {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-wrench"></i> ' . __('manga.index.manage'), [], ['class' => 'btn btn-outline-secondary btn-sm'])) !!}
+            {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-wrench"></i> ' . __('manga.index.manage'), [], ['class' => 'btn btn-dark btn-sm'])) !!}
         @endauth
 
         @guest
-            {!! Html::decode(Html::linkRoute('recommendations.create', '<i class="far fa-envelope-open"></i> ' . __('manga.index.recommend_me_a_manga'), [], ['class' => 'btn btn-outline-primary btn-sm'])) !!}
+            {!! Html::decode(Html::linkRoute('recommendations.create', '<i class="far fa-envelope-open"></i> ' . __('manga.index.recommend_me_a_manga'), [], ['class' => 'btn btn-primary btn-sm'])) !!}
         @endguest
     </p>
 

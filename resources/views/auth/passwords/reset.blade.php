@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
     <div class="row">
@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {{ Form::submit(__('auth.passwords.reset_password'), ['class' => 'btn btn-outline-primary']) }}
+                        {{ Form::submit(__('auth.passwords.reset_password'), ['class' => 'btn btn-primary']) }}
                     </div>
                 </div>
             {{ Form::close() }}

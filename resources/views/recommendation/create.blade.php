@@ -22,7 +22,7 @@
 
         <div class="form-group row">
             <div class="col-lg-12">
-                {!! Html::decode(Form::submit(__('recommendation.create.submit'), ['class' => 'btn btn-outline-primary'])) !!}
+                {!! Html::decode(Form::submit(__('recommendation.create.submit'), ['class' => 'btn btn-primary'])) !!}
             </div>
         </div>
     {{ Form::close() }}
