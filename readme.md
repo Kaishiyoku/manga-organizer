@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Kaishiyoku/manga-organizer.svg?branch=master)](https://travis-ci.org/Kaishiyoku/manga-organizer)
+
 <img align="right" src="https://i.imgur.com/p8UGVQb.jpg" alt="Astolfo"/>
 
 Table of contents
