@@ -28,5 +28,6 @@ install:
   - php artisan key:generate
   - php artisan migrate
   - php artisan serve --port=8000 --host=localhost &
+  - sleep 5
 
 script:
