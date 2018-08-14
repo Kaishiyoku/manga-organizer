@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Kaishiyoku/manga-organizer.svg?branch=master)](https://travis-ci.org/Kaishiyoku/manga-organizer)
+
 <img align="right" src="https://i.imgur.com/p8UGVQb.jpg" alt="Astolfo"/>
 
 Table of contents
@@ -59,4 +61,5 @@ MIT (https://github.com/Kaishiyoku/manga-organizer/blob/master/LICENSE)
 Author
 ======
 Twitter: [@kaishiyoku](https://twitter.com/kaishiyoku)  
+Website: www.andreas-wiedel.de  
 MAL: [kaishiyoku](https://myanimelist.net/profile/Kaishiyoku)
