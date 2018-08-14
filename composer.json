@@ -1,9 +1,10 @@
 {
-  "name": "laravel/laravel",
-  "description": "The Laravel Framework.",
+  "name": "kaishiyoku/manga-organizer",
+  "description": "Simple manga organizer.",
   "keywords": [
     "framework",
-    "laravel"
+    "laravel",
+    "manga"
   ],
   "license": "MIT",
   "type": "project",
