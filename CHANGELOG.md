@@ -1,5 +1,21 @@
 # Change Log
 
+## [1.12.1](https://github.com/kaishiyoku/manga-organizer/tree/1.12.1) (2018-08-16)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.12.0...1.12.1)
+
+**Fixed bugs:**
+
+- Manga crawler throws an exception [\#39](https://github.com/Kaishiyoku/manga-organizer/issues/39)
+
+## [1.12.0](https://github.com/kaishiyoku/manga-organizer/tree/1.12.0) (2018-08-16)
+[Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.11.0...1.12.0)
+
+**Closed issues:**
+
+- Adjust theme [\#38](https://github.com/Kaishiyoku/manga-organizer/issues/38)
+- Upgrade NPM dependencies [\#37](https://github.com/Kaishiyoku/manga-organizer/issues/37)
+- Upgrade Composer dependencies [\#36](https://github.com/Kaishiyoku/manga-organizer/issues/36)
+
 ## [1.11.0](https://github.com/kaishiyoku/manga-organizer/tree/1.11.0) (2018-06-07)
 [Full Changelog](https://github.com/kaishiyoku/manga-organizer/compare/1.10.0...1.11.0)
 
