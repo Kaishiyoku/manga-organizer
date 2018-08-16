@@ -213,7 +213,7 @@ class MangaController extends Controller
         $malId = $request->get('mal_id', null);
         $malItem = MalItem::find($malId);
 
-        if (!$malItem || !$malItem->link_canonical) {
+        if (!$malItem || !$malItem->url) {
             Artisan::call("mal:get_item", ['mal_id' => $malId]);
         }
     }

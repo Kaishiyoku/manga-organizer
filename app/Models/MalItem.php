@@ -49,6 +49,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem whereVolumes($value)
  * @mixin \Eloquent
+ * @property string|null $url
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem whereUrl($value)
  */
 class MalItem extends Model
 {

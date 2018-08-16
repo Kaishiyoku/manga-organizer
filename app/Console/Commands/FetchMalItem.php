@@ -4,7 +4,9 @@ namespace App\Console\Commands;
 
 use App\Models\MalItem;
 use Illuminate\Console\Command;
-use Jikan\Jikan;
+use Jikan\Exception\ParserException;
+use Jikan\MyAnimeList\MalClient;
+use Jikan\Request\Manga\MangaRequest;
 
 class FetchMalItem extends Command
 {
@@ -39,31 +41,37 @@ class FetchMalItem extends Command
      */
     public function handle()
     {
-        $jikan = new Jikan();
-        $malItem = MalItem::firstOrNew(['mal_id' => (int) $this->argument('mal_id')]);
+        try {
+            $jikan = new MalClient();
 
-        $this->line('  #' . $malItem->mal_id);
+            $malItem = MalItem::firstOrNew(['mal_id' => (int) $this->argument('mal_id')]);
 
-        $data = $jikan->Manga($malItem->mal_id)->response;
+            $this->line('  #' . $malItem->mal_id);
 
-        $malItem->link_canonical = $data['link_canonical'];
-        $malItem->title = $data['title'];
-        $malItem->title_english = $data['title_english'];
-        $malItem->title_japanese = $data['title_japanese'];
-        $malItem->title_synonyms = $data['title_synonyms'];
-        $malItem->status = $data['status'];
-        $malItem->image_url = $data['image_url'];
-        $malItem->volumes = $data['volumes'];
-        $malItem->chapters = $data['chapters'];
-        $malItem->publishing = $data['publishing'];
-        $malItem->rank = $data['rank'];
-        $malItem->score = $data['score'];
-        $malItem->scored_by = $data['scored_by'];
-        $malItem->popularity = $data['popularity'];
-        $malItem->members = $data['members'];
-        $malItem->favorites = $data['favorites'];
-        $malItem->synopsis = $data['synopsis'];
+            $mangaItem = $jikan->getManga(new MangaRequest($malItem->mal_id));
 
-        $malItem->save();
+            $malItem->url = $mangaItem->getUrl();
+            $malItem->title = $mangaItem->getTitle();
+            $malItem->title_english = $mangaItem->getTitleEnglish();
+            $malItem->title_japanese = $mangaItem->getTitleJapanese();
+            $malItem->title_synonyms = implode(';', $mangaItem->getTitleSynonyms());
+            $malItem->status = $mangaItem->getStatus();
+            $malItem->image_url = $mangaItem->getImageUrl();
+            $malItem->volumes = $mangaItem->getVolumes();
+            $malItem->chapters = $mangaItem->getChapters();
+            $malItem->publishing = $mangaItem->isPublishing();
+            $malItem->rank = $mangaItem->getRank();
+            $malItem->score = $mangaItem->getScore();
+            $malItem->scored_by = $mangaItem->getScoredBy();
+            $malItem->popularity = $mangaItem->getPopularity();
+            $malItem->members = $mangaItem->getMembers();
+            $malItem->favorites = $mangaItem->getFavorites();
+            $malItem->synopsis = $mangaItem->getSynopsis();
+
+            $malItem->save();
+        } catch (ParserException $e) {
+            $this->error('Could not fetch data.');
+            $this->error($e);
+        }
     }
 }

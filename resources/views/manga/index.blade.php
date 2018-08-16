@@ -25,12 +25,12 @@
                         <h5 class="card-title">
                             {{ $manga->name }}
 
-                            @if ($manga->malItem && $manga->malItem->link_canonical)
-                                {!! Html::decode(Html::link($manga->malItem->link_canonical, '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
+                            @if ($manga->malItem && $manga->malItem->url)
+                                {!! Html::decode(Html::link($manga->malItem->url, '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
                             @endif
                         </h5>
 
-                        @if ($manga->malItem && $manga->malItem->link_canonical)
+                        @if ($manga->malItem && $manga->malItem->url)
                             <div>{{ __('manga.index.mal_score') }}: {{ formatNumber($manga->malItem->score, 2) }}</div>
                         @endif
 
