@@ -73,6 +73,10 @@
 
         &#8226;
 
+        @if (auth()->check())
+            {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'))) !!}
+        @endif
+
         {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="far fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
 
         &#8226;

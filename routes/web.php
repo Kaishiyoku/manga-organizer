@@ -36,5 +36,7 @@ Route::group(['middleware' => 'menus'], function () {
         });
 
         Route::resource('recommendations', 'RecommendationController', ['only' => 'destroy']);
+
+        Route::get('settings', 'SettingController@index')->name('settings.index');
     });
 });
