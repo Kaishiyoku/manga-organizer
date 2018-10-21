@@ -4,4 +4,8 @@
 
 @section('content')
     <h1>{{ __('setting.index.title') }}</h1>
+
+    <p>
+        {!! Html::decode(Html::linkRoute('settings.edit_password', '<i class="fas fa-key" aria-hidden="true"></i> ' . __('setting.edit_password.title'))) !!}
+    </p>
 @endsection

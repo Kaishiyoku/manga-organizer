@@ -38,5 +38,7 @@ Route::group(['middleware' => 'menus'], function () {
         Route::resource('recommendations', 'RecommendationController', ['only' => 'destroy']);
 
         Route::get('settings', 'SettingController@index')->name('settings.index');
+        Route::get('/settings/password/change', 'SettingController@editPassword')->name('settings.edit_password');
+        Route::put('/settings/password/change', 'SettingController@updatePassword')->name('settings.update_password');
     });
 });

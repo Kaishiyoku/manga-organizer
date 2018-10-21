@@ -84,3 +84,6 @@ attributes:
   manga: 'Manga'
   created_at: 'Erstellt am'
   mal_id: 'MAL ID'
+  current_password: Derzeitiges Passwort
+  new_password: Neues Passwort
+  new_password_confirmation: Neues Passwort (Wiederholung)
