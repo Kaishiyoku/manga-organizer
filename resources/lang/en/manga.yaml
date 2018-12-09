@@ -29,3 +29,4 @@ statistics:
   volumes: volume|volumes
   specials: special|specials
 no_recommendations: No recommendations.
+mal_item_error: There was an error fetching the manga information from MyAnimeList.

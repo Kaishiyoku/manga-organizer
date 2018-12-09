@@ -8,8 +8,9 @@ use App\Models\Recommendation;
 use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Validation\Rule;
+use Jikan\Exception\BadResponseException;
+use Jikan\Exception\ParserException;
 
 class MangaController extends Controller
 {
@@ -126,14 +127,20 @@ class MangaController extends Controller
     {
         $request->validate($this->getValidationRulesWithNameUniqueness());
 
-        $this->createMalItemIfNecessary($request);
+        try {
+            $this->createMalItemIfNecessary($request);
 
-        $manga = new Manga($request->all());
-        $manga->save();
+            $manga = new Manga($request->all());
+            $manga->save();
 
-        flash(__('manga.create.success'))->success();
+            flash(__('manga.create.success'))->success();
 
-        return redirect()->route('mangas.edit', [$manga]);
+            return redirect()->route('mangas.edit', $manga);
+        } catch (ParserException | BadResponseException $e) {
+            flash(__('manga.mal_item_error') . '<br/>' . $e->getMessage())->error();
+
+            return redirect()->route('mangas.create');
+        }
     }
 
     /**
@@ -161,15 +168,21 @@ class MangaController extends Controller
     {
         $request->validate($this->getValidationRulesWithNameUniqueness($manga));
 
-        $this->createMalItemIfNecessary($request);
+        try {
+            $this->createMalItemIfNecessary($request);
 
-        $manga->fill($request->all());
-        $manga->is_completed = $request->get('is_completed', false);
-        $manga->save();
+            $manga->fill($request->all());
+            $manga->is_completed = $request->get('is_completed', false);
+            $manga->save();
 
-        flash(__('manga.edit.success'))->success();
+            flash(__('manga.edit.success'))->success();
 
-        return redirect()->route($this->redirectRoute);
+            return redirect()->route($this->redirectRoute);
+        } catch (ParserException | BadResponseException $e) {
+            flash(__('manga.mal_item_error') . '<br/>' . $e->getMessage())->error();
+
+            return redirect()->route('mangas.edit', $manga);
+        }
     }
 
     /**
@@ -208,13 +221,18 @@ class MangaController extends Controller
         return $validationRules;
     }
 
+    /**
+     * @param $request
+     * @throws BadResponseException
+     * @throws ParserException
+     */
     private function createMalItemIfNecessary($request)
     {
         $malId = $request->get('mal_id', null);
         $malItem = MalItem::find($malId);
 
-        if (!$malItem || !$malItem->url) {
-            Artisan::call("mal:get_item", ['mal_id' => $malId]);
+        if ($malItem != null && $malItem->url != null) {
+            fetchAndSaveMalItemFor($malId);
         }
     }
 }

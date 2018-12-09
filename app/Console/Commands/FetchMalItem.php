@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\MalItem;
 use Illuminate\Console\Command;
+use Jikan\Exception\BadResponseException;
 use Jikan\Exception\ParserException;
 use Jikan\MyAnimeList\MalClient;
 use Jikan\Request\Manga\MangaRequest;
@@ -42,34 +43,12 @@ class FetchMalItem extends Command
     public function handle()
     {
         try {
-            $jikan = new MalClient();
+            $malId = (int) $this->argument('mal_id');
 
-            $malItem = MalItem::firstOrNew(['mal_id' => (int) $this->argument('mal_id')]);
+            $this->line('  #' . $malId);
 
-            $this->line('  #' . $malItem->mal_id);
-
-            $mangaItem = $jikan->getManga(new MangaRequest($malItem->mal_id));
-
-            $malItem->url = $mangaItem->getUrl();
-            $malItem->title = $mangaItem->getTitle();
-            $malItem->title_english = $mangaItem->getTitleEnglish();
-            $malItem->title_japanese = $mangaItem->getTitleJapanese();
-            $malItem->title_synonyms = implode(';', $mangaItem->getTitleSynonyms());
-            $malItem->status = $mangaItem->getStatus();
-            $malItem->image_url = $mangaItem->getImageUrl();
-            $malItem->volumes = $mangaItem->getVolumes();
-            $malItem->chapters = $mangaItem->getChapters();
-            $malItem->publishing = $mangaItem->isPublishing();
-            $malItem->rank = $mangaItem->getRank();
-            $malItem->score = $mangaItem->getScore();
-            $malItem->scored_by = $mangaItem->getScoredBy();
-            $malItem->popularity = $mangaItem->getPopularity();
-            $malItem->members = $mangaItem->getMembers();
-            $malItem->favorites = $mangaItem->getFavorites();
-            $malItem->synopsis = $mangaItem->getSynopsis();
-
-            $malItem->save();
-        } catch (ParserException $e) {
+            fetchAndSaveMalItemFor($malId);
+        } catch (ParserException | BadResponseException $e) {
             $this->error('Could not fetch data.');
             $this->error($e);
         }

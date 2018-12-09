@@ -43,7 +43,47 @@ if (! function_exists('formatNumber')) {
     }
 }
 if (! function_exists('formatEmpty')) {
-    function formatEmpty($str, $emptyStr = '/') {
+    function formatEmpty($str, $emptyStr = '/')
+    {
         return $str ? $str : $emptyStr;
+    }
+}
+
+if (! function_exists('fetchMalItemFor')) {
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Model
+     * @throws \Jikan\Exception\ParserException
+     * @throws \Jikan\Exception\BadResponseException
+     */
+    function fetchAndSaveMalItemFor($id)
+    {
+        $jikan = new \Jikan\MyAnimeList\MalClient();
+
+        $malItem = \App\Models\MalItem::firstOrNew(['mal_id' => $id]);
+
+        $mangaItem = $jikan->getManga(new \Jikan\Request\Manga\MangaRequest($malItem->mal_id));
+
+        $malItem->url = $mangaItem->getUrl();
+        $malItem->title = $mangaItem->getTitle();
+        $malItem->title_english = $mangaItem->getTitleEnglish();
+        $malItem->title_japanese = $mangaItem->getTitleJapanese();
+        $malItem->title_synonyms = implode(';', $mangaItem->getTitleSynonyms());
+        $malItem->status = $mangaItem->getStatus();
+        $malItem->image_url = $mangaItem->getImageUrl();
+        $malItem->volumes = $mangaItem->getVolumes();
+        $malItem->chapters = $mangaItem->getChapters();
+        $malItem->publishing = $mangaItem->isPublishing();
+        $malItem->rank = $mangaItem->getRank();
+        $malItem->score = $mangaItem->getScore();
+        $malItem->scored_by = $mangaItem->getScoredBy();
+        $malItem->popularity = $mangaItem->getPopularity();
+        $malItem->members = $mangaItem->getMembers();
+        $malItem->favorites = $mangaItem->getFavorites();
+        $malItem->synopsis = $mangaItem->getSynopsis();
+
+        $malItem->save();
+
+        return $malItem;
     }
 }
