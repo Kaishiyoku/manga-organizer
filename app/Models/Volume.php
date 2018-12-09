@@ -21,6 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $no
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume whereNo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Volume query()
  */
 class Volume extends Model
 {

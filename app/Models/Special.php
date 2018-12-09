@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Special whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Special whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Special newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Special newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Special query()
  */
 class Special extends Model
 {

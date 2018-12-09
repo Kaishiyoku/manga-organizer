@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recommendation whereManga($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recommendation whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recommendation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recommendation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recommendation query()
  */
 class Recommendation extends Model
 {

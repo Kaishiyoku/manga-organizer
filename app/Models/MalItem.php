@@ -51,6 +51,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property string|null $url
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem whereUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem query()
  */
 class MalItem extends Model
 {

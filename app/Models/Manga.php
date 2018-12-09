@@ -23,6 +23,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $mal_id
  * @property-read \App\Models\MalItem $malItem
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga whereMalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga query()
  */
 class Manga extends Model
 {
