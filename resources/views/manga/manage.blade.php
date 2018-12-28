@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="card-footer">
-                        {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id], ['class' => 'mr-2'])) !!}
+                        {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil-alt"></i> ' . __('common.edit'), [$manga->id], ['class' => 'mr-2'])) !!}
 
                         @include('shared._delete_link', ['route' => ['mangas.destroy', $manga]])
                     </div>
@@ -73,7 +73,7 @@
                         <td>{{ $manga->mal_id }}</td>
                         <td>{{ formatBool($manga->is_completed) }}</td>
                         <td>
-                            {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil"></i> ' . __('common.edit'), [$manga->id])) !!}
+                            {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil-alt"></i> ' . __('common.edit'), [$manga->id])) !!}
                         </td>
                         <td>
                             @include('shared._delete_link', ['route' => ['mangas.destroy', $manga]])

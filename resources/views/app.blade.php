@@ -62,13 +62,13 @@
 
         @if (auth()->check())
             <a href="#" data-submit="#logout-form">
-                <i class="fas fa-sign-out"></i> {{ __('common.logout') }}
+                <i class="fas fa-sign-out-alt"></i> {{ __('common.logout') }}
             </a>
 
             {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
             {{ Form::close() }}
         @else
-            {!! Html::decode(Html::linkRoute('login_form', '<i class="fas fa-sign-in"></i> ' . __('common.login'))) !!}
+            {!! Html::decode(Html::linkRoute('login_form', '<i class="fas fa-sign-in-alt"></i> ' . __('common.login'))) !!}
         @endif
 
         &#8226;
@@ -77,11 +77,11 @@
             {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'))) !!}
         @endif
 
-        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="far fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
+        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="fas fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
 
         &#8226;
 
-        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="far fa-envelope"></i> ' . __('common.contact'))) !!}
+        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="fas fa-envelope"></i> ' . __('common.contact'))) !!}
     </footer>
 </div>
 

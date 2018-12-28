@@ -26,7 +26,7 @@
                             {{ $manga->name }}
 
                             @if ($manga->malItem && $manga->malItem->url)
-                                {!! Html::decode(Html::link($manga->malItem->url, '<i class="fas fa-external-link"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
+                                {!! Html::decode(Html::link($manga->malItem->url, '<i class="fas fa-external-link-alt"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name])])) !!}
                             @endif
                         </h5>
 

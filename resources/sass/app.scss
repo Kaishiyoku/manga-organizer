@@ -1,14 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 @import url('https://fonts.googleapis.com/css?family=Sanchez');
 
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fontawesome";
-
-//$fa-font-path: "../fonts";
-
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-brands";
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-light";
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-regular";
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-solid";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
 
 @import "bootstrap";
 
