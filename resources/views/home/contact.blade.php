@@ -52,7 +52,7 @@
 
         <div class="form-group">
             <div class="col-md-12">
-                {{ Form::submit(__('common.contact_me_now'), ['class' => 'btn btn-primary']) }}
+                {{ Form::button(__('common.contact_me_now'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
             </div>
         </div>
     {{ Form::close() }}

@@ -26,7 +26,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {{ Form::submit(__('auth.passwords.send_password_reset_link'), ['class' => 'btn btn-primary']) }}
+                        {{ Form::button(__('auth.passwords.send_password_reset_link'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
                     </div>
                 </div>
             {{ Form::close() }}

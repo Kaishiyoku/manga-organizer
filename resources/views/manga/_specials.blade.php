@@ -29,7 +29,7 @@
         {{ Form::text('name', old('name', $newSpecial->name), ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true]) }}
 
         <div class="input-group-append">
-            {{ Form::submit(__('special.new'), ['class' => 'btn btn-outline-primary']) }}
+            {{ Form::button(__('special.new'), ['type' => 'submit', 'class' => 'btn btn-outline-primary']) }}
         </div>
 
         @if ($errors->has('no'))
