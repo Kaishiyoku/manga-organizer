@@ -55,8 +55,8 @@ if (! function_exists('fetchMalItemFor')) {
     /**
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model
+     * @throws HttpResponseException
      * @throws \Jikan\Exception\ParserException
-     * @throws \Jikan\Exception\BadResponseException
      */
     function fetchAndSaveMalItemFor($id)
     {

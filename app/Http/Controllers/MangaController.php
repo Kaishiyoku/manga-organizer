@@ -231,7 +231,7 @@ class MangaController extends Controller
         $malId = $request->get('mal_id', null);
         $malItem = MalItem::find($malId);
 
-        if ($malItem != null && $malItem->url != null) {
+        if (!empty($malId) && empty($malItem)) {
             fetchAndSaveMalItemFor($malId);
         }
     }
