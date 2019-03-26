@@ -17,6 +17,7 @@
     "jquery": "3.3.1",
     "laravel-mix": "4.0.12",
     "lodash": "4.17.11",
+    "node-waves": "0.7.6",
     "popper.js": "1.14.6",
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.15.2",
