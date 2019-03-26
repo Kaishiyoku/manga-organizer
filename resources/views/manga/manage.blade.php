@@ -51,7 +51,7 @@
         </div>
 
         <div class="d-none d-md-block">
-            <table class="table table-bordered table-striped table-sm">
+            <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th>{{ __('validation.attributes.name') }}</th>
@@ -109,7 +109,7 @@
         </div>
 
         <div class="d-none d-md-block">
-            <table class="table table-bordered table-striped table-sm">
+            <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th>{{ __('validation.attributes.manga') }}</th>

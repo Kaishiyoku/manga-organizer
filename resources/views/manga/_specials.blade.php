@@ -26,10 +26,10 @@
 
 {{ Form::open(['route' => ['specials.store', $manga], 'method' => 'post', 'role' => 'form']) }}
     <div class="input-group">
-        {{ Form::text('name', old('name', $newSpecial->name), ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true]) }}
+        {{ Form::text('name', old('name', $newSpecial->name), ['class' => 'form-control form-control-sm' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true]) }}
 
         <div class="input-group-append">
-            {{ Form::button(__('special.new'), ['type' => 'submit', 'class' => 'btn btn-outline-primary']) }}
+            {{ Form::button(__('special.new'), ['type' => 'submit', 'class' => 'btn btn-outline-primary btn-sm']) }}
         </div>
 
         @if ($errors->has('no'))

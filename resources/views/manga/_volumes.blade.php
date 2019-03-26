@@ -26,10 +26,10 @@
 
 {{ Form::open(['route' => ['volumes.store', $manga], 'method' => 'post', 'role' => 'form']) }}
     <div class="input-group">
-        {{ Form::number('no', old('no', $newVolume->no), ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'required' => true]) }}
+        {{ Form::number('no', old('no', $newVolume->no), ['class' => 'form-control form-control-sm' . ($errors->has('no') ? ' is-invalid' : ''), 'required' => true]) }}
 
         <div class="input-group-append">
-            {{ Form::button(__('volume.new'), ['type' => 'submit', 'class' => 'btn btn-outline-primary']) }}
+            {{ Form::button(__('volume.new'), ['type' => 'submit', 'class' => 'btn btn-outline-primary btn-sm']) }}
         </div>
 
         @if ($errors->has('no'))

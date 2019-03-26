@@ -36,10 +36,10 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        <div class="checkbox">
-                            <label>
-                                {{ Form::checkbox('remember', 1, old('remember')) }} {{ __('auth.passwords.remember_me') }}
-                            </label>
+                        <div class="custom-control custom-checkbox">
+                            {{ Form::checkbox('remember', 1, old('remember'), ['class' => 'custom-control-input', 'id' => 'remember']) }}
+
+                            <label class="custom-control-label" for="remember">{{ __('auth.passwords.remember_me') }}</label>
                         </div>
                     </div>
                 </div>

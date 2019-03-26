@@ -24,7 +24,7 @@
         <img src="{{ asset('img/cover.png') }}" class="img-fluid" alt="Cover"/>
     </a>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         {!! Html::decode(Html::link('/', '<i class="fas fa-home"></i>', ['class' => 'navbar-brand'])) !!}
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('common.toggle_navigation') }}">

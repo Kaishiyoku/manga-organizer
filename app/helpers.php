@@ -25,7 +25,9 @@ if (! function_exists('generateHeadingLine')) {
 if (! function_exists('generateAsciiHeading')) {
     function generateAsciiHeading($str, $char = '=')
     {
-        return $str . "\n" . generateHeadingLine(strlen($str), $char);
+        $line = generateHeadingLine(strlen($str), $char);
+
+        return $line . "\n" . \Illuminate\Support\Str::upper($str) . "\n" . $line;
     }
 }
 
