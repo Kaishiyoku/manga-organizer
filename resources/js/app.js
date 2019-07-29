@@ -36,13 +36,13 @@ $(document).ready(function () {
 
     Waves.init();
 
-    $('[data-submit]').each(function () {
+    $('[data-click]').each(function () {
         const $this = $(this);
 
         $this.click(function (event) {
             event.preventDefault();
 
-            $($this.attr('data-submit')).submit();
+            $($this.attr('data-click')).submit();
         });
     });
 

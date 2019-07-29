@@ -57,6 +57,8 @@ class Menus
             Menu::linkRoute('mangas.manage', __('common.manage_mangas'), [], [], [], $this->auth->check())
         ], ['class' => 'nav navbar-nav']);
 
+        $authLink = auth()->check() ? Menu::link('#', __('common.logout'), ['data-click' => '#logout-form']) : Menu::linkRoute('login_form', __('common.login'));
+
         Menu::register('right', [
             Menu::dropdown($socialLinks, __('common.social'), null, [], [], count($socialLinks)),
             Menu::dropdown($locales->map(function ($locale) {
@@ -64,7 +66,8 @@ class Menus
                     'class' => 'dropdown-item' . (Session::get('locale') == $locale ? ' active' : ''),
                     'id' => 'lang-link-' . $locale
                 ]));
-            }), __('common.language'))
+            }), __('common.language')),
+            $authLink
         ], ['class' => 'nav navbar-nav']);
 
         return $next($request);

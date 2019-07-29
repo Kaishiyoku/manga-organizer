@@ -61,19 +61,6 @@
         v{{ env('APP_VERSION') }} &#8226;
 
         @if (auth()->check())
-            <a href="#" data-submit="#logout-form">
-                <i class="fas fa-sign-out-alt"></i> {{ __('common.logout') }}
-            </a>
-
-            {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
-            {{ Form::close() }}
-        @else
-            {!! Html::decode(Html::linkRoute('login_form', '<i class="fas fa-sign-in-alt"></i> ' . __('common.login'))) !!}
-        @endif
-
-        &#8226;
-
-        @if (auth()->check())
             {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'))) !!}
         @endif
 
@@ -90,6 +77,10 @@
         {{ Form::hidden('locale', $locale) }}
     {{ Form::close() }}
 @endforeach
+
+@auth
+    @include('shared._logout_form')
+@endauth
 
 <script src="{{ asset('js/app.js') }}"></script>
 
