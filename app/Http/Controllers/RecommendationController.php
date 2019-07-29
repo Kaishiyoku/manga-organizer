@@ -28,7 +28,7 @@ class RecommendationController extends Controller
     {
         $recommendation = new Recommendation();
 
-        return view('recommendation.create', compact('recommendation'));
+        return getViewByRequestType('recommendation.create', compact('recommendation'));
     }
 
     /**
