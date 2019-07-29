@@ -84,3 +84,4 @@ attributes:
   manga: 'Manga'
   created_at: 'Created at'
   mal_id: 'MAL ID'
+  title: Title

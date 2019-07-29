@@ -41,4 +41,6 @@ Route::group(['middleware' => 'menus'], function () {
         Route::get('/settings/password/change', 'SettingController@editPassword')->name('settings.edit_password');
         Route::put('/settings/password/change', 'SettingController@updatePassword')->name('settings.update_password');
     });
+
+    Route::get('text', 'HomeController@toggleAsText')->name('home.toggle_as_text');
 });

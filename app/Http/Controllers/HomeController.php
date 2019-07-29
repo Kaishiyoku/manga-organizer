@@ -44,4 +44,11 @@ class HomeController extends Controller
 
         return redirect('/');
     }
+
+    public function toggleAsText()
+    {
+        session()->put('is_as_text', !session()->get('is_as_text') ?? true);
+
+        return redirect()->back();
+    }
 }

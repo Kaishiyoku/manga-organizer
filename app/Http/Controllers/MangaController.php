@@ -37,7 +37,7 @@ class MangaController extends Controller
     {
         $mangas = $this->mangas()->get();
 
-        return view('manga.index', compact('mangas'));
+        return getViewByRequestType('manga.index', compact('mangas'));
     }
 
     public function indexPlain()
