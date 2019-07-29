@@ -19,13 +19,21 @@
 </head>
 <body>
 
-<div class="container">
+<div>
     <a href="{{ route('mangas.index') }}">
         {{ env('APP_NAME', 'Laravel') }}
     </a>
 </div>
 
-<div class="container">
+<div>
+    {!! Menu::render() !!}
+</div>
+
+<div>
+    {!! Menu::render('right') !!}
+</div>
+
+<div>
     @include('flash::message')
 
     @yield('content')
@@ -42,14 +50,14 @@
     v{{ env('APP_VERSION') }} &#8226;
 
     @if (auth()->check())
-        {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'))) !!}
+        {!! Html::decode(Html::linkRoute('settings.index', __('common.settings'))) !!}
     @endif
 
-    {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="fas fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
+    {!! Html::decode(Html::linkRoute('mangas.index_plain', __('common.list_as_text'))) !!}
 
     &#8226;
 
-    {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="fas fa-envelope"></i> ' . __('common.contact'))) !!}
+    {!! Html::decode(Html::linkRoute('home.show_contact_form', __('common.contact'))) !!}
 </footer>
 
 @foreach (config('app.available_locales') as $locale)
