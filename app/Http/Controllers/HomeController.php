@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function showContactForm()
     {
-        return view('home.contact');
+        return getViewByRequestType('home.contact');
     }
 
     /**
