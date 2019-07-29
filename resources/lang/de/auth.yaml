@@ -6,6 +6,7 @@ login:
 logout:
   success: Logout erfolgreich.
 passwords:
+  title: Passwort vergessen
   send_password_reset_link: Link zum Zurücksetzen des Passworts versenden
   reset_password: Passwort zurücksetzen
   remember_me: An mich erinnern

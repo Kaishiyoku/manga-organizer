@@ -1,6 +1,6 @@
 @extends('text.app')
 
-@section('title', 'Login')
+@section('title', __('auth.login.title'))
 
 @section('content')
     <h1>{{ __('auth.login.title') }}</h1>
