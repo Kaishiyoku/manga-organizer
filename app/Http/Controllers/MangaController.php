@@ -102,7 +102,7 @@ class MangaController extends Controller
             ];
         }))->sortByDesc('created_at')->take(5);
 
-        return view('manga.statistics', compact('mangas', 'volumes', 'specials', 'latestVolumesAndSpecials'));
+        return getViewByRequestType('manga.statistics', compact('mangas', 'volumes', 'specials', 'latestVolumesAndSpecials'));
     }
 
     /**
