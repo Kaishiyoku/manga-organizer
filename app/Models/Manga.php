@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga query()
+ * @property-read int|null $specials_count
+ * @property-read int|null $volumes_count
  */
 class Manga extends Model
 {

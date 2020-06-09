@@ -32,12 +32,30 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {!! Menu::render() !!}
-            </ul>
+            {!! \LaravelMenu::render() !!}
 
-            <ul class="navbar-nav">
-                {!! Menu::render('right') !!}
+            @if (env('MAL_PROFILE_URL'))
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        {{ Html::link(env('MAL_PROFILE_URL'), 'MAL profile', ['class' => 'nav-link']) }}
+                    </li>
+                </ul>
+            @endif
+
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    @include('shared._locale_dropdown')
+                </li>
+
+                @if (auth()->check())
+                    <li class="nav-item">
+                        {{ Html::link('#', __('common.logout'), ['data-click' => '#logout-form', 'class' => 'nav-link']) }}
+                    </li>
+                @else
+                    <li class="nav-item">
+                        {{ Html::linkRoute('login_form', __('common.login'), [], ['class' => 'nav-link']) }}
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>

@@ -1,0 +1,12 @@
+<?php
+
+return [
+    'create' => [
+        'title' => 'Manga vorschlagen',
+        'submit' => 'Absenden',
+        'success' => 'Vorschlag eingetragen.',
+    ],
+    'destroy' => [
+        'success' => 'Vorschlag gelöscht . ',
+    ],
+];

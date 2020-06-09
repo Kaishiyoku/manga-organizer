@@ -54,6 +54,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem query()
+ * @property-read int|null $mangas_count
  */
 class MalItem extends Model
 {

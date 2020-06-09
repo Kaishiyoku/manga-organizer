@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::group(['middleware' => 'menus'], function () {
     Route::get('/', 'MangaController@index')->name('mangas.index');
     Route::get('/plain', 'MangaController@indexPlain')->name('mangas.index_plain');
