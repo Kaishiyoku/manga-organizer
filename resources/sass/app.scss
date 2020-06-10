@@ -1,8 +1,85 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Sanchez');
 
-// Variables
-@import 'variables';
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "variables";
+@import "~bootstrap";
+
+@import "waves";
+
+body {
+    padding-bottom: 2em;
+}
+
+footer {
+    @extend .font-sm;
+
+    padding-top: 10em;
+}
+
+.cover {
+    padding-bottom: 2em;
+}
+
+.font-sm {
+    font-size: $font-size-sm;
+}
+
+.btn {
+    &.btn-link {
+        &.btn-delete {
+            margin-top: -5px;
+            padding: 0 0px 0px;
+            color: saturate(theme-color("danger"), 30%);
+        }
+    }
+
+    &.btn-plain {
+        &:hover, &:focus {
+            color: theme-color("primary");
+            border: 1px solid lighten(theme-color("primary"), 30%);
+            background-color: transparent !important;
+        }
+    }
+}
+
+.inline {
+    display: inline;
+}
+
+tr {
+    &.bordered-bold {
+        td {
+            border-bottom: 1px solid gray("500");
+        }
+    }
+}
+
+.card-columns {
+    @include media-breakpoint-only(xs) {
+        column-count: 1;
+    }
+
+    @include media-breakpoint-only(sm) {
+        column-count: 2;
+    }
+
+    @include media-breakpoint-only(md) {
+        column-count: 2;
+    }
+
+    @include media-breakpoint-only(lg) {
+        column-count: 3;
+    }
+    @include media-breakpoint-only(xl) {
+        column-count: 3;
+    }
+}
+
+.bg-white {
+    background-color: $white;
+}
