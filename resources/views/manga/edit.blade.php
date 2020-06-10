@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('title', __('manga.edit.title', ['name' => $manga->name]))
 

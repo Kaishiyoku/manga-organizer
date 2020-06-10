@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
     <h1>{{ __('setting.edit_password.title') }}</h1>
