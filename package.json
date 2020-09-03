@@ -16,7 +16,7 @@
         "cross-env": "7.0.2",
         "jquery": "3.5.1",
         "laravel-mix": "5.0.4",
-        "lodash": "4.17.15",
+        "lodash": "4.17.19",
         "node-waves": "0.7.6",
         "popper.js": "1.16.1",
         "resolve-url-loader": "3.1.1",
