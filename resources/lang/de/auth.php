@@ -27,5 +27,6 @@ return [
         'reset_password' => 'Passwort zurücksetzen',
         'remember_me' => 'An mich erinnern',
         'forgot_your_password' => 'Passwort vergessen?',
+        'back_to_login' => 'Zurück zum Login',
     ],
 ];

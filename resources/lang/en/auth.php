@@ -28,6 +28,7 @@ return [
         'reset_password' => 'Reset password',
         'remember_me' => 'Remember Me',
         'forgot_your_password' => 'Forgot your password?',
+        'back_to_login' => 'Back to login',
     ],
 
 ];
