@@ -16,7 +16,7 @@
     @if ($mangas->count() == 0)
         <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
     @else
-        <div class="grid grid-cols-4 gap-x-4 gap-y-8">
+        <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-x-4 gap-y-8">
             @foreach ($mangas as $manga)
                 @include('manga._card')
             @endforeach

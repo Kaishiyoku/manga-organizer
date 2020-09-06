@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<div class="container px-20 mx-auto">
+<div class="container lg:px-20 mx-auto">
     <a href="{{ route('mangas.index') }}">
         <img src="{{ asset('img/cover.png') }}" class="img-fluid" alt="Cover"/>
     </a>
@@ -44,13 +44,13 @@
     </div>
 </div>
 
-<div class="container px-20 mx-auto">
+<div class="container px-4 lg:px-20 mx-auto">
     @include('flash::message')
 
     @yield('content')
 </div>
 
-<div class="container px-20 mt-16 mb-4 mx-auto text-gray-500">
+<div class="container px-4 lg:px-20 mt-16 mb-4 mx-auto text-gray-500">
     <footer>
         @if (env('APP_CREATION_YEAR') == date('Y'))
             {{ env('APP_CREATION_YEAR') }},

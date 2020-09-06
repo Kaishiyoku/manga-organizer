@@ -9,7 +9,7 @@
         @include('manga._form', ['submitTitle' => '<i class="fas fa-save"></i> ' . __('common.update')])
     {{ Form::close() }}
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-2 gap-4">
         <div>
             @include('manga._volumes')
         </div>
