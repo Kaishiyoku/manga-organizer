@@ -19,18 +19,23 @@
 </head>
 <body>
 
+<h1>
+    {{ env('APP_NAME', 'Laravel') }}
+</h1>
+
 <div>
-    <a href="{{ route('mangas.index') }}">
-        {{ env('APP_NAME', 'Laravel') }}
-    </a>
+    {{ Html::linkRoute('mangas.index', __('common.manga_list')) }}
+    {{ Html::linkRoute('mangas.statistics', __('common.statistics')) }}
+
+    @auth
+        {{ Html::link('mangas.manage', __('common.manage_mangas')) }}
+    @else
+        {{ Html::linkRoute('recommendations.create', __('common.recommend_manga')) }}
+    @endauth
 </div>
 
 <div>
-    {!! Menu::render() !!}
-</div>
 
-<div>
-    {!! Menu::render('right') !!}
 </div>
 
 <div>
