@@ -1,57 +1,63 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', __('auth.login.title'))
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            {{ Form::open(['route' => 'login', 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal']) }}
-                <div class="form-group">
-                    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-md-12 control-label']) }}
+    <div class="flex flex-wrap justify-center">
+        <div class="w-full max-w-sm">
+            <div class="flex flex-col break-words">
+                <form class="w-full p-6" method="POST" action="{{ route('login') }}">
+                    @csrf
 
-                    <div class="col-md-12">
-                        {{ Form::email('email', old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true, 'autofocus' => true]) }}
+                    <div class="mb-4">
+                        <label for="email" class="label-default">
+                            {{ __('validation.attributes.email') }}:
+                        </label>
 
-                        @if ($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
+                        <input id="email" type="email" class="input-default @error('email') has-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('validation.attributes.email') }}" autofocus>
+
+                        @error('email')
+                        <p class="validation-error">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="label-default">
+                            {{ __('validation.attributes.password') }}:
+                        </label>
+
+                        <input id="password" type="password" class="input-default @error('password') has-error @enderror" name="password" required placeholder="{{ __('validation.attributes.password') }}">
+
+                        @error('password')
+                        <p class="validation-error">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="inline-flex items-center text-sm text-gray-700" for="remember">
+                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <span class="ml-2">{{ __('auth.passwords.remember_me') }}</span>
+                        </label>
+                    </div>
+
+                    <div class="flex flex-wrap items-center">
+                        <button type="submit" class="btn-default">
+                            {{ __('Login') }}
+                        </button>
+
+                        @if (Route::has('password.request'))
+                            <a class="text-sm text-purple-500 hover:text-purple-700 whitespace-no-wrap no-underline ml-auto" href="{{ route('password.request') }}">
+                                {{ __('auth.passwords.forgot_your_password') }}
+                            </a>
                         @endif
                     </div>
-                </div>
+                </form>
 
-                <div class="form-group">
-                    {{ Form::label('password', __('validation.attributes.password'), ['class' => 'col-md-12 control-label']) }}
-
-                    <div class="col-md-12">
-                        {{ Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required' => true]) }}
-
-                        @if ($errors->has('password'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="custom-control custom-checkbox">
-                            {{ Form::checkbox('remember', 1, old('remember'), ['class' => 'custom-control-input', 'id' => 'remember']) }}
-
-                            <label class="custom-control-label" for="remember">{{ __('auth.passwords.remember_me') }}</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-6">
-                        {{ Form::button(__('common.login'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-
-                        {{ Html::linkRoute('password.request', __('auth.passwords.forgot_your_password'), ['class' => 'btn btn-link']) }}
-                    </div>
-                </div>
-            {{ Form::close() }}
+            </div>
         </div>
     </div>
 @endsection

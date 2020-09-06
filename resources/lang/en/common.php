@@ -14,6 +14,7 @@ return [
         'de' => 'Deutsch',
         'en' => 'English',
     ],
+    'mal_profile' => 'MAL Profile',
     'contact_me_now' => 'Contact me now',
     'contact' => 'Contact',
     'list_as_text' => 'List as text',

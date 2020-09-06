@@ -17,6 +17,7 @@ return [
         'recommend_me_a_manga' => 'Mir einen Manga vorschlagen',
         'mal_score' => 'MAL Bewertung',
         'manga_at_myanimelist' => ':name auf MyAnimeList.net',
+        'volumes_and_specials' => 'Bände und Specials',
     ],
     'manage' => [
         'title' => 'Mangaliste verwalten',

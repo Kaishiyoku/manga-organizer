@@ -40,11 +40,10 @@ class Menus
     public function handle($request, Closure $next)
     {
         \LaravelMenu::register()
-            ->addClassNames('mr-auto')
             ->link('mangas.index', __('common.manga_list'), true)
             ->link('mangas.statistics', __('common.statistics'), true)
             ->linkIf($this->auth->guest(), 'recommendations.create', __('common.recommend_manga'), true)
-            ->linkIf($this->auth->check(), 'mangas.manage', __('common.manage_mangas'), true);
+            ->linkIf($this->auth->check(), 'mangas.manage,mangas.create,mangas.edit', __('common.manage_mangas'), true);
 
         return $next($request);
     }

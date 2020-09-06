@@ -1,41 +1,39 @@
-<h2 class="pt-4">{{ __('volume.title') }}</h2>
+<h2 class="text-4xl">{{ __('volume.title') }}</h2>
 
 @if ($manga->volumes->count() == 0)
     <p><i>{{ __('manga.edit.no_volumes_yet') }}</i></p>
 @else
-    <table class="table table-bordered table-striped table-sm">
+    <table class="table">
         <thead>
-        <tr>
-            <th>{{ __('validation.attributes.no') }}</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>{{ __('validation.attributes.no') }}</th>
+                <th></th>
+            </tr>
         </thead>
 
         <tbody>
-        @foreach ($manga->volumes as $volume)
-            <tr>
-                <td>{{ $volume->no }}</td>
-                <td>
-                    @include('shared._delete_link', ['route' => ['volumes.destroy', $manga, $volume]])
-                </td>
-            </tr>
-        @endforeach
+            @foreach ($manga->volumes as $volume)
+                <tr>
+                    <td>{{ $volume->no }}</td>
+                    <td>
+                        @include('shared._delete_link', ['route' => ['volumes.destroy', $manga, $volume]])
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endif
 
 {{ Form::open(['route' => ['volumes.store', $manga], 'method' => 'post', 'role' => 'form']) }}
-    <div class="input-group">
-        {{ Form::number('no', old('no', $newVolume->no), ['class' => 'form-control form-control-sm' . ($errors->has('no') ? ' is-invalid' : ''), 'required' => true]) }}
+    <div class="flex mt-4">
+        {{ Form::number('no', old('no', $newVolume->no), ['class' => 'input-with-btn' . ($errors->has('no') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.no')]) }}
 
-        <div class="input-group-append">
-            {{ Form::button(__('volume.new'), ['type' => 'submit', 'class' => 'btn btn-outline-primary btn-sm']) }}
-        </div>
-
-        @if ($errors->has('no'))
-            <div class="invalid-feedback">
-                {{ $errors->first('no') }}
-            </div>
-        @endif
+        {{ Form::button(__('volume.new'), ['type' => 'submit', 'class' => 'btn-with-input']) }}
     </div>
+
+    @if ($errors->has('no'))
+        <p class="validation-error">
+            {{ $errors->first('no') }}
+        </p>
+    @endif
 {{ Form::close() }}

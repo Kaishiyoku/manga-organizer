@@ -1,57 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{ __('setting.edit_password.title') }}</h1>
+    <h1 class="text-5xl">{{ __('setting.edit_password.title') }}</h1>
 
     {{ Form::open(['route' => 'settings.update_password', 'method' => 'put', 'role' => 'form']) }}
-    <div class="form-group row">
-        {{ Form::label('current_password', __('validation.attributes.current_password'), ['class' => 'col-lg-3 col-form-label']) }}
+        <div class="mb-8">
+            {{ Form::label('current_password', __('validation.attributes.current_password'), ['class' => 'label-default']) }}
 
-        <div class="col-lg-3">
-            {{ Form::password('current_password', ['class' => 'form-control' . ($errors->has('current_password') ? ' is-invalid' : ''), 'required' => true]) }}
+            {{ Form::password('current_password', ['class' => 'input-default' . ($errors->has('current_password') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.current_password')]) }}
 
             @if ($errors->has('current_password'))
-                <div class="invalid-feedback">
+                <p class="validation-error">
                     {{ $errors->first('current_password') }}
-                </div>
+                </p>
             @endif
         </div>
-    </div>
 
-    <hr/>
+        <div class="bg-gray-200 h-1 w-1/4 mx-auto mb-4"></div>
 
-    <div class="form-group row">
-        {{ Form::label('new_password', __('validation.attributes.new_password'), ['class' => 'col-lg-3 col-form-label']) }}
+        <div class="mb-4">
+            {{ Form::label('new_password', __('validation.attributes.new_password'), ['class' => 'label-default']) }}
 
-        <div class="col-lg-3">
-            {{ Form::password('new_password', ['class' => 'form-control' . ($errors->has('new_password') ? ' is-invalid' : ''), 'required' => true, 'data-provide' => 'password-strength']) }}
+            {{ Form::password('new_password', ['class' => 'input-default' . ($errors->has('new_password') ? ' has-error' : ''), 'required' => true, 'data-provide' => 'password-strength', 'placeholder' => __('validation.attributes.new_password')]) }}
 
             @if ($errors->has('new_password'))
-                <div class="invalid-feedback">
+                <p class="validation-error">
                     {{ $errors->first('new_password') }}
-                </div>
+                </p>
             @endif
         </div>
-    </div>
 
-    <div class="form-group row">
-        {{ Form::label('new_password_confirmation', __('validation.attributes.new_password_confirmation'), ['class' => 'col-lg-3 col-form-label']) }}
+        <div class="mb-4">
+            {{ Form::label('new_password_confirmation', __('validation.attributes.new_password_confirmation'), ['class' => 'label-default']) }}
 
-        <div class="col-lg-3">
-            {{ Form::password('new_password_confirmation', ['class' => 'form-control' . ($errors->has('new_password_confirmation') ? ' is-invalid' : ''), 'required' => true]) }}
+            {{ Form::password('new_password_confirmation', ['class' => 'input-default' . ($errors->has('new_password_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.new_password_confirmation')]) }}
 
             @if ($errors->has('new_password_confirmation'))
-                <div class="invalid-feedback">
+                <p class="validation-error">
                     {{ $errors->first('new_password_confirmation') }}
-                </div>
+                </p>
             @endif
         </div>
-    </div>
 
-    <div class="form-group row">
-        <div class="col-lg-9 ml-md-auto">
-            {{ Form::button(__('setting.edit_password.submit'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
+        <div class="form-group row">
+            <div class="col-lg-9 ml-md-auto">
+                {{ Form::button(__('setting.edit_password.submit'), ['type' => 'submit', 'class' => 'btn-default']) }}
+            </div>
         </div>
-    </div>
     {{ Form::close() }}
 @endsection

@@ -1,53 +1,38 @@
-<div class="row">
-    <div class="col-md-10">
-        <div class="form-group row">
-            {{ Form::label('name', __('validation.attributes.name'), ['class' => 'col-lg-12 control-label']) }}
+<div class="mb-4">
+    {{ Form::label('name', __('validation.attributes.name'), ['class' => 'label-default']) }}
 
-            <div class="col-lg-12">
-                {{ Form::text('name', old('name', $manga->name), ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true]) }}
+    {{ Form::text('name', old('name', $manga->name), ['class' => 'input-default' . ($errors->has('name') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.name')]) }}
 
-                @if ($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-2">
-        <div class="form-group row">
-            {{ Form::label('mal_id', __('validation.attributes.mal_id'), ['class' => 'col-lg-12 control-label']) }}
-
-            <div class="col-lg-12">
-                {{ Form::number('mal_id', old('mal_id', $manga->mal_id), ['class' => 'form-control' . ($errors->has('mal_id') ? ' is-invalid' : '')]) }}
-
-                @if ($errors->has('mal_id'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('mal_id') }}
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
+    @if ($errors->has('name'))
+        <p class="validation-error">
+            {{ $errors->first('name') }}
+        </p>
+    @endif
 </div>
 
-<div class="col-md-6">
-    <div class="form-group form-check">
-        {{ Form::checkbox('is_completed', true, old('is_completed', $manga->is_completed), ['id' => 'is_completed', 'class' => 'form-check-input']) }}
+<div class="mb-4">
+    {{ Form::label('mal_id', __('validation.attributes.mal_id'), ['class' => 'label-default']) }}
 
-        {{ Form::label('is_completed', __('validation.attributes.is_completed'), ['class' => 'form-check-label']) }}
+    {{ Form::number('mal_id', old('mal_id', $manga->mal_id), ['class' => 'input-default' . ($errors->has('mal_id') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.mal_id')]) }}
 
-        @if ($errors->has('is_completed'))
-            <div class="invalid-feedback">
-                {{ $errors->first('') }}
-            </div>
-        @endif
-    </div>
+    @if ($errors->has('mal_id'))
+        <p class="validation-error">
+            {{ $errors->first('mal_id') }}
+        </p>
+    @endif
 </div>
 
-<div class="form-group row">
-    <div class="col-lg-12">
-        {!! Html::decode(Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary'])) !!}
-    </div>
+<div class="mb-4">
+    <label class="inline-flex items-center text-sm text-gray-700" for="is_completed">
+        {{ Form::checkbox('is_completed', true, old('is_completed', $manga->is_completed), ['id' => 'is_completed']) }}
+        <span class="ml-2">{{ __('validation.attributes.is_completed') }}</span>
+    </label>
+
+    @if ($errors->has('is_completed'))
+        <p class="validation-error">
+            {{ $errors->first('') }}
+        </p>
+    @endif
 </div>
+
+{!! Html::decode(Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn-default'])) !!}

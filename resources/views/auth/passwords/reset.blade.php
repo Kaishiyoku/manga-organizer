@@ -1,59 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            {{ Form::open(['route' => 'password.request', 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal']) }}
-                {{ Form::hidden('token', $token) }}
+    <div class="container mx-auto">
+        <div class="flex flex-wrap justify-center">
+            <div class="w-full max-w-sm">
+                <div class="flex flex-col break-words bg-white border-2 rounded shadow-md">
 
-                <div class="form-group">
-                    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-md-12 control-label']) }}
-
-                    <div class="col-md-12">
-                        {{ Form::email('email', old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true, 'autofocus' => true]) }}
-
-                        @if ($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
-                        @endif
+                    <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
+                        {{ __('Reset Password') }}
                     </div>
+
+                    <form class="w-full p-6" method="POST" action="{{ route('password.update') }}">
+                        @csrf
+
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <div class="flex flex-wrap mb-6">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
+                                {{ __('E-Mail Address') }}:
+                            </label>
+
+                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+
+                            @error('email')
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-wrap mb-6">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">
+                                {{ __('Password') }}:
+                            </label>
+
+                            <input id="password" type="password" class="form-input w-full @error('password') border-red-500 @enderror" name="password" required autocomplete="new-password">
+
+                            @error('password')
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-wrap mb-6">
+                            <label for="password-confirm" class="block text-gray-700 text-sm font-bold mb-2">
+                                {{ __('Confirm Password') }}:
+                            </label>
+
+                            <input id="password-confirm" type="password" class="form-input w-full" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+
+                        <div class="flex flex-wrap">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                {{ __('Reset Password') }}
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
-
-                <div class="form-group">
-                    {{ Form::label('password', __('validation.attributes.password'), ['class' => 'col-md-12 control-label']) }}
-
-                    <div class="col-md-12">
-                        {{ Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required' => true]) }}
-
-                        @if ($errors->has('password'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('password_confirmation', __('validation.attributes.password_confirmation'), ['class' => 'col-md-12 control-label']) }}
-
-                    <div class="col-md-12">
-                        {{ Form::password('password_confirmation', ['class' => 'form-control' . ($errors->has('password_confirmation') ? ' is-invalid' : ''), 'required' => true]) }}
-
-                        @if ($errors->has('password_confirmation'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password_confirmation') }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        {{ Form::button(__('auth.passwords.reset_password'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-                    </div>
-                </div>
-            {{ Form::close() }}
+            </div>
         </div>
     </div>
 @endsection

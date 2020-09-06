@@ -16,58 +16,41 @@
     <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
 
     <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
 </head>
 <body>
 
-<div class="container cover">
+<div class="container px-20 mx-auto">
     <a href="{{ route('mangas.index') }}">
         <img src="{{ asset('img/cover.png') }}" class="img-fluid" alt="Cover"/>
     </a>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        {!! Html::decode(Html::link('/', '<i class="fas fa-home"></i>', ['class' => 'navbar-brand'])) !!}
+    <div class="flex flex-wrap justify-between bg-gray-700">
+        {!! \LaravelMenu::render() !!}
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('common.toggle_navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {!! \LaravelMenu::render() !!}
-
+        <div class="flex flex-wrap">
             @if (env('MAL_PROFILE_URL'))
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        {{ Html::link(env('MAL_PROFILE_URL'), 'MAL profile', ['class' => 'nav-link']) }}
-                    </li>
-                </ul>
+                {{ Html::link(env('MAL_PROFILE_URL'), __('common.mal_profile'), ['class' => 'navbar-link']) }}
             @endif
 
-            <ul class="nav navbar-nav">
-                <li class="nav-item dropdown">
-                    @include('shared._locale_dropdown')
-                </li>
+            @auth
+                {{ Html::link('#', __('common.logout'), ['data-click' => '#logout-form', 'class' => 'navbar-link']) }}
+            @else
+                {{ Html::linkRoute('login_form', __('common.login'), null, ['class' => 'navbar-link' . (request()->is('login') ? ' navbar-link-active' : '')]) }}
+            @endauth
 
-                @if (auth()->check())
-                    <li class="nav-item">
-                        {{ Html::link('#', __('common.logout'), ['data-click' => '#logout-form', 'class' => 'nav-link']) }}
-                    </li>
-                @else
-                    <li class="nav-item">
-                        {{ Html::linkRoute('login_form', __('common.login'), [], ['class' => 'nav-link']) }}
-                    </li>
-                @endif
-            </ul>
+            @include('shared._locale_dropdown')
         </div>
-    </nav>
+    </div>
 </div>
 
-<div class="container">
+<div class="container px-20 mx-auto">
     @include('flash::message')
 
     @yield('content')
 </div>
 
-<div class="container text-muted">
+<div class="container px-20 mt-16 mb-4 mx-auto text-gray-500">
     <footer>
         @if (env('APP_CREATION_YEAR') == date('Y'))
             {{ env('APP_CREATION_YEAR') }},
@@ -79,14 +62,14 @@
         v{{ env('APP_VERSION') }} &#8226;
 
         @if (auth()->check())
-            {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'))) !!}
+            {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'), null, ['class' => 'link-default'])) !!}
         @endif
 
-        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="fas fa-file-alt"></i> ' . __('common.list_as_text'))) !!}
+        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="fas fa-file-alt"></i> ' . __('common.list_as_text'), null, ['class' => 'link-default'])) !!}
 
         &#8226;
 
-        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="fas fa-envelope"></i> ' . __('common.contact'))) !!}
+        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="fas fa-envelope"></i> ' . __('common.contact'), null, ['class' => 'link-default'])) !!}
     </footer>
 </div>
 

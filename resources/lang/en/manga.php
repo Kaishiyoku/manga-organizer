@@ -17,6 +17,7 @@ return [
         'recommend_me_a_manga' => 'Recommend me a manga',
         'mal_score' => 'MAL score',
         'manga_at_myanimelist' => ':name at MyAnimeList.net',
+        'volumes_and_specials' => 'Volumes and specials',
     ],
     'manage' => [
         'title' => 'Manage manga list',

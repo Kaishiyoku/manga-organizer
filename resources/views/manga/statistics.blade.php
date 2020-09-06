@@ -3,9 +3,9 @@
 @section('title', __('manga.statistics.title'))
 
 @section('content')
-    <h1>{{ __('manga.statistics.title') }}</h1>
+    <h1 class="text-5xl">{{ __('manga.statistics.title') }}</h1>
 
-    <ul>
+    <ul class="list-disc ml-8">
         <li>
             {{ $mangas->count() }} {{ trans_choice('manga.statistics.mangas', $mangas->count()) }}
         </li>
@@ -17,9 +17,9 @@
         </li>
     </ul>
 
-    <h2>{{ __('manga.statistics.latest_volumes_and_specials') }}</h2>
+    <h2 class="text-4xl">{{ __('manga.statistics.latest_volumes_and_specials') }}</h2>
 
-    <ul>
+    <ul class="list-disc ml-8">
         @foreach ($latestVolumesAndSpecials as $entry)
             <li>
                 {{ $entry['name'] }}

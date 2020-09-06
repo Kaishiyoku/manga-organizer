@@ -17,7 +17,7 @@
     "guzzlehttp/guzzle": "6.5.4",
     "jikan-me/jikan": "2.16.5",
     "kaishiyoku/laravel-cli-create-user": "2.3.3",
-    "kaishiyoku/laravel-menu": "4.4.5",
+    "kaishiyoku/laravel-menu": "4.4.6",
     "laracasts/flash": "3.1",
     "laravel/framework": "7.15.0",
     "laravel/tinker": "2.4.0",
@@ -30,6 +30,7 @@
     "barryvdh/laravel-ide-helper": "2.7.0",
     "facade/ignition": "2.0.7",
     "fzaninotto/faker": "1.9.1",
+    "laravel-frontend-presets/tailwindcss": "^4.2",
     "mockery/mockery": "1.4.0",
     "nunomaduro/collision": "4.2.0",
     "phpunit/phpunit": "^9.0"

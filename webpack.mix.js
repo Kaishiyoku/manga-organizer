@@ -11,8 +11,19 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/app_text.scss', 'public/css')
-   .copyDirectory('resources/img', 'public/img')
-   .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts');
+mix
+    .js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('postcss-nested'),
+        require('autoprefixer'),
+    ])
+    .sass('resources/sass/font-awesome.scss', 'public/css')
+    .copyDirectory('resources/img', 'public/img')
+    .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts');
+
+if (mix.inProduction()) {
+    mix
+        .version();
+}
