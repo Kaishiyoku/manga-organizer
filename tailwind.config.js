@@ -4,10 +4,14 @@ module.exports = {
     './resources/css/**/*.css',
   ],
   theme: {
-    extend: {}
+    extend: {
+        fontFamily: {
+            sans: ['Nunito', 'sans-serif'],
+        },
+    },
   },
   variants: {},
   plugins: [
     require('@tailwindcss/ui'),
-  ]
+  ],
 }
