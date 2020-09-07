@@ -40,4 +40,6 @@ return [
     ],
     'no_recommendations' => 'Keine Vorschläge vorhanden.',
     'mal_item_error' => 'Beim Holen das Manga-Informationen von MyAnimeList ist ein Fehler aufgetreten.',
+    'volumes' => 'Band|Bände',
+    'specials' => 'Special|Specials',
 ];

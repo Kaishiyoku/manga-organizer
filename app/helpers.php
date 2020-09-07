@@ -1,19 +1,23 @@
 <?php
 
+use App\Models\MalItem;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 
-if (! function_exists('isAsText')) {
+if (!function_exists('isAsText')) {
     function isAsText()
     {
         return session()->get('is_as_text');
     }
 }
 
-if (! function_exists('getViewByRequestType')) {
+if (!function_exists('getViewByRequestType')) {
     /**
-     * @param  string|null  $view
-     * @param  \Illuminate\Contracts\Support\Arrayable|array   $data
-     * @param  array   $mergeData
+     * @param string|null $view
+     * @param \Illuminate\Contracts\Support\Arrayable|array $data
+     * @param array $mergeData
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     function getViewByRequestType($view = null, $data = [], $mergeData = [])
@@ -24,7 +28,7 @@ if (! function_exists('getViewByRequestType')) {
     }
 }
 
-if (! function_exists('handleIntegrityConstraintViolation')) {
+if (!function_exists('handleIntegrityConstraintViolation')) {
     function handleIntegrityConstraintViolation($message, Closure $closure)
     {
         try {
@@ -37,50 +41,50 @@ if (! function_exists('handleIntegrityConstraintViolation')) {
     }
 }
 
-if (! function_exists('generateHeadingLine')) {
+if (!function_exists('generateHeadingLine')) {
     function generateHeadingLine($length, $char = '=')
     {
         return implode('', array_fill(0, $length, $char));
     }
 }
 
-if (! function_exists('generateAsciiHeading')) {
+if (!function_exists('generateAsciiHeading')) {
     function generateAsciiHeading($str, $char = '=')
     {
         $line = generateHeadingLine(strlen($str), $char);
 
-        return $line . "\n" . \Illuminate\Support\Str::upper($str) . "\n" . $line;
+        return $line . "\n" . StrAlias::upper($str) . "\n" . $line;
     }
 }
 
-if (! function_exists('formatBool')) {
+if (!function_exists('formatBool')) {
     function formatBool($bool)
     {
         return __('common.boolean.' . ($bool ? 'true' : 'false'));
     }
 }
 
-if (! function_exists('formatNumber')) {
+if (!function_exists('formatNumber')) {
     function formatNumber($number, $decimals = 0)
     {
         return number_format($number, $decimals, __('common.number.decimal_point'), __('common.number.thousands_seperator'));
     }
 }
-if (! function_exists('formatEmpty')) {
+if (!function_exists('formatEmpty')) {
     function formatEmpty($str, $emptyStr = '/')
     {
         return $str ? $str : $emptyStr;
     }
 }
 
-if (! function_exists('fetchMalItemFor')) {
+if (!function_exists('fetchMalItemFor')) {
     /**
-     * @param $id
-     * @return \Illuminate\Database\Eloquent\Model
-     * @throws HttpResponseException
+     * @param int $id
+     * @return MalItem
+     * @throws \Jikan\Exception\BadResponseException
      * @throws \Jikan\Exception\ParserException
      */
-    function fetchAndSaveMalItemFor($id)
+    function fetchAndSaveMalItemFor(int $id): MalItem
     {
         $jikan = new \Jikan\MyAnimeList\MalClient();
 
@@ -109,5 +113,43 @@ if (! function_exists('fetchMalItemFor')) {
         $malItem->save();
 
         return $malItem;
+    }
+}
+
+if (!function_exists('intRangeToStr')) {
+    function intRangeToStr(Collection $range)
+    {
+        if ($range->count() <= 1) {
+            return $range->join('');
+        }
+
+        $numbers = collect($range)->combine(collect($range));
+        $missingNumbers = collect(range($numbers->first(), $numbers->last()))->diff($numbers);
+        $diff = $missingNumbers->combine($missingNumbers);
+
+        $numberStrGroups = Str::of(
+            $numbers->reduce(function ($accum, $number) use ($diff) {
+                $suffix = $diff->has($number + 1) ? '|' : ',';
+
+                return $accum . $number . $suffix;
+            }, '')
+        )
+            ->trim(',')
+            ->explode('|');
+
+        return Str::of(
+            $numberStrGroups
+                ->map(function ($subStr) {
+                    return Str::of($subStr)->explode(',');
+                })
+                ->reduce(function (Stringable $accum, Collection $strArr) {
+                    if ($strArr->count() > 2) {
+                        return Str::of($accum . $strArr->first() . '-' . $strArr->last() . ', ');
+                    }
+
+                    return Str::of($accum . $strArr->implode(', ') . ', ');
+                }, Str::of(''))
+                ->trim(', ')
+        );
     }
 }

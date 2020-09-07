@@ -23,20 +23,23 @@
                 {{ __('validation.attributes.is_completed') }}: {{ formatBool($manga->is_completed) }}
             </div>
 
-            <button data-toggle="expand" data-target="#volumes-and-specials-{{ $manga->id }}" data-duration="500" class="border border-purple-400 rounded py-1 px-3 text-purple-900 hover:bg-purple-500 hover:text-white transition-all duration-150 w-full text-left flex justify-between items-center">
-                {{ __('manga.index.volumes_and_specials') }}
-                <i class="fas fa-chevron-circle-down"></i>
-            </button>
+            @if ($manga->volumes->isNotEmpty())
+                <div class="font-bold">
+                    {{ trans_choice('manga.volumes', $manga->volumes) }}:
+                </div>
+                <div class="break-all">
+                    {{ intRangeToStr($manga->volumes->pluck('no')) }}
+                </div>
+            @endif
 
-            <div class="simple-list mt-4 hidden" id="volumes-and-specials-{{ $manga->id }}">
-                @foreach ($manga->volumes as $volume)
-                    <div>{{ $volume->no }}</div>
-                @endforeach
-
-                @foreach ($manga->specials as $special)
-                    <div>{{ $special->name }}</div>
-                @endforeach
-            </div>
+            @if ($manga->specials->isNotEmpty())
+                <div class="font-bold mt-2">
+                    {{ trans_choice('manga.specials', $manga->specials) }}:
+                </div>
+                <div class="break-all">
+                    {{ $manga->specials->implode('name', ', ') }}
+                </div>
+            @endif
         </div>
     </div>
 </div>
