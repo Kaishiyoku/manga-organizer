@@ -3,7 +3,7 @@
 @section('title', __('recommendation.create.title'))
 
 @section('content')
-    <h1 class="text-5xl">{{ __('recommendation.create.title') }}</h1>
+    <h1 class="text-5xl mt-2">{{ __('recommendation.create.title') }}</h1>
 
     {{ Form::open(['route' => 'recommendations.store', 'method' => 'post', 'role' => 'form']) }}
         <div class="mb-4">

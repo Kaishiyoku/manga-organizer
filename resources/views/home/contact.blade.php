@@ -3,7 +3,7 @@
 @section('title', __('home.contact.title'))
 
 @section('content')
-    <h1 class="text-5xl">{{ __('home.contact.title') }}</h1>
+    <h1 class="text-5xl mt-2">{{ __('home.contact.title') }}</h1>
 
     {{ Form::open(['route' => 'home.send_contact_form', 'method' => 'post', 'role' => 'form']) }}
         @captcha()

@@ -3,7 +3,7 @@
 @section('title', __('manga.statistics.title'))
 
 @section('content')
-    <h1 class="text-5xl">{{ __('manga.statistics.title') }}</h1>
+    <h1 class="text-5xl mt-2">{{ __('manga.statistics.title') }}</h1>
 
     <ul class="list-disc ml-8">
         <li>

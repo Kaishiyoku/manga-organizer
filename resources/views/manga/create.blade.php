@@ -3,7 +3,7 @@
 @section('title', __('manga.create.title'))
 
 @section('content')
-    <h1 class="text-5xl">{{ __('manga.create.title') }}</h1>
+    <h1 class="text-5xl mt-2">{{ __('manga.create.title') }}</h1>
 
     {{ Form::open(['route' => 'mangas.store', 'method' => 'post', 'role' => 'form']) }}
         @include('manga._form', ['submitTitle' => '<i class="fas fa-save"></i> ' . __('common.create')])

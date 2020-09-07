@@ -3,7 +3,7 @@
 @section('title', __('manga.manage.title'))
 
 @section('content')
-    <h1 class="text-5xl mb-4">{{ __('manga.manage.title') }}</h1>
+    <h1 class="text-5xl mt-2 mb-4">{{ __('manga.manage.title') }}</h1>
 
     @auth
         <p class="mb-4">

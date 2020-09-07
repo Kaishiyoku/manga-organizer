@@ -3,13 +3,13 @@
 @section('title', __('manga.edit.title', ['name' => $manga->name]))
 
 @section('content')
-    <h1 class="text-5xl">{{ __('manga.edit.title', ['name' => $manga->name]) }}</h1>
+    <h1 class="text-5xl mt-2">{{ __('manga.edit.title', ['name' => $manga->name]) }}</h1>
 
     {{ Form::open(['route' => ['mangas.update', $manga->id], 'method' => 'put', 'role' => 'form']) }}
         @include('manga._form', ['submitTitle' => '<i class="fas fa-save"></i> ' . __('common.update')])
     {{ Form::close() }}
 
-    <div class="grid md:grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-2 gap-4 mt-8">
         <div>
             @include('manga._volumes')
         </div>

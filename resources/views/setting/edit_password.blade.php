@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-5xl">{{ __('setting.edit_password.title') }}</h1>
+    <h1 class="text-5xl mt-2">{{ __('setting.edit_password.title') }}</h1>
 
     {{ Form::open(['route' => 'settings.update_password', 'method' => 'put', 'role' => 'form']) }}
         <div class="mb-8">
