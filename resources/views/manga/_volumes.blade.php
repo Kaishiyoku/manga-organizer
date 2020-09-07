@@ -3,7 +3,7 @@
 @if ($manga->volumes->count() == 0)
     <p><i>{{ __('manga.edit.no_volumes_yet') }}</i></p>
 @else
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>{{ __('validation.attributes.no') }}</th>
@@ -15,7 +15,7 @@
             @foreach ($manga->volumes as $volume)
                 <tr>
                     <td>{{ $volume->no }}</td>
-                    <td>
+                    <td class="text-right">
                         @include('shared._delete_link', ['route' => ['volumes.destroy', $manga, $volume]])
                     </td>
                 </tr>

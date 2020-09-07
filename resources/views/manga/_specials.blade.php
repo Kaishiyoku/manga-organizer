@@ -3,7 +3,7 @@
 @if ($manga->specials->count() == 0)
     <p><i>{{ __('manga.edit.no_specials_yet') }}</i></p>
 @else
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>{{ __('validation.attributes.name') }}</th>
@@ -15,7 +15,7 @@
             @foreach ($manga->specials as $special)
                 <tr>
                     <td>{{ $special->name }}</td>
-                    <td>
+                    <td class="text-right">
                         @include('shared._delete_link', ['route' => ['specials.destroy', $manga, $special]])
                     </td>
                 </tr>

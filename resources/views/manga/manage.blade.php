@@ -52,7 +52,7 @@
             @endforeach
         </div>
 
-        <table class="table hidden lg:table">
+        <table class="table table-hover hidden lg:table">
             <thead>
                 <tr>
                     <th>{{ __('validation.attributes.name') }}</th>
@@ -110,7 +110,7 @@
             @endforeach
         </div>
 
-        <table class="table hidden lg:table">
+        <table class="table table-hover hidden lg:table">
             <thead>
                 <tr>
                     <th>{{ __('validation.attributes.manga') }}</th>

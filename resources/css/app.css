@@ -57,17 +57,6 @@
     @apply bg-purple-500 text-gray-100 py-2 px-4 rounded-r transition-all duration-150 shadow border-l border-purple-600;
 }
 
-.table {
-    @apply w-full text-left;
-}
-.table > tbody > tr:nth-child(odd) {
-    @apply bg-gray-100;
-}
-.table td,
-.table th {
-    @apply px-2 py-1 border-b border-gray-200;
-}
-
 .link-default {
     @apply text-purple-700 transition-all duration-150;
 }
@@ -94,4 +83,17 @@
 }
 .alert-danger {
     @apply bg-red-100 text-red-800 border-red-400;
+}
+
+.table {
+    @apply w-full text-left;
+}
+.table th {
+    @apply bg-gray-100 font-bold text-xs text-gray-800 uppercase border-b-2 border-gray-200 py-3 px-3 tracking-wide align-middle;
+}
+.table td {
+    @apply border-b border-gray-200 py-4 px-3 align-middle;
+}
+.table-hover tr:hover {
+    @apply bg-purple-50;
 }
