@@ -5,6 +5,8 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Jikan\MyAnimeList\MalClient;
+use Jikan\Request\Manga\MangaRequest;
 
 if (!function_exists('isAsText')) {
     function isAsText()
@@ -53,7 +55,7 @@ if (!function_exists('generateAsciiHeading')) {
     {
         $line = generateHeadingLine(strlen($str), $char);
 
-        return $line . "\n" . StrAlias::upper($str) . "\n" . $line;
+        return $line . "\n" . Str::upper($str) . "\n" . $line;
     }
 }
 
@@ -86,11 +88,11 @@ if (!function_exists('fetchMalItemFor')) {
      */
     function fetchAndSaveMalItemFor(int $id): MalItem
     {
-        $jikan = new \Jikan\MyAnimeList\MalClient();
+        $jikan = new MalClient();
 
-        $malItem = \App\Models\MalItem::firstOrNew(['mal_id' => $id]);
+        $malItem = MalItem::firstOrNew(['mal_id' => $id]);
 
-        $mangaItem = $jikan->getManga(new \Jikan\Request\Manga\MangaRequest($malItem->mal_id));
+        $mangaItem = $jikan->getManga(new MangaRequest($malItem->mal_id));
 
         $malItem->url = $mangaItem->getUrl();
         $malItem->title = $mangaItem->getTitle();
