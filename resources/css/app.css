@@ -22,11 +22,11 @@
 }
 
 .input-default {
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight transition-all duration-200;
 }
 .input-default:focus,
 .input-with-btn:focus {
-    @apply outline-none shadow-outline;
+    @apply outline-none shadow-outline-purple;
 }
 
 .input-with-btn {
@@ -42,7 +42,7 @@
 }
 
 .btn-default {
-    @apply bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-150;
+    @apply bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-200;
 }
 .btn-default:hover,
 .btn-with-input:hover {
@@ -50,7 +50,7 @@
 }
 .btn-default:focus,
 .btn-with-input:focus {
-    @apply outline-none shadow-outline;
+    @apply outline-none shadow-outline-purple;
 }
 
 .btn-with-input {

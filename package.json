@@ -26,6 +26,7 @@
         "sass": "1.26.10",
         "sass-loader": "10.0.2",
         "tailwindcss": "1.8.3",
+        "tailwindcss-shadow-outline-colors": "0.0.8",
         "vue-template-compiler": "2.6.12"
     }
 }
