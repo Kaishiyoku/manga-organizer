@@ -15,7 +15,7 @@
         @endguest
     </p>
 
-    @if ($mangas->count() == 0)
+    @if ($mangas->count() === 0)
         <p><i>{{ __('manga.no_mangas_yet') }}</i></p>
     @else
         <table border="1">

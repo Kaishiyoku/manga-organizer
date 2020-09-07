@@ -1,7 +1,7 @@
 <h2 class="text-4xl">{{ __('special.title') }}</h2>
 
 <div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
-    @if ($manga->specials->count() == 0)
+    @if ($manga->specials->count() === 0)
         <p class="px-4 pt-4 italic text-gray-500">{{ __('manga.edit.no_specials_yet') }}</p>
     @else
         <table class="table table-hover">
