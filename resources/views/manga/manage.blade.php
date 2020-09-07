@@ -10,7 +10,7 @@
     </div>
 
     @if ($mangas->count() == 0)
-        <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
+        <p class="italic text-gray-500 text-xl">{{ __('manga.no_mangas_yet') }}</p>
     @else
         <div class="grid sm:grid-cols-2 lg:hidden gap-4">
             @foreach ($mangas as $manga)
@@ -88,7 +88,7 @@
     <h2 class="text-4xl mt-4 mb-2">{{ __('manga.manage.recommendations') }}</h2>
 
     @if ($recommendations->count() == 0)
-        <p class="lead"><i>{{ __('manga.no_recommendations') }}</i></p>
+        <p class="italic text-gray-500 text-xl">{{ __('manga.no_recommendations') }}</p>
     @else
         <div class="grid sm:grid-cols-2 lg:hidden gap-4">
             @foreach ($recommendations as $recommendation)

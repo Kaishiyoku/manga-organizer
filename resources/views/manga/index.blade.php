@@ -14,7 +14,7 @@
     </div>
 
     @if ($mangas->count() == 0)
-        <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>
+        <p class="italic text-gray-500 text-xl">{{ __('manga.no_mangas_yet') }}</p>
     @else
         <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-x-4 gap-y-8">
             @foreach ($mangas as $manga)
