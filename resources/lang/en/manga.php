@@ -33,6 +33,7 @@ return [
     'no_mangas_yet' => 'No mangas yet.',
     'statistics' => [
         'title' => 'Statistics',
+        'general' => 'General',
         'latest_volumes_and_specials' => 'Latest volumes and specials',
         'mangas' => 'manga|mangas',
         'volumes' => 'volume|volumes',

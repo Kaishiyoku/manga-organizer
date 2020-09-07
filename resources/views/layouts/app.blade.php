@@ -18,7 +18,7 @@
     <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
 </head>
-<body>
+<body class="bg-gray-100">
 
 <div class="container lg:px-20 mx-auto">
     <a href="{{ route('mangas.index') }}">

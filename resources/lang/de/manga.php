@@ -33,6 +33,7 @@ return [
     'no_mangas_yet' => 'Noch keine Mangas vorhanden.',
     'statistics' => [
         'title' => 'Statistiken',
+        'general' => 'Allgemein',
         'latest_volumes_and_specials' => 'Letzte Bände und Specials',
         'mangas' => 'Manga|Mangas',
         'volumes' => 'Band|Bände',

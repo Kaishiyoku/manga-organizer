@@ -3,15 +3,15 @@
 @section('title', __('manga.index.title'))
 
 @section('content')
-    <h1 class="text-5xl mt-2 pb-4">{{ __('manga.index.title') }}</h1>
+    <h1 class="headline-1">{{ __('manga.index.title') }}</h1>
 
-    <p class="pb-8">
+    <div class="mb-8 mt-4">
         @auth
             {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-wrench"></i> ' . __('manga.index.manage'), [], ['class' => 'btn-default'])) !!}
         @else
             {!! Html::decode(Html::linkRoute('recommendations.create', '<i class="far fa-envelope-open"></i> ' . __('manga.index.recommend_me_a_manga'), [], ['class' => 'btn-default'])) !!}
         @endauth
-    </p>
+    </div>
 
     @if ($mangas->count() == 0)
         <p class="lead"><i>{{ __('manga.no_mangas_yet') }}</i></p>

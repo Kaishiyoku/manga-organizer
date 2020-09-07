@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="flex flex-wrap justify-center">
-        <div class="w-full max-w-md">
+        <div class="w-full max-w-md rounded overflow-hidden shadow-lg border border-gray-200 bg-white mt-8">
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -12,7 +12,7 @@
             @endif
 
             <div class="flex flex-col break-words mt-4">
-                <h1 class="text-2xl">{{ __('auth.passwords.reset_password') }}</h1>
+                <h1 class="text-2xl px-6">{{ __('auth.passwords.reset_password') }}</h1>
 
                 <form class="w-full p-6" method="POST" action="{{ route('password.email') }}">
                     @csrf

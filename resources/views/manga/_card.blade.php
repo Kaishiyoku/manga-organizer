@@ -1,4 +1,4 @@
-<div class="rounded overflow-hidden shadow-lg border border-gray-200">
+<div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
     @if ($manga->malItem && $manga->malItem->image_url)
         <div class="text-center">
             {{ Html::image($manga->malItem->image_url, $manga->name, ['class' => 'w-full']) }}

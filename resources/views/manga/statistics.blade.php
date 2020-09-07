@@ -3,27 +3,31 @@
 @section('title', __('manga.statistics.title'))
 
 @section('content')
-    <h1 class="text-5xl mt-2">{{ __('manga.statistics.title') }}</h1>
+    <h1 class="headline-1">{{ __('manga.statistics.title') }}</h1>
 
-    <ul class="list-disc ml-8">
-        <li>
-            {{ $mangas->count() }} {{ trans_choice('manga.statistics.mangas', $mangas->count()) }}
-        </li>
-        <li>
-            {{ $volumes->count() }} {{ trans_choice('manga.statistics.volumes', $volumes->count()) }}
-        </li>
-        <li>
-            {{ $specials->count() }} {{ trans_choice('manga.statistics.specials', $specials->count()) }}
-        </li>
-    </ul>
+    <div class="grid lg:grid-cols-2 gap-4">
+        <div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
+            <div class="px-6 py-4 mb-8">
+                <div class="font-bold text-xl mb-2">
+                    {{ __('manga.statistics.general') }}
+                </div>
 
-    <h2 class="text-4xl">{{ __('manga.statistics.latest_volumes_and_specials') }}</h2>
+                <div>{{ trans_choice('manga.statistics.mangas', $mangas->count()) }}: {{ $mangas->count() }}</div>
+                <div>{{ trans_choice('manga.statistics.volumes', $volumes->count()) }}: {{ $volumes->count() }}</div>
+                <div>{{ trans_choice('manga.statistics.specials', $specials->count()) }}: {{ $specials->count() }}</div>
+            </div>
+        </div>
 
-    <ul class="list-disc ml-8">
-        @foreach ($latestVolumesAndSpecials as $entry)
-            <li>
-                {{ $entry['name'] }}
-            </li>
-        @endforeach
-    </ul>
+        <div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">
+                    {{ __('manga.statistics.latest_volumes_and_specials') }}
+                </div>
+
+                @foreach ($latestVolumesAndSpecials as $entry)
+                    <div>{{ $entry['name'] }}</div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endsection

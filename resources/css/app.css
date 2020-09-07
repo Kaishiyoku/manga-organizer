@@ -26,7 +26,10 @@
 }
 
 .input-default {
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight transition-all duration-200;
+    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight transition-all duration-200;
+}
+.input-shadow {
+    @apply shadow;
 }
 .input-default:focus,
 .input-with-btn:focus {
@@ -34,7 +37,7 @@
 }
 
 .input-with-btn {
-    @apply shadow appearance-none border-l border-t border-b rounded-l w-full py-2 px-3 text-gray-700 leading-tight;
+    @apply appearance-none border-l border-t border-b rounded-l w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
 .validation-error {
@@ -108,4 +111,10 @@
 }
 .table-hover tr:hover {
     @apply bg-purple-50;
+}
+
+/* Typography
+---------------------------------------------------------------------------- */
+.headline-1 {
+    @apply text-3xl mt-6 mb-2;
 }
