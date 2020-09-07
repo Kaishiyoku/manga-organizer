@@ -6,6 +6,8 @@
 
 @import "tailwindcss/utilities";
 
+/* Navbar
+---------------------------------------------------------------------------- */
 .navbar-link {
     @apply transition-all duration-200 px-4 py-4 text-gray-400;
 }
@@ -17,6 +19,8 @@
     @apply text-white;
 }
 
+/* Forms
+---------------------------------------------------------------------------- */
 .label-default {
     @apply block text-gray-700 text-sm font-bold mb-2;
 }
@@ -41,6 +45,8 @@
     @apply border border-red-500;
 }
 
+/* Buttons
+---------------------------------------------------------------------------- */
 .btn-default {
     @apply bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-200;
 }
@@ -57,6 +63,8 @@
     @apply bg-purple-500 text-gray-100 py-2 px-4 rounded-r transition-all duration-150 shadow border-l border-purple-600;
 }
 
+/* Links
+---------------------------------------------------------------------------- */
 .link-default {
     @apply text-purple-700 transition-all duration-150;
 }
@@ -69,6 +77,8 @@
     @apply text-red-700 transition-all duration-150;
 }
 
+/* Alerts
+---------------------------------------------------------------------------- */
 .alert {
     @apply p-4 my-4 border-l-4 rounded;
 }
@@ -85,6 +95,8 @@
     @apply bg-red-100 text-red-800 border-red-400;
 }
 
+/* Tables
+---------------------------------------------------------------------------- */
 .table {
     @apply w-full text-left;
 }
