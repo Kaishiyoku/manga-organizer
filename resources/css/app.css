@@ -17,16 +17,6 @@
     @apply text-white;
 }
 
-.simple-list {
-    @apply transition-all duration-150;
-}
-.simple-list > * {
-    @apply px-2 py-1;
-}
-.simple-list *:nth-child(odd) {
-    @apply bg-gray-200;
-}
-
 .label-default {
     @apply block text-gray-700 text-sm font-bold mb-2;
 }

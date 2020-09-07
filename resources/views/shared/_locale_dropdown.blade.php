@@ -5,7 +5,7 @@
         <i class="fas fa-caret-down mt-1"></i>
     </a>
 
-    <div id="language-dropdown" class="hidden absolute mt-1 rounded-md shadow-xl">
+    <div id="language-dropdown" class="hidden absolute mt-3 rounded-md shadow-xl">
         <div class="rounded-md bg-white shadow-xs">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 @foreach (config('app.available_locales') as $locale)
