@@ -5,6 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import slideToggle from './slideToggle';
+
 require('./bootstrap');
 
 $(document).ready(function () {
@@ -47,15 +49,8 @@ $(document).ready(function () {
         const $this = $(this);
 
         const $container = $($this.data('target'));
+        const duration = $this.data('duration') || 350;
 
-        if ($container.hasClass('opacity-0')) {
-            $container.removeClass('hidden');
-
-            setTimeout(() => $container.removeClass('opacity-0'), 200);
-        } else {
-            $container.addClass('opacity-0');
-
-            setTimeout(() => $container.addClass('hidden'), 150);
-        }
+        slideToggle($container[0], duration);
     });
 });
