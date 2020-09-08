@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Jikan\Exception\BadResponseException;
 use Jikan\Exception\ParserException;
+use Laminas\Text\Table\Column;
+use Laminas\Text\Table\Decorator\Ascii;
+use Laminas\Text\Table\Decorator\Blank;
+use Laminas\Text\Table\Decorator\Unicode;
+use Laminas\Text\Table\Row;
+use Laminas\Text\Table\Table;
 
 class MangaController extends Controller
 {
@@ -44,26 +50,50 @@ class MangaController extends Controller
     {
         $mangas = $this->mangas()->get();
 
-        $volumeMapper = function ($volume) { return $volume->no; };
-        $specialMapper = function ($special) { return $special->name; };
-        $mangaMapper = function ($manga) use ($volumeMapper, $specialMapper) {
-            return generateAsciiHeading($manga->name, '-')
-                . "\n"
-                . __('manga.index.mal_score') . ': ' . ($manga->malItem && $manga->malItem->score ? formatNumber($manga->malItem->score, 2) : 'n/a')
-                . "\n"
-                . __('validation.attributes.is_completed') . ': ' . formatBool($manga->is_completed)
-                . "\n"
-                . "\n"
-                . implode("\n", $manga->volumes->map($volumeMapper)->toArray())
-                . "\n"
-                . implode("\n", $manga->specials->map($specialMapper)->toArray())
-                . "\n"
-                . "\n";
+        $mangaMapper = function (Manga $manga) {
+            $volumes = $manga->volumes;
+            $specials = $manga->specials;
+
+            $table = new Table();
+            $table->setDecorator(Ascii::class);
+            $table->setPadding(1);
+            $table->setColumnWidths([16, 30]);
+            $table->setAutoSeparate(Table::AUTO_SEPARATE_HEADER);
+
+            $row = new Row();
+            $row->appendColumn(new Column($manga->name, null, 2));
+            $table->appendRow($row);
+
+            $row = new Row();
+            $row->appendColumn(new Column(__('manga.index.mal_score') . ':'));
+            $row->appendColumn(new Column(($manga->malItem && $manga->malItem->score ? formatNumber($manga->malItem->score, 2) : 'n/a')));
+            $table->appendRow($row);
+
+            $row = new Row();
+            $row->appendColumn(new Column( __('validation.attributes.is_completed') . ':'));
+            $row->appendColumn(new Column(formatBool($manga->is_completed)));
+            $table->appendRow($row);
+
+            if ($volumes->isNotEmpty()) {
+                $row = new Row();
+                $row->appendColumn(new Column(trans_choice('manga.volumes', $volumes) . ':'));
+                $row->appendColumn(new Column((string) intRangeToStr($volumes->pluck('no'))));
+                $table->appendRow($row);
+            }
+
+            if ($specials->isNotEmpty()) {
+                $row = new Row();
+                $row->appendColumn(new Column(trans_choice('manga.specials', $specials) . ':'));
+                $row->appendColumn(new Column($specials->implode('name', ', ')));
+                $table->appendRow($row);
+            }
+
+            return $table->render();
         };
 
-        $content = implode("\n", $mangas->map($mangaMapper)->toArray());
+        $content = generateAsciiHeading(env('APP_NAME_LONG')) . "\n\n" . implode("\n", $mangas->map($mangaMapper)->toArray());
 
-        return response(view('manga.index_plain', compact('content')))->header('Content-Type', 'text/plain');
+        return response($content)->header('Content-Type', 'text/plain');
     }
 
     /**

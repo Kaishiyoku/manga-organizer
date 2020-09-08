@@ -41,4 +41,6 @@ return [
     ],
     'no_recommendations' => 'No recommendations.',
     'mal_item_error' => 'There was an error fetching the manga information from MyAnimeList.',
+    'volumes' => 'Volume|Volumes',
+    'specials' => 'Special|Specials',
 ];
