@@ -18,54 +18,46 @@
     @if ($mangas->count() === 0)
         <p><i>{{ __('manga.no_mangas_yet') }}</i></p>
     @else
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>{{ __('validation.attributes.title') }}</th>
-                    <th>{{ __('manga.index.mal_score') }}</th>
-                    <th>{{ __('validation.attributes.is_completed') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($mangas as $manga)
+        @foreach ($mangas as $manga)
+            <table border="1" cellpadding="5" width="500" style="margin-bottom: 1rem;">
+                <tbody>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             @if ($manga->malItem && $manga->malItem->url)
-                                {{ Html::link($manga->malItem->url, $manga->name) }}
+                                {{ Html::link($manga->malItem->url, \Illuminate\Support\Str::upper($manga->name)) }}
                             @else
-                                {{ $manga->name }}
+                                {{ \Illuminate\Support\Str::upper($manga->name) }}
                             @endif
                         </td>
-                        <td>
+                    </tr>
+                    <tr>
+                        <td width="120">{{ __('manga.index.mal_score') }}</td>
+                        <td width="380">
                             @if ($manga->malItem && $manga->malItem->url)
                                 <div>{{ formatNumber($manga->malItem->score, 2) }}</div>
                             @endif
                         </td>
-                        <td>
-                            {{ formatBool($manga->is_completed) }}
+                    </tr>
+                    <tr>
+                        <td width="120">{{ formatBool($manga->is_completed) }}</td>
+                        <td width="380">
+                            {{ __('validation.attributes.is_completed') }}
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3">
-                            <table>
-                                <tbody>
-                                    @foreach ($manga->volumes as $volume)
-                                        <tr>
-                                            <td>{{ $volume->no }}</td>
-                                        </tr>
-                                    @endforeach
-
-                                    @foreach ($manga->specials as $special)
-                                        <tr>
-                                            <td>{{ $special->name }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <td width="120">{{ trans_choice('manga.volumes', $manga->volumes) }}:</td>
+                        <td width="380">
+                            {{ intRangeToStr($manga->volumes->pluck('no')) }}
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    <tr>
+                        <td width="120">{{ trans_choice('manga.specials', $manga->specials) }}:</td>
+                        <td width="380">
+                            {{ $manga->specials->implode('name', ', ') }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        @endforeach
     @endif
 @endsection
