@@ -30,7 +30,12 @@
 
         <div class="flex flex-wrap">
             @if (env('MAL_PROFILE_URL'))
-                {{ Html::link(env('MAL_PROFILE_URL'), __('common.mal_profile'), ['class' => 'navbar-link']) }}
+                <a href="{{ env('MAL_PROFILE_URL') }}" class="group flex items-center navbar-link">
+                    <span class="mr-1">{{ __('common.mal_profile') }}</span>
+                    <span class="text-xs text-gray-500 group-hover:text-gray-300">
+                        <i class="fas fa-external-link-alt"></i>
+                    </span>
+                </a>
             @endif
 
             @auth
@@ -50,28 +55,28 @@
     @yield('content')
 </div>
 
-<div class="container px-4 lg:px-20 mt-16 mb-4 mx-auto text-gray-500">
+<div class="container px-4 lg:px-20 mt-16 mb-8 mx-auto text-gray-500">
     <footer>
-        @if (env('APP_CREATION_YEAR') == date('Y'))
-            {{ env('APP_CREATION_YEAR') }},
-        @else
-            {{ env('APP_CREATION_YEAR') }} - {{ date('Y') }},
-        @endif
+        <div class="mb-6">
+            @if (env('APP_CREATION_YEAR') == date('Y'))
+                {{ env('APP_CREATION_YEAR') }},
+            @else
+                {{ env('APP_CREATION_YEAR') }} - {{ date('Y') }},
+            @endif
 
-        {{ env('APP_AUTHOR') }} &#8226;
-        v{{ env('APP_VERSION') }} &#8226;
+            {{ env('APP_AUTHOR') }},
+            v{{ env('APP_VERSION') }}
+        </div>
 
-        @if (auth()->check())
-            {!! Html::decode(Html::linkRoute('settings.index', '<i class="fas fa-wrench"></i> ' . __('common.settings'), null, ['class' => 'link-default'])) !!}
+        <div class="flex lg:block">
+            @if (auth()->check())
+                {!! Html::decode(Html::linkRoute('settings.index', '<span class="hidden sm:inline"><i class="fas fa-wrench"></i></span> ' . __('common.settings'), null, ['class' => 'link-alternative flex-1'])) !!}
+            @endif
 
-            &#8226;
-        @endif
+            {!! Html::decode(Html::linkRoute('mangas.index_plain', '<span class="hidden sm:inline"><i class="fas fa-file-alt"></i></span> ' . __('common.list_as_text'), null, ['class' => 'link-alternative flex-1 mx-3'])) !!}
 
-        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<i class="fas fa-file-alt"></i> ' . __('common.list_as_text'), null, ['class' => 'link-default'])) !!}
-
-        &#8226;
-
-        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<i class="fas fa-envelope"></i> ' . __('common.contact'), null, ['class' => 'link-default'])) !!}
+            {!! Html::decode(Html::linkRoute('home.show_contact_form', '<span class="hidden sm:inline"><i class="fas fa-envelope"></i></span> ' . __('common.contact'), null, ['class' => 'link-alternative flex-1'])) !!}
+        </div>
     </footer>
 </div>
 
