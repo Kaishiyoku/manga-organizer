@@ -118,3 +118,22 @@
 .headline-1 {
     @apply text-3xl mt-6 mb-2;
 }
+
+/* Dropdown
+---------------------------------------------------------------------------- */
+.dropdown-item {
+    @apply block px-4 py-2 leading-5 text-gray-700 cursor-pointer transition-all duration-200;
+}
+.dropdown-item:hover {
+    @apply bg-gray-200 text-gray-900;
+}
+.dropdown-item:focus {
+    @apply outline-none bg-gray-100 text-gray-900;
+}
+
+.dropdown-item.dropdown-item-active {
+    @apply text-white bg-purple-500;
+}
+.dropdown-item.dropdown-item-active:hover {
+    @apply text-white bg-purple-600;
+}

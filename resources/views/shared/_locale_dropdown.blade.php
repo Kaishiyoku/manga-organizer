@@ -1,20 +1,22 @@
-<div class="relative navbar-link cursor-pointer" data-toggle="dropdown" data-target="#language-dropdown">
-    <a id="test">
+<div class="relative navbar-link cursor-pointer select-none" data-provide-dropdown data-dropdown-target="#language-dropdown">
+    <a>
         {{ __('common.language') }}
 
         <i class="fas fa-caret-down mt-1"></i>
     </a>
 
-    <div id="language-dropdown" class="hidden absolute mt-3 rounded-md shadow-xl">
+    <div id="language-dropdown" class="hidden rounded-md shadow-xl">
         <div class="rounded-md bg-white shadow-xs">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 @foreach (config('app.available_locales') as $locale)
                     <a
-                        href="#"
                         id="lang-link-{{ $locale }}"
-                        class="block px-4 py-2 leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900{{ (Session::get('locale') === $locale ? ' bg-gray-200' : '') }}"
+                        class="dropdown-item {{ (Session::get('locale') === $locale ? ' dropdown-item-active' : '') }}"
                     >
-                        {{ __('common.languages.' . $locale) }}
+                        <div class="flex">
+                            <img class="w-6 mr-2" src="{{ asset('/img/flags/' . $locale . '.svg') }}" alt="{{ $locale }}">
+                            <div>{{ __('common.languages.' . $locale) }}</div>
+                        </div>
                     </a>
                 @endforeach
             </div>

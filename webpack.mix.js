@@ -19,11 +19,10 @@ mix
         require('postcss-nested'),
         require('autoprefixer'),
     ])
-    .sass('resources/sass/font-awesome.scss', 'public/css')
+    .sass('resources/sass/additions.scss', 'public/css')
     .copyDirectory('resources/img', 'public/img')
     .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts');
 
 if (mix.inProduction()) {
-    mix
-        .version();
+    mix.version();
 }

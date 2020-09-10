@@ -10,7 +10,9 @@
             {{ $manga->name }}
 
             @if ($manga->malItem && $manga->malItem->url)
-                {!! Html::decode(Html::link($manga->malItem->url, '<i class="fas fa-external-link-alt"></i>', ['title' => __('manga.index.manga_at_myanimelist', ['name' => $manga->name]), 'class' => 'link-default text-sm'])) !!}
+                <a href="{{ $manga->malItem->url }}" class="link-default text-sm" data-tooltip-content="{{ __('manga.index.manga_at_myanimelist', ['name' => $manga->name]) }}">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
             @endif
         </div>
 

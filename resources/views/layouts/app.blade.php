@@ -16,7 +16,7 @@
     <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
 
     <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/additions.css') }}">
 </head>
 <body class="bg-gray-100">
 
@@ -86,15 +86,6 @@
 @endauth
 
 <script src="{{ asset('js/app.js') }}"></script>
-
-<script type="text/javascript">
-    $("[id^=lang-link-]").click(function (e) {
-        $this = $(this);
-        e.preventDefault();
-
-        $('#' + $this.attr('id').replace('link', 'form')).submit();
-    });
-</script>
 
 </body>
 </html>
