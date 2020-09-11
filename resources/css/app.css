@@ -145,3 +145,9 @@
 .dropdown-item.dropdown-item-active:hover {
     @apply text-white bg-purple-600;
 }
+
+/* Dropdown
+---------------------------------------------------------------------------- */
+.card {
+    @apply rounded overflow-hidden shadow-lg border border-gray-200 bg-white;
+}

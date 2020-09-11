@@ -1,4 +1,4 @@
-<div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
+<div class="card transition-shadow duration-300 hover:shadow-xl">
     @if ($manga->malItem && $manga->malItem->image_url)
         <div class="text-center">
             {{ Html::image($manga->malItem->image_url, $manga->name, ['class' => 'w-full']) }}

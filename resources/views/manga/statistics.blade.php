@@ -6,7 +6,7 @@
     <h1 class="headline-1">{{ __('manga.statistics.title') }}</h1>
 
     <div class="grid lg:grid-cols-2 gap-4">
-        <div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
+        <div class="card">
             <div class="px-6 py-4 mb-8">
                 <div class="font-bold text-xl mb-2">
                     {{ __('manga.statistics.general') }}
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white">
+        <div class="card">
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">
                     {{ __('manga.statistics.latest_volumes_and_specials') }}
