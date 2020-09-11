@@ -16,9 +16,15 @@ module.exports = {
                     50: '#f9f7fa',
                 },
             },
+            shadowOutline: {
+                'shadow': '0 0 0 .2rem',
+                'alpha': '.4',
+            },
         },
     },
-    variants: {},
+    variants: {
+        'shadowOutline': ['focus'],
+    },
     plugins: [
         require('@tailwindcss/ui'),
         require('tailwindcss-shadow-outline-colors')(),

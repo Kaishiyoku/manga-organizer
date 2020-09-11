@@ -20,6 +20,6 @@
             </div>
         </div>
 
-        {!! Html::decode(Form::button(__('recommendation.create.submit'), ['type' => 'submit', 'class' => 'border border-purple-600 bg-purple-500 text-white py-2 px-3 hover:bg-purple-900 transition-all duration-150 rounded shadow focus:shadow-outline'])) !!}
+        {!! Html::decode(Form::button(__('recommendation.create.submit'), ['type' => 'submit', 'class' => 'btn-default'])) !!}
     {{ Form::close() }}
 @endsection

@@ -26,14 +26,18 @@
 }
 
 .input-default {
-    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight transition-all duration-200;
+    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+.input-default,
+.input-with-btn {
+    @apply transition-all duration-200;
 }
 .input-shadow {
     @apply shadow;
 }
 .input-default:focus,
 .input-with-btn:focus {
-    @apply outline-none shadow-outline-purple;
+    @apply outline-none shadow-outline-purple-300;
 }
 
 .input-with-btn {
@@ -51,15 +55,15 @@
 /* Buttons
 ---------------------------------------------------------------------------- */
 .btn-default {
-    @apply bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-200 shadow;
+    @apply border border-purple-600 bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-200 shadow;
 }
 .btn-default:hover,
 .btn-with-input:hover {
-    @apply bg-purple-700;
+    @apply border-purple-800 bg-purple-700;
 }
 .btn-default:focus,
 .btn-with-input:focus {
-    @apply outline-none shadow-outline-purple;
+    @apply outline-none shadow-outline-purple-700;
 }
 
 .btn-with-input {
@@ -83,9 +87,11 @@
 .link-alternative {
     @apply text-purple-700 transition-all duration-200 ease-in border-purple-300 py-2 px-4;
 }
-.link-alternative:hover,
 .link-alternative:hover {
     @apply text-white bg-purple-500 border-purple-700;
+}
+.link-alternative:focus {
+    @apply bg-purple-700 border-purple-900;
 }
 
 /* Alerts
