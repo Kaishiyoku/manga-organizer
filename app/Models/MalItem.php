@@ -55,6 +55,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MalItem query()
  * @property-read int|null $mangas_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Genre[] $genres
+ * @property-read int|null $genres_count
  */
 class MalItem extends Model
 {
@@ -92,5 +94,10 @@ class MalItem extends Model
     public function mangas()
     {
         return $this->belongsToMany(Manga::class)->orderBy('name');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'genre_mal_item', 'mal_item_id', 'genre_id')->orderBy('name');
     }
 }

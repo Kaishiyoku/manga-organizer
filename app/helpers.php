@@ -5,6 +5,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Jikan\Model\Common\MalUrl;
 use Jikan\MyAnimeList\MalClient;
 use Jikan\Request\Manga\MangaRequest;
 
@@ -113,6 +114,14 @@ if (!function_exists('fetchMalItemFor')) {
         $malItem->synopsis = $mangaItem->getSynopsis();
 
         $malItem->save();
+
+        $genreIds = collect($mangaItem->getGenres())
+            ->map(function (MalUrl $malGenre) {
+                return \App\Models\Genre::firstOrCreate(['name' => $malGenre->getName()])->id;
+            });
+
+        $malItem->genres()->detach();
+        $malItem->genres()->attach($genreIds);
 
         return $malItem;
     }

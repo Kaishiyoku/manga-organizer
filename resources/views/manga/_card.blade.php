@@ -25,6 +25,16 @@
                 {{ __('validation.attributes.is_completed') }}: {{ formatBool($manga->is_completed) }}
             </div>
 
+            @if ($manga->malItem)
+                <div>
+                    @foreach ($manga->malItem->genres as $genre)
+                        <span class="inline-block rounded-full bg-purple-200 text-purple-800 uppercase px-2 py-1 text-xs mb-2">
+                            {{ $genre->name }}
+                        </span>
+                    @endforeach
+                </div>
+            @endif
+
             @if ($manga->volumes->isNotEmpty())
                 <div class="font-bold">
                     {{ trans_choice('manga.volumes', $manga->volumes) }}:

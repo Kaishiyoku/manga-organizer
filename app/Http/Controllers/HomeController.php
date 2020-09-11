@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Mail\ContactFormSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Jikan\MyAnimeList\MalClient;
+use Jikan\Request\Manga\MangaRequest;
 
 class HomeController extends Controller
 {
