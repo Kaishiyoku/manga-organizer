@@ -29,19 +29,25 @@
     @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 .input-default,
-.input-with-btn {
+.input-with-btn,
+.input-typeahead {
     @apply transition-all duration-200;
 }
 .input-shadow {
     @apply shadow;
 }
 .input-default:focus,
-.input-with-btn:focus {
+.input-with-btn:focus,
+.input-typeahead:focus {
     @apply outline-none shadow-outline-purple-300;
 }
 
 .input-with-btn {
     @apply appearance-none border-l border-t border-b rounded-l w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.input-typeahead {
+    @apply appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight;
 }
 
 .validation-error {
@@ -135,6 +141,9 @@
 
 /* Dropdown
 ---------------------------------------------------------------------------- */
+.dropdown {
+    @apply rounded-md bg-white shadow-xl;
+}
 .dropdown-item {
     @apply block px-4 py-2 leading-5 text-gray-700 cursor-pointer transition-all duration-200;
 }
@@ -152,7 +161,7 @@
     @apply text-white bg-purple-600;
 }
 
-/* Dropdown
+/* Cards
 ---------------------------------------------------------------------------- */
 .card {
     @apply rounded overflow-hidden shadow-lg border border-gray-200 bg-white;

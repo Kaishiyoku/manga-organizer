@@ -20,6 +20,9 @@ module.exports = {
                 'shadow': '0 0 0 .2rem',
                 'alpha': '.4',
             },
+            maxHeight: {
+                48: '12rem',
+            },
         },
     },
     variants: {

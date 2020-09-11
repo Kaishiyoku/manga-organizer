@@ -29,6 +29,8 @@ Route::group(['middleware' => 'menus'], function () {
         Route::resource('mangas', 'MangaController', ['except' => ['index', 'show']]);
         Route::get('mangas/manage', 'MangaController@manage')->name('mangas.manage');
 
+        Route::post('mangas/search', 'MangaController@search')->name('mangas.search');
+
         Route::prefix('mangas/{manga}')->group(function () {
             Route::post('volumes', 'VolumeController@store')->name('volumes.store');
             Route::delete('volumes/{volume}', 'VolumeController@destroy')->name('volumes.destroy');

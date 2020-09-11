@@ -6,7 +6,7 @@
     </a>
 
     <div id="language-dropdown" class="hidden rounded-md shadow-xl">
-        <div class="rounded-md bg-white shadow-xs">
+        <div class="dropdown">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 @foreach (config('app.available_locales') as $locale)
                     <a

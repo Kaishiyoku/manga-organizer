@@ -8,13 +8,15 @@ use App\Models\Recommendation;
 use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rule;
 use Jikan\Exception\BadResponseException;
 use Jikan\Exception\ParserException;
+use Jikan\Model\Search\MangaSearchListItem;
+use Jikan\MyAnimeList\MalClient;
+use Jikan\Request\Search\MangaSearchRequest;
 use Laminas\Text\Table\Column;
 use Laminas\Text\Table\Decorator\Ascii;
-use Laminas\Text\Table\Decorator\Blank;
-use Laminas\Text\Table\Decorator\Unicode;
 use Laminas\Text\Table\Row;
 use Laminas\Text\Table\Table;
 
@@ -70,14 +72,14 @@ class MangaController extends Controller
             $table->appendRow($row);
 
             $row = new Row();
-            $row->appendColumn(new Column( __('validation.attributes.is_completed') . ':'));
+            $row->appendColumn(new Column(__('validation.attributes.is_completed') . ':'));
             $row->appendColumn(new Column(formatBool($manga->is_completed)));
             $table->appendRow($row);
 
             if ($volumes->isNotEmpty()) {
                 $row = new Row();
                 $row->appendColumn(new Column(trans_choice('manga.volumes', $volumes) . ':'));
-                $row->appendColumn(new Column((string) intRangeToStr($volumes->pluck('no'))));
+                $row->appendColumn(new Column((string)intRangeToStr($volumes->pluck('no'))));
                 $table->appendRow($row);
             }
 
@@ -150,7 +152,7 @@ class MangaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -176,7 +178,7 @@ class MangaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Manga  $manga
+     * @param \App\Models\Manga $manga
      * @return \Illuminate\Http\Response
      */
     public function edit(Manga $manga)
@@ -190,8 +192,8 @@ class MangaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Manga  $manga
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Manga $manga
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Manga $manga)
@@ -218,7 +220,7 @@ class MangaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Manga  $manga
+     * @param Manga $manga
      * @return \Illuminate\Http\Response
      */
     public function destroy(Manga $manga)
@@ -230,6 +232,31 @@ class MangaController extends Controller
         });
 
         return redirect()->route($this->redirectRoute);
+    }
+
+    public function search(Request $request)
+    {
+        $data = $request->validate([
+            'query' => ['required', 'min:3'],
+        ]);
+
+        $mangaSearchResults = Cache::remember('manga-search-' . sha1($data['query']), env('MANGA_SEARCH_CACHE_TTL_SECONDS', 60 * 60), function () use ($data) {
+            $mangaSearchRequest = new MangaSearchRequest();
+            $mangaSearchRequest->setQuery($data['query']);
+
+            $jikan = new MalClient();
+            return collect($jikan->getMangaSearch($mangaSearchRequest)->getResults())
+                ->mapWithKeys(function (MangaSearchListItem $mangaSearchResult, $key) {
+                    return [$key => [
+                        'malId' => $mangaSearchResult->getMalId(),
+                        'title' => $mangaSearchResult->getTitle(),
+                    ]];
+                })
+                ->sortBy('title')
+                ->values();
+        });
+
+        return response()->json($mangaSearchResults);
     }
 
     private function mangas()

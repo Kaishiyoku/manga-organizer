@@ -186,5 +186,6 @@ return [
         'current_password'          => 'Current password',
         'new_password'              => 'New password',
         'new_password_confirmation' => 'New password confirmation',
+        'mal_title'                 => 'MAL Manga',
     ],
 ];

@@ -4,12 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import tippy  from 'tippy.js';
 import onDomReady from './onDomReady';
+import tippy from 'tippy.js';
+import bonanza from 'bonanza';
 
 require('./bootstrap');
 
-onDomReady(() =>  {
+onDomReady(() => {
     document.querySelectorAll('[data-click]').forEach((element) => {
         element.addEventListener('click', (event) => {
             event.preventDefault();
@@ -56,5 +57,71 @@ onDomReady(() =>  {
 
             return dropdown;
         },
+    });
+
+    document.querySelectorAll('[data-provide-typeahead]').forEach((element) => {
+        const targetElement = document.querySelector(element.getAttribute('data-target'));
+        const targetProperty = element.getAttribute('data-target-property');
+        const url = element.getAttribute('data-url');
+        const minLength = parseInt(element.getAttribute('data-min-length'), 10) || 0
+        const loadingIndicatorElement = document.querySelector(element.getAttribute('data-loading-indicator'));
+
+        const {load_more, loading} = window.config.typeahead;
+
+        bonanza(element, {
+            templates: {
+                itemLabel: (obj) => obj.title,
+                // item: '',
+                label: (obj) => obj.title,
+                isDisabled: (obj) => false,
+                noResults: (search) => `No results for ${search}`,
+                loadMore: load_more,
+                loading: loading,
+            },
+            css: {
+                container: 'dropdown absolute overflow-y-auto max-h-48', // div
+                hide: 'hidden',
+                list: '', // ul
+                item: 'dropdown-item', // li
+                disabled: '',
+                selected: 'dropdown-item-active',
+                // loading: '', // li
+                // loadMore: '', // li
+                // noResults: '', // li
+                // inputLoading: '', // input
+                match: '',
+            },
+            openOnFocus: true,
+            showLoading: true,
+            showLoadMore: true,
+            limit: 10,
+            scrollDistance: 0,
+            getItems: (result) => result,
+        }, (query, callback) => {
+            if (query.search.length >= minLength) {
+                axios.post(url, {query: query.search})
+                    .then(({data}) => {
+                        callback(null, data);
+                    })
+                    .catch(() => {
+                        element.classList.remove('input-typeahead');
+                        element.classList.add('input-default');
+                        loadingIndicatorElement.classList.add('hidden');
+                    });
+            }
+        })
+            .on('change', (item) => {
+                targetElement.value = item[targetProperty];
+            })
+            .on('search', (query) => {
+                element.classList.remove('input-default');
+                element.classList.add('input-typeahead');
+                loadingIndicatorElement.classList.remove('hidden');
+            })
+            .on('success', (result, query) => {
+                element.classList.remove('input-typeahead');
+                element.classList.add('input-default');
+                loadingIndicatorElement.classList.add('hidden');
+            });
     });
 });

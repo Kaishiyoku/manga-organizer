@@ -33,4 +33,10 @@ return [
     ],
     'social' => 'Social',
     'settings' => 'Settings',
+    'javascript_config' => [
+        'typeahead' => [
+            'load_more' => '...',
+            'loading' => 'Loading...',
+        ],
+    ],
 ];

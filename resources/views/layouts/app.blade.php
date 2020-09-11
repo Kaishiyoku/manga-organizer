@@ -90,6 +90,10 @@
     @include('shared._logout_form')
 @endauth
 
+<script type="text/javascript">
+    window.config = @json(__('common.javascript_config'));
+</script>
+
 <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
