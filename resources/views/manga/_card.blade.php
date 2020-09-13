@@ -21,14 +21,14 @@
                 <div>{{ __('manga.index.mal_score') }}: {{ formatNumber($manga->malItem->score, 2) }}</div>
             @endif
 
-            <div class="pb-3">
+            <div>
                 {{ __('validation.attributes.is_completed') }}: {{ formatBool($manga->is_completed) }}
             </div>
 
             @if ($manga->malItem)
-                <div>
+                <div class="pt-2">
                     @foreach ($manga->malItem->genres as $genre)
-                        <span class="inline-block rounded-full bg-purple-200 text-purple-800 uppercase px-2 py-1 text-xs mb-2">
+                        <span class="inline-block rounded-full bg-gray-200 text-gray-800 px-2 py-1 text-xs mb-2">
                             {{ $genre->name }}
                         </span>
                     @endforeach
