@@ -43,4 +43,5 @@ return [
     'mal_item_error' => 'There was an error fetching the manga information from MyAnimeList.',
     'volumes' => 'Volume|Volumes',
     'specials' => 'Special|Specials',
+    'search_on_mal' => 'Search on MAL',
 ];

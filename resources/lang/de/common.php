@@ -39,4 +39,5 @@ return [
             'loading' => 'Lade...',
         ],
     ],
+    'search' => 'Suchen',
 ];

@@ -58,13 +58,17 @@
     @apply border border-red-500;
 }
 
+.has-error-alternative {
+    @apply bg-red-100 text-red-800 border border-red-400;
+}
+
 /* Buttons
 ---------------------------------------------------------------------------- */
 .btn-default {
     @apply border border-purple-600 bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-200 shadow;
 }
-.btn-default:hover,
-.btn-with-input:hover {
+.btn-default:hover:not(:disabled),
+.btn-with-input:hover:not(:disabled) {
     @apply border-purple-800 bg-purple-700;
 }
 .btn-default:focus,
@@ -74,6 +78,11 @@
 
 .btn-with-input {
     @apply bg-purple-500 text-gray-100 py-2 px-4 rounded-r transition-all duration-150 border-l border-purple-600;
+}
+
+.btn-default:disabled,
+.btn-with-input:disabled {
+    @apply cursor-not-allowed border-purple-500 bg-purple-400;
 }
 
 /* Links

@@ -43,4 +43,5 @@ return [
     'mal_item_error' => 'Beim Holen das Manga-Informationen von MyAnimeList ist ein Fehler aufgetreten.',
     'volumes' => 'Band|Bände',
     'specials' => 'Special|Specials',
+    'search_on_mal' => 'Auf MAL suchen',
 ];

@@ -185,6 +185,6 @@ return [
         'current_password'          => 'Derzeitiges Passwort',
         'new_password'              => 'Neues Passwort',
         'new_password_confirmation' => 'Neues Passwort (Wiederholung)',
-        'mal_title'                 => 'MAL Manga',
+        'mal_title'                 => 'Titel',
     ],
 ];

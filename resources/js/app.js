@@ -37,6 +37,60 @@ onDomReady(() => {
         });
     });
 
+    document.querySelectorAll('[data-provide-manga-search]').forEach((element) => {
+        const url = element.getAttribute('data-url');
+        const searchInputElement = document.querySelector(element.getAttribute('data-manga-search-input'));
+        const targetInputElement = document.querySelector(element.getAttribute('data-target-input'));
+        const dropdownElement = document.querySelector(element.getAttribute('data-dropdown'));
+        const searchResultContainer = document.querySelector(element.getAttribute('data-manga-search-results-container'));
+        const buttonText = element.textContent;
+
+        searchInputElement.addEventListener('keyup', (event) => {
+            element.disabled = searchInputElement.value.length < 3;
+        });
+
+        element.addEventListener('click', (event) => {
+            searchInputElement.classList.remove('has-error-alternative');
+            searchResultContainer.innerHTML = '';
+
+            let loadingSpinnerElement = document.createElement('i');
+            loadingSpinnerElement.classList.add('fas', 'fa-spinner', 'fa-spin');
+
+            element.textContent = '';
+            element.appendChild(loadingSpinnerElement);
+            element.disabled = true;
+
+            axios.post(url, {query: searchInputElement.value})
+                .then(({data}) => {
+                    data.forEach((item) => {
+                        let resultElement = document.createElement('div');
+                        resultElement.setAttribute('data-manga-search-result-id', item.malId);
+                        resultElement.classList.add('dropdown-item');
+                        resultElement.textContent = item.title;
+
+                        searchResultContainer.appendChild(resultElement);
+
+                        searchResultContainer.querySelectorAll('[data-manga-search-result-id]').forEach((el) => {
+                            el.addEventListener('click', () => {
+                                targetInputElement.value = el.getAttribute('data-manga-search-result-id');
+                                searchInputElement.value = '';
+                                searchResultContainer.innerHTML = '';
+                                element.disabled = true;
+                            });
+                        });
+
+                        element.innerHTML = buttonText;
+                        element.disabled = false;
+                    });
+                })
+                .catch(() => {
+                    searchInputElement.classList.add('has-error-alternative');
+                    element.innerHTML = buttonText;
+                    element.disabled = false;
+                });
+        });
+    });
+
     tippy('[data-tooltip-content]', {
         theme: 'light-border',
         content: (reference) => reference.getAttribute('data-tooltip-content'),
@@ -57,71 +111,5 @@ onDomReady(() => {
 
             return dropdown;
         },
-    });
-
-    document.querySelectorAll('[data-provide-typeahead]').forEach((element) => {
-        const targetElement = document.querySelector(element.getAttribute('data-target'));
-        const targetProperty = element.getAttribute('data-target-property');
-        const url = element.getAttribute('data-url');
-        const minLength = parseInt(element.getAttribute('data-min-length'), 10) || 0
-        const loadingIndicatorElement = document.querySelector(element.getAttribute('data-loading-indicator'));
-
-        const {load_more, loading} = window.config.typeahead;
-
-        bonanza(element, {
-            templates: {
-                itemLabel: (obj) => obj.title,
-                // item: '',
-                label: (obj) => obj.title,
-                isDisabled: (obj) => false,
-                noResults: (search) => `No results for ${search}`,
-                loadMore: load_more,
-                loading: loading,
-            },
-            css: {
-                container: 'dropdown absolute overflow-y-auto max-h-48', // div
-                hide: 'hidden',
-                list: '', // ul
-                item: 'dropdown-item', // li
-                disabled: '',
-                selected: 'dropdown-item-active',
-                // loading: '', // li
-                // loadMore: '', // li
-                // noResults: '', // li
-                // inputLoading: '', // input
-                match: '',
-            },
-            openOnFocus: true,
-            showLoading: true,
-            showLoadMore: true,
-            limit: 10,
-            scrollDistance: 0,
-            getItems: (result) => result,
-        }, (query, callback) => {
-            if (query.search.length >= minLength) {
-                axios.post(url, {query: query.search})
-                    .then(({data}) => {
-                        callback(null, data);
-                    })
-                    .catch(() => {
-                        element.classList.remove('input-typeahead');
-                        element.classList.add('input-default');
-                        loadingIndicatorElement.classList.add('hidden');
-                    });
-            }
-        })
-            .on('change', (item) => {
-                targetElement.value = item[targetProperty];
-            })
-            .on('search', (query) => {
-                element.classList.remove('input-default');
-                element.classList.add('input-typeahead');
-                loadingIndicatorElement.classList.remove('hidden');
-            })
-            .on('success', (result, query) => {
-                element.classList.remove('input-typeahead');
-                element.classList.add('input-default');
-                loadingIndicatorElement.classList.add('hidden');
-            });
     });
 });

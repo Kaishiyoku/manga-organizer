@@ -9,6 +9,7 @@ use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Jikan\Exception\BadResponseException;
 use Jikan\Exception\ParserException;
@@ -240,17 +241,19 @@ class MangaController extends Controller
             'query' => ['required', 'min:3'],
         ]);
 
-        $mangaSearchResults = Cache::remember('manga-search-' . sha1($data['query']), env('MANGA_SEARCH_CACHE_TTL_SECONDS', 60 * 60), function () use ($data) {
+        $query = Str::lower($data['query']);
+
+        $mangaSearchResults = Cache::remember('manga-search-' . sha1($query), env('MANGA_SEARCH_CACHE_TTL_SECONDS', 60 * 60), function () use ($query) {
             $mangaSearchRequest = new MangaSearchRequest();
-            $mangaSearchRequest->setQuery($data['query']);
+            $mangaSearchRequest->setQuery($query);
 
             $jikan = new MalClient();
             return collect($jikan->getMangaSearch($mangaSearchRequest)->getResults())
-                ->mapWithKeys(function (MangaSearchListItem $mangaSearchResult, $key) {
-                    return [$key => [
+                ->map(function (MangaSearchListItem $mangaSearchResult) {
+                    return [
                         'malId' => $mangaSearchResult->getMalId(),
                         'title' => $mangaSearchResult->getTitle(),
-                    ]];
+                    ];
                 })
                 ->sortBy('title')
                 ->values();
