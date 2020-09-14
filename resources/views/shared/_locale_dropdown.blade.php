@@ -11,7 +11,7 @@
                 @foreach (config('app.available_locales') as $locale)
                     <a
                         id="lang-link-{{ $locale }}"
-                        class="dropdown-item {{ (Session::get('locale') === $locale ? ' dropdown-item-active' : '') }}"
+                        class="block dropdown-item {{ (Session::get('locale') === $locale ? ' dropdown-item-active' : '') }}"
                     >
                         <div class="flex">
                             <img class="w-6 mr-2" src="{{ asset('/img/flags/' . $locale . '.svg') }}" alt="{{ $locale }}">

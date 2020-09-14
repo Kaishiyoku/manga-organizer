@@ -65,8 +65,27 @@ onDomReady(() => {
                     data.forEach((item) => {
                         let resultElement = document.createElement('div');
                         resultElement.setAttribute('data-manga-search-result-id', item.malId);
-                        resultElement.classList.add('dropdown-item');
-                        resultElement.textContent = item.title;
+                        resultElement.classList.add('dropdown-item', 'flex');
+
+                        let imageElement = document.createElement('img');
+                        imageElement.setAttribute('src', item.imageUrl);
+                        imageElement.setAttribute('alt', item.title);
+                        imageElement.classList.add('w-8', 'mr-2');
+
+                        let headlineContainerElement = document.createElement('div');
+
+                        let headlineElement = document.createElement('div');
+                        headlineElement.textContent = item.title;
+
+                        let subHeadlineElement = document.createElement('div');
+                        subHeadlineElement.classList.add('text-gray-400');
+                        subHeadlineElement.textContent = item.secondTitle;
+
+                        headlineContainerElement.appendChild(headlineElement);
+                        headlineContainerElement.appendChild(subHeadlineElement);
+
+                        resultElement.appendChild(imageElement);
+                        resultElement.appendChild(headlineContainerElement);
 
                         searchResultContainer.appendChild(resultElement);
 

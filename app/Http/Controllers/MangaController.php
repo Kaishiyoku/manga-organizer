@@ -15,6 +15,7 @@ use Jikan\Exception\BadResponseException;
 use Jikan\Exception\ParserException;
 use Jikan\Model\Search\MangaSearchListItem;
 use Jikan\MyAnimeList\MalClient;
+use Jikan\Request\Manga\MangaRequest;
 use Jikan\Request\Search\MangaSearchRequest;
 use Laminas\Text\Table\Column;
 use Laminas\Text\Table\Decorator\Ascii;
@@ -249,10 +250,17 @@ class MangaController extends Controller
 
             $jikan = new MalClient();
             return collect($jikan->getMangaSearch($mangaSearchRequest)->getResults())
-                ->map(function (MangaSearchListItem $mangaSearchResult) {
+                ->map(function (MangaSearchListItem $mangaSearchResult) use ($jikan) {
+                    $manga = $jikan->getManga(new MangaRequest($mangaSearchResult->getMalId()));
+
+                    $title = $manga->getTitleEnglish() ?? $manga->getTitle();
+                    $secondTitle = $manga->getTitleEnglish() ? $manga->getTitle() : $manga->getTitleJapanese();
+
                     return [
-                        'malId' => $mangaSearchResult->getMalId(),
-                        'title' => $mangaSearchResult->getTitle(),
+                        'malId' => $manga->getMalId(),
+                        'title' => $title,
+                        'secondTitle' => $secondTitle,
+                        'imageUrl' => $mangaSearchResult->getImageUrl(),
                     ];
                 })
                 ->sortBy('title')
