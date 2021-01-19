@@ -21,7 +21,7 @@
     "kaishiyoku/laravel-menu": "4.5.0",
     "laminas/laminas-text": "^2.7",
     "laracasts/flash": "3.1",
-    "laravel/framework": "7.27.0",
+    "laravel/framework": "7.30.3",
     "laravel/tinker": "2.4.2",
     "laravel/ui": "2.2.0",
     "laravelcollective/html": "6.1.2",
