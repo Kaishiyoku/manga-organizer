@@ -8,15 +8,11 @@ use App\Models\Recommendation;
 use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Jikan\Exception\BadResponseException;
-use Jikan\Exception\ParserException;
-use Jikan\Model\Search\MangaSearchListItem;
-use Jikan\MyAnimeList\MalClient;
-use Jikan\Request\Manga\MangaRequest;
-use Jikan\Request\Search\MangaSearchRequest;
 use Laminas\Text\Table\Column;
 use Laminas\Text\Table\Decorator\Ascii;
 use Laminas\Text\Table\Row;
@@ -161,20 +157,14 @@ class MangaController extends Controller
     {
         $request->validate($this->getValidationRulesWithNameUniqueness());
 
-        try {
-            $this->createMalItemIfNecessary($request);
+        $this->createMalItemIfNecessary($request);
 
-            $manga = new Manga($request->all());
-            $manga->save();
+        $manga = new Manga($request->all());
+        $manga->save();
 
-            flash(__('manga.create.success'))->success();
+        flash(__('manga.create.success'))->success();
 
-            return redirect()->route('mangas.edit', $manga);
-        } catch (ParserException | BadResponseException $e) {
-            flash(__('manga.mal_item_error') . '<br/>' . $e->getMessage())->error();
-
-            return redirect()->route('mangas.create');
-        }
+        return redirect()->route('mangas.edit', $manga);
     }
 
     /**
@@ -202,21 +192,15 @@ class MangaController extends Controller
     {
         $request->validate($this->getValidationRulesWithNameUniqueness($manga));
 
-        try {
-            $this->createMalItemIfNecessary($request);
+        $this->createMalItemIfNecessary($request);
 
-            $manga->fill($request->all());
-            $manga->is_completed = $request->get('is_completed', false);
-            $manga->save();
+        $manga->fill($request->all());
+        $manga->is_completed = $request->get('is_completed', false);
+        $manga->save();
 
-            flash(__('manga.edit.success'))->success();
+        flash(__('manga.edit.success'))->success();
 
-            return redirect()->route($this->redirectRoute);
-        } catch (ParserException | BadResponseException $e) {
-            flash(__('manga.mal_item_error') . '<br/>' . $e->getMessage())->error();
-
-            return redirect()->route('mangas.edit', $manga);
-        }
+        return redirect()->route($this->redirectRoute);
     }
 
     /**
@@ -245,26 +229,19 @@ class MangaController extends Controller
         $query = Str::lower($data['query']);
 
         $mangaSearchResults = Cache::remember('manga-search-' . sha1($query), env('MANGA_SEARCH_CACHE_TTL_SECONDS', 60 * 60), function () use ($query) {
-            $mangaSearchRequest = new MangaSearchRequest();
-            $mangaSearchRequest->setQuery($query);
+            $mangaSearchResults = collect(Arr::get(Http::get(env('MANGA_SEARCH_API_BASE_URL') . '/search/manga', [
+                'q' => $query,
+            ])->json(), 'results'));
 
-            $jikan = new MalClient();
-            return collect($jikan->getMangaSearch($mangaSearchRequest)->getResults())
-                ->map(function (MangaSearchListItem $mangaSearchResult) use ($jikan) {
-                    $manga = $jikan->getManga(new MangaRequest($mangaSearchResult->getMalId()));
-
-                    $title = $manga->getTitleEnglish() ?? $manga->getTitle();
-                    $secondTitle = $manga->getTitleEnglish() ? $manga->getTitle() : $manga->getTitleJapanese();
-
+            return $mangaSearchResults
+                ->map(function ($mangaSearchResult) {
                     return [
-                        'malId' => $manga->getMalId(),
-                        'title' => $title,
-                        'secondTitle' => $secondTitle,
-                        'imageUrl' => $mangaSearchResult->getImageUrl(),
+                        'malId' => Arr::get($mangaSearchResult, 'mal_id'),
+                        'title' => Arr::get($mangaSearchResult, 'title'),
+                        'synopsis' => Arr::get($mangaSearchResult, 'synopsis'),
+                        'imageUrl' => Arr::get($mangaSearchResult, 'image_url'),
                     ];
-                })
-                ->sortBy('title')
-                ->values();
+                });
         });
 
         return response()->json($mangaSearchResults);
@@ -291,8 +268,6 @@ class MangaController extends Controller
 
     /**
      * @param $request
-     * @throws BadResponseException
-     * @throws ParserException
      */
     private function createMalItemIfNecessary($request)
     {

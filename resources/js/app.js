@@ -41,7 +41,6 @@ onDomReady(() => {
         const url = element.getAttribute('data-url');
         const searchInputElement = document.querySelector(element.getAttribute('data-manga-search-input'));
         const targetInputElement = document.querySelector(element.getAttribute('data-target-input'));
-        const dropdownElement = document.querySelector(element.getAttribute('data-dropdown'));
         const searchResultContainer = document.querySelector(element.getAttribute('data-manga-search-results-container'));
         const buttonText = element.textContent;
 
@@ -65,7 +64,7 @@ onDomReady(() => {
                     data.forEach((item) => {
                         let resultElement = document.createElement('div');
                         resultElement.setAttribute('data-manga-search-result-id', item.malId);
-                        resultElement.classList.add('dropdown-item', 'flex');
+                        resultElement.classList.add('dropdown-item', 'flex', 'items-start');
 
                         let imageElement = document.createElement('img');
                         imageElement.setAttribute('src', item.imageUrl);
@@ -78,8 +77,8 @@ onDomReady(() => {
                         headlineElement.textContent = item.title;
 
                         let subHeadlineElement = document.createElement('div');
-                        subHeadlineElement.classList.add('text-gray-400');
-                        subHeadlineElement.textContent = item.secondTitle;
+                        subHeadlineElement.classList.add('text-xs', 'text-gray-400');
+                        subHeadlineElement.textContent = item.synopsis;
 
                         headlineContainerElement.appendChild(headlineElement);
                         headlineContainerElement.appendChild(subHeadlineElement);
@@ -113,6 +112,12 @@ onDomReady(() => {
     tippy('[data-tooltip-content]', {
         theme: 'light-border',
         content: (reference) => reference.getAttribute('data-tooltip-content'),
+    });
+
+    tippy('[data-tooltip-query-selector]', {
+        theme: 'light-border',
+        content: (reference) => document.querySelector(reference.getAttribute('data-tooltip-query-selector')),
+        placement: 'top-start',
     });
 
     tippy('[data-provide-dropdown]', {

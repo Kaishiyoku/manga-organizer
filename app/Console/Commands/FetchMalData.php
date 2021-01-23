@@ -51,6 +51,9 @@ class FetchMalData extends Command
             $this->line('  #' . $malItem->mal_id);
 
             Artisan::call("mal:get_item", ['mal_id' => $malItem->mal_id]);
+
+            // wait for 3 seconds so that we don't reach the API rate limiting
+            sleep(3);
         }
 
         $timeElapsedInSeconds = microtime(true) - $start;

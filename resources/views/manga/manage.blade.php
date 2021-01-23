@@ -66,11 +66,18 @@
 
                 <tbody>
                     @foreach ($mangas as $manga)
-                        <tr>
-                            <td>{{ $manga->name }}</td>
+                        <tr{{ $manga->malItem !== null ? ' data-tooltip-query-selector=#manga-image-lg-' . $manga->id . '' : '' }}>
+                            <td>
+                                @if ($manga->malItem && $manga->malItem->image_url)
+                                    {{ Html::image($manga->malItem->image_url, $manga->name, ['class' => 'h-8 inline-block', 'id' => 'manga-image-sm-' . $manga->id]) }}
+                                    {{ Html::image($manga->malItem->image_url, $manga->name, ['class' => 'h-48 inline-block', 'id' => 'manga-image-lg-' . $manga->id]) }}
+                                @endif
+
+                                {{ $manga->name }}
+                            </td>
                             <td>{{ $manga->volumes->count() }}</td>
                             <td>{{ $manga->specials->count() }}</td>
-                            <td>{{ $manga->mal_id }}</td>
+                            <td>{{ $manga->mal_id ?? '/' }}</td>
                             <td>{{ formatBool($manga->is_completed) }}</td>
                             <td class="text-right">
                                 {!! Html::decode(Html::linkRoute('mangas.edit', '<i class="fas fa-pencil-alt"></i> ' . __('common.edit'), [$manga->id], ['class' => 'link-default'])) !!}

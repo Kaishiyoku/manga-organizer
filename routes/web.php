@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'menus'], function () {
@@ -30,7 +33,6 @@ Route::group(['middleware' => 'menus'], function () {
         Route::get('mangas/manage', 'MangaController@manage')->name('mangas.manage');
 
         Route::post('mangas/search', 'MangaController@search')->name('mangas.search');
-        Route::get('mangas/search', 'MangaController@search')->name('mangas.search');
 
         Route::prefix('mangas/{manga}')->group(function () {
             Route::post('volumes', 'VolumeController@store')->name('volumes.store');

@@ -2,12 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\MalItem;
 use Illuminate\Console\Command;
-use Jikan\Exception\BadResponseException;
-use Jikan\Exception\ParserException;
-use Jikan\MyAnimeList\MalClient;
-use Jikan\Request\Manga\MangaRequest;
 
 class FetchMalItem extends Command
 {
@@ -42,15 +37,10 @@ class FetchMalItem extends Command
      */
     public function handle()
     {
-        try {
-            $malId = (int) $this->argument('mal_id');
+        $malId = (int) $this->argument('mal_id');
 
-            $this->line('  #' . $malId);
+        $this->line('  #' . $malId);
 
-            fetchAndSaveMalItemFor($malId);
-        } catch (ParserException | BadResponseException $e) {
-            $this->error('Could not fetch data.');
-            $this->error($e);
-        }
+        fetchAndSaveMalItemFor($malId);
     }
 }

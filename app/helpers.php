@@ -1,13 +1,11 @@
 <?php
 
+use App\Models\Genre;
 use App\Models\MalItem;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use Jikan\Model\Common\MalUrl;
-use Jikan\MyAnimeList\MalClient;
-use Jikan\Request\Manga\MangaRequest;
 
 if (!function_exists('isAsText')) {
     function isAsText()
@@ -84,40 +82,36 @@ if (!function_exists('fetchMalItemFor')) {
     /**
      * @param int $id
      * @return MalItem
-     * @throws \Jikan\Exception\BadResponseException
-     * @throws \Jikan\Exception\ParserException
      */
     function fetchAndSaveMalItemFor(int $id): MalItem
     {
-        $jikan = new MalClient();
-
         $malItem = MalItem::firstOrNew(['mal_id' => $id]);
 
-        $mangaItem = $jikan->getManga(new MangaRequest($malItem->mal_id));
+        $mangaData = Http::get(env('MANGA_SEARCH_API_BASE_URL') . '/manga/' . $id)->json();
 
-        $malItem->url = $mangaItem->getUrl();
-        $malItem->title = $mangaItem->getTitle();
-        $malItem->title_english = $mangaItem->getTitleEnglish();
-        $malItem->title_japanese = $mangaItem->getTitleJapanese();
-        $malItem->title_synonyms = implode(';', $mangaItem->getTitleSynonyms());
-        $malItem->status = $mangaItem->getStatus();
-        $malItem->image_url = $mangaItem->getImageUrl();
-        $malItem->volumes = $mangaItem->getVolumes();
-        $malItem->chapters = $mangaItem->getChapters();
-        $malItem->publishing = $mangaItem->isPublishing();
-        $malItem->rank = $mangaItem->getRank();
-        $malItem->score = $mangaItem->getScore();
-        $malItem->scored_by = $mangaItem->getScoredBy();
-        $malItem->popularity = $mangaItem->getPopularity();
-        $malItem->members = $mangaItem->getMembers();
-        $malItem->favorites = $mangaItem->getFavorites();
-        $malItem->synopsis = $mangaItem->getSynopsis();
+        $malItem->url = Arr::get($mangaData, 'url');
+        $malItem->title = Arr::get($mangaData, 'title');
+        $malItem->title_english = Arr::get($mangaData, 'title_english');
+        $malItem->title_japanese = Arr::get($mangaData, 'title_japanese');
+        $malItem->title_synonyms = implode(';', Arr::get($mangaData, 'title_synonyms'));
+        $malItem->status = Arr::get($mangaData, 'status');
+        $malItem->image_url = Arr::get($mangaData, 'image_url');
+        $malItem->volumes = Arr::get($mangaData, 'volumes');
+        $malItem->chapters = Arr::get($mangaData, 'chapters');
+        $malItem->publishing = Arr::get($mangaData, 'publishing');
+        $malItem->rank = Arr::get($mangaData, 'rank');
+        $malItem->score = Arr::get($mangaData, 'scored');
+        $malItem->scored_by = Arr::get($mangaData, 'scored_by');
+        $malItem->popularity = Arr::get($mangaData, 'popularity');
+        $malItem->members = Arr::get($mangaData, 'members');
+        $malItem->favorites = Arr::get($mangaData, 'favorites');
+        $malItem->synopsis = Arr::get($mangaData, 'synopsis');
 
         $malItem->save();
 
-        $genreIds = collect($mangaItem->getGenres())
-            ->map(function (MalUrl $malGenre) {
-                return \App\Models\Genre::firstOrCreate(['name' => $malGenre->getName()])->id;
+        $genreIds = collect(Arr::get($mangaData, 'genres'))
+            ->map(function ($genre) {
+                return Genre::firstOrCreate(['name' => Arr::get($genre, 'name')])->id;
             });
 
         $malItem->genres()->detach();
