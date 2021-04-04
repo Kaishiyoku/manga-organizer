@@ -68,14 +68,14 @@
             v{{ env('APP_VERSION') }}
         </div>
 
-        <div class="flex lg:block">
+        <div class="flex space-x-2">
             @if (auth()->check())
-                {!! Html::decode(Html::linkRoute('settings.index', '<span class="hidden sm:inline"><i class="fas fa-wrench"></i></span> ' . __('common.settings'), null, ['class' => 'link-alternative flex-1'])) !!}
+                {!! Html::decode(Html::linkRoute('settings.index', '<span class="hidden sm:inline"><i class="fas fa-wrench"></i></span> ' . __('common.settings'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
             @endif
 
-            {!! Html::decode(Html::linkRoute('mangas.index_plain', '<span class="hidden sm:inline"><i class="fas fa-file-alt"></i></span> ' . __('common.list_as_text'), null, ['class' => 'link-alternative flex-1 mx-3'])) !!}
+            {!! Html::decode(Html::linkRoute('mangas.index_plain', '<span class="hidden sm:inline"><i class="fas fa-file-alt"></i></span> ' . __('common.list_as_text'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
 
-            {!! Html::decode(Html::linkRoute('home.show_contact_form', '<span class="hidden sm:inline"><i class="fas fa-envelope"></i></span> ' . __('common.contact'), null, ['class' => 'link-alternative flex-1'])) !!}
+            {!! Html::decode(Html::linkRoute('home.show_contact_form', '<span class="hidden sm:inline"><i class="fas fa-envelope"></i></span> ' . __('common.contact'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
         </div>
     </footer>
 </div>
