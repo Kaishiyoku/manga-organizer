@@ -22,7 +22,7 @@
 
 <div class="container lg:px-20 mx-auto">
     <a href="{{ route('mangas.index') }}">
-        <img src="{{ asset('img/cover.jpg') }}" class="img-fluid" alt="Cover"/>
+        <img src="{{ asset('img/cover.jpg') }}" class="w-full h-72 object-cover object-top" alt="Cover"/>
     </a>
 
     <div class="flex flex-wrap justify-between bg-gray-700">

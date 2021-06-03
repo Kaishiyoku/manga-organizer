@@ -6,7 +6,6 @@
 
 import onDomReady from './onDomReady';
 import tippy from 'tippy.js';
-import bonanza from 'bonanza';
 
 require('./bootstrap');
 

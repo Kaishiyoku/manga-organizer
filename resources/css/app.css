@@ -39,7 +39,7 @@
 .input-default:focus,
 .input-with-btn:focus,
 .input-typeahead:focus {
-    @apply outline-none shadow-outline-purple-300;
+    @apply outline-none ring;
 }
 
 .input-with-btn {
@@ -73,7 +73,7 @@
 }
 .btn-default:focus,
 .btn-with-input:focus {
-    @apply outline-none shadow-outline-purple-700;
+    @apply outline-none ring;
 }
 
 .btn-with-input {
