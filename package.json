@@ -14,7 +14,7 @@
         "autoprefixer": "^10.2.6",
         "axios": "^0.21.1",
         "cross-env": "^7.0.3",
-        "laravel-mix": "^6.0.19",
+        "laravel-mix": "^6.0.18",
         "lodash": "^4.17.21",
         "resolve-url-loader": "^4.0.0",
         "rxjs": "^7.1.0",
