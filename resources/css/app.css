@@ -29,7 +29,7 @@
 .input-default,
 .input-with-btn,
 .input-typeahead {
-    @apply transition-all duration-200;
+    @apply outline-none transition-all duration-200 shadow;
 }
 .input-shadow {
     @apply shadow;
@@ -37,7 +37,7 @@
 .input-default:focus,
 .input-with-btn:focus,
 .input-typeahead:focus {
-    @apply outline-none ring;
+    @apply outline-none ring ring-purple-300;
 }
 
 .input-with-btn {
@@ -71,11 +71,11 @@
 }
 .btn-default:focus,
 .btn-with-input:focus {
-    @apply outline-none ring;
+    @apply outline-none ring ring-purple-300;
 }
 
 .btn-with-input {
-    @apply bg-purple-500 text-gray-100 py-2 px-4 rounded-r transition-all duration-150 border-l border-purple-600;
+    @apply bg-purple-500 text-gray-100 py-2 px-4 rounded-r transition-all duration-150 border-l border-purple-600 shadow;
 }
 
 .btn-default:disabled,
@@ -133,17 +133,25 @@
 .table th {
     @apply bg-gray-100 font-bold text-xs text-gray-800 uppercase border-b-2 border-gray-200 py-3 px-3 tracking-wide align-middle;
 }
-.table td {
-    @apply border-b border-gray-200 py-4 px-3 align-middle;
+.table tbody tr:nth-child(even) {
+    @apply bg-gray-50;
 }
-.table-hover tr:hover {
-    @apply bg-purple-50 transition-colors duration-150 ease-out;
+.table td {
+    @apply py-4 px-3 align-middle;
+}
+.table-hover tr:hover,
+.table tbody tr:nth-child(even):hover {
+    @apply bg-gray-100 transition duration-300 ease-out;
 }
 
 /* Typography
 ---------------------------------------------------------------------------- */
 .headline-1 {
     @apply text-3xl mt-6 mb-2;
+}
+
+h2 {
+    @apply pb-4;
 }
 
 /* Dropdown
@@ -171,5 +179,5 @@
 /* Cards
 ---------------------------------------------------------------------------- */
 .card {
-    @apply rounded overflow-hidden shadow-lg border border-gray-200 bg-white;
+    @apply rounded-md overflow-hidden shadow-lg bg-white;
 }

@@ -56,27 +56,14 @@
 </div>
 
 <div class="container px-4 lg:px-20 mt-16 mb-8 mx-auto text-gray-500">
-    <footer>
-        <div class="mb-6">
-            @if (env('APP_CREATION_YEAR') == date('Y'))
-                {{ env('APP_CREATION_YEAR') }},
-            @else
-                {{ env('APP_CREATION_YEAR') }} - {{ date('Y') }},
-            @endif
+    <footer class="flex">
+        @if (auth()->check())
+            {!! Html::decode(Html::linkRoute('settings.index', '<span class="hidden sm:inline"><i class="fas fa-wrench"></i></span> ' . __('common.settings'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0 rounded-l-md'])) !!}
+        @endif
 
-            {{ env('APP_AUTHOR') }},
-            v{{ env('APP_VERSION') }}
-        </div>
+        {!! Html::decode(Html::linkRoute('mangas.index_plain', '<span class="hidden sm:inline"><i class="fas fa-file-alt"></i></span> ' . __('common.list_as_text'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
 
-        <div class="flex space-x-2">
-            @if (auth()->check())
-                {!! Html::decode(Html::linkRoute('settings.index', '<span class="hidden sm:inline"><i class="fas fa-wrench"></i></span> ' . __('common.settings'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
-            @endif
-
-            {!! Html::decode(Html::linkRoute('mangas.index_plain', '<span class="hidden sm:inline"><i class="fas fa-file-alt"></i></span> ' . __('common.list_as_text'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
-
-            {!! Html::decode(Html::linkRoute('home.show_contact_form', '<span class="hidden sm:inline"><i class="fas fa-envelope"></i></span> ' . __('common.contact'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0'])) !!}
-        </div>
+        {!! Html::decode(Html::linkRoute('home.show_contact_form', '<span class="hidden sm:inline"><i class="fas fa-envelope"></i></span> ' . __('common.contact'), null, ['class' => 'link-alternative flex-grow lg:flex-grow-0 rounded-r-md'])) !!}
     </footer>
 </div>
 
