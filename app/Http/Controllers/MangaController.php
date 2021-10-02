@@ -8,10 +8,6 @@ use App\Models\Recommendation;
 use App\Models\Special;
 use App\Models\Volume;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Laminas\Text\Table\Column;
 use Laminas\Text\Table\Decorator\Ascii;
@@ -21,34 +17,20 @@ use Laminas\Text\Table\Table;
 class MangaController extends Controller
 {
     /**
-     * @var string
-     */
-    private $redirectRoute = 'mangas.manage';
-
-    /**
-     * @var array
-     */
-    private $validationRules = [
-        'name' => ['required'],
-        'is_completed' => 'boolean',
-        'mal_id' => 'integer|nullable',
-    ];
-
-    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index()
     {
-        $mangas = $this->mangas()->get();
+        $mangas = Manga::withVolumesAndSpecials()->get();
 
         return getViewByRequestType('manga.index', compact('mangas'));
     }
 
     public function indexPlain()
     {
-        $mangas = $this->mangas()->get();
+        $mangas = Manga::withVolumesAndSpecials()->get();
 
         $mangaMapper = function (Manga $manga) {
             $volumes = $manga->volumes;
@@ -99,7 +81,7 @@ class MangaController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function manage()
     {
@@ -112,11 +94,11 @@ class MangaController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function statistics()
     {
-        $mangas = $this->mangas()->get();
+        $mangas = Manga::withVolumesAndSpecials()->get();
         $volumes = Volume::orderBy('created_at', 'desc');
         $specials = Special::orderBy('created_at', 'desc');
 
@@ -138,7 +120,7 @@ class MangaController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -151,11 +133,11 @@ class MangaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $request->validate($this->getValidationRulesWithNameUniqueness());
+        $request->validate($this->rules());
 
         $this->createMalItemIfNecessary($request);
 
@@ -171,7 +153,7 @@ class MangaController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\Manga $manga
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(Manga $manga)
     {
@@ -186,11 +168,11 @@ class MangaController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Manga $manga
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Manga $manga)
     {
-        $request->validate($this->getValidationRulesWithNameUniqueness($manga));
+        $request->validate($this->rules($manga));
 
         $this->createMalItemIfNecessary($request);
 
@@ -200,14 +182,14 @@ class MangaController extends Controller
 
         flash(__('manga.edit.success'))->success();
 
-        return redirect()->route($this->redirectRoute);
+        return redirect()->route('mangas.manage');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Manga $manga
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Manga $manga)
     {
@@ -217,53 +199,25 @@ class MangaController extends Controller
             flash(__('manga.destroy.success'))->success();
         });
 
-        return redirect()->route($this->redirectRoute);
+        return redirect()->route('mangas.manage');
     }
 
-    public function search(Request $request)
+    /**
+     * @param Manga|null $manga
+     * @return array
+     */
+    private function rules(Manga $manga = null)
     {
-        $data = $request->validate([
-            'query' => ['required', 'min:3'],
-        ]);
-
-        $query = Str::lower($data['query']);
-
-        $mangaSearchResults = Cache::remember('manga-search-' . sha1($query), env('MANGA_SEARCH_CACHE_TTL_SECONDS', 60 * 60), function () use ($query) {
-            $mangaSearchResults = collect(Arr::get(Http::get(env('MANGA_SEARCH_API_BASE_URL') . '/search/manga', [
-                'q' => $query,
-            ])->json(), 'results'));
-
-            return $mangaSearchResults
-                ->map(function ($mangaSearchResult) {
-                    return [
-                        'malId' => Arr::get($mangaSearchResult, 'mal_id'),
-                        'title' => Arr::get($mangaSearchResult, 'title'),
-                        'synopsis' => Arr::get($mangaSearchResult, 'synopsis'),
-                        'imageUrl' => Arr::get($mangaSearchResult, 'image_url'),
-                    ];
-                });
-        });
-
-        return response()->json($mangaSearchResults);
-    }
-
-    private function mangas()
-    {
-        return Manga::with('volumes')->with('specials')->has('volumes')->orHas('specials')->orderBy('name');
-    }
-
-    private function getValidationRulesWithNameUniqueness(Manga $manga = null)
-    {
-        $nameUniquessRule = Rule::unique('mangas', 'name');
-
-        if ($manga != null) {
-            $nameUniquessRule = $nameUniquessRule->ignore($manga->id);
-        }
-
-        $validationRules = $this->validationRules;
-        $validationRules['name'][] = $nameUniquessRule;
-
-        return $validationRules;
+        return [
+            'name' => [
+                'required',
+                Rule::unique('mangas', 'name')->when($manga, function ($query) use ($manga) {
+                    $query->ignore($manga->id);
+                }),
+            ],
+            'is_completed' => 'boolean',
+            'mal_id' => 'integer|nullable',
+        ];
     }
 
     /**

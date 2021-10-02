@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manga query()
  * @property-read int|null $specials_count
  * @property-read int|null $volumes_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Manga withVolumesAndSpecials()
  */
 class Manga extends Model
 {
@@ -57,6 +58,20 @@ class Manga extends Model
     protected $hidden = [
         //
     ];
+
+    /**
+     * Get mangas with volumes and specials
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithVolumesAndSpecials($query)
+    {
+        return $query->with(['volumes', 'specials'])
+            ->has('volumes')
+            ->orHas('specials')
+            ->orderBy('name');
+    }
 
     public function volumes()
     {
