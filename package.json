@@ -11,17 +11,17 @@
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "autoprefixer": "^10.3.5",
-        "axios": "^0.21.4",
+        "autoprefixer": "^10.3.6",
+        "axios": "^0.22.0",
         "cross-env": "^7.0.3",
         "laravel-mix": "^6.0.31",
         "lodash": "^4.17.21",
         "resolve-url-loader": "^4.0.0",
-        "rxjs": "^7.3.0",
+        "rxjs": "^7.3.1",
         "sass": "^1.42.1",
         "sass-loader": "^12.1.0",
-        "tailwindcss": "^2.2.15",
-        "tippy.js": "^6.3.1",
+        "tailwindcss": "^2.2.16",
+        "tippy.js": "^6.3.2",
         "vue-template-compiler": "^2.6.14"
     }
 }
