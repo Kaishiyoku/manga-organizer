@@ -21,16 +21,38 @@
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+            @if (isset($header))
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endif
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="py-12">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        {{ $slot }}
+                    </div>
+                </div>
             </main>
+
+            <footer>
+                <div class="pt-12 pb-8">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-x-4">
+                        <x-link url="#">
+                            {{ __('List as text') }}
+                        </x-link>
+
+                        @if (config('app.contact_email'))
+                            <x-link :url="'mailto:' . config('app.contact_email')">
+                                {{ __('Contact me') }}
+                            </x-link>
+                        @endif
+                    </div>
+                </div>
+            </footer>
         </div>
     </body>
 </html>

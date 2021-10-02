@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MangaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MangaController::class, 'index'])->name('mangas.index');
+Route::get('/plain', [MangaController::class, 'indexPlain'])->name('mangas.index_plain');
+Route::get('/statistics', [MangaController::class, 'statistics'])->name('mangas.statistics');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
