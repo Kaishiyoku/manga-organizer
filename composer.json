@@ -1,18 +1,26 @@
 {
-    "name": "laravel/laravel",
+    "name": "kaishiyoku/manga-organizer",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Simple manga organizer.",
+    "keywords": ["framework", "laravel", "manga"],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
+        "blade-ui-kit/blade-heroicons": "^1.2",
+        "doctrine/dbal": "^3.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kaishiyoku/laravel-cli-create-user": "^3.1",
+        "laminas/laminas-text": "^2.9",
+        "laracasts/flash": "^3.2",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6.2",
+        "barryvdh/laravel-ide-helper": "^2.10.0",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -25,7 +33,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -45,6 +56,11 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "ide-helper": [
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
+            "php artisan ide-helper:models --dir=\"app/Models\" --write"
         ]
     },
     "extra": {
