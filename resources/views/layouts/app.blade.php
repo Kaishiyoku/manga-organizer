@@ -20,6 +20,8 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            <img src="{{ mix('img/cover.jpg') }}" alt="{{ __('Cover') }}" class="w-full object-cover object-left-top drop-shadow-md h-[125px] sm:h-[150px] md:h-[175px] lg:h-[250px] xl:h-[300px]"/>
+
             @include('layouts.navigation')
 
             <!-- Page Heading -->

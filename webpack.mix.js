@@ -18,3 +18,7 @@ mix
         require('autoprefixer'),
     ])
     .copyDirectory('resources/img', 'public/img');
+
+if (!mix.inProduction()) {
+    mix.disableSuccessNotifications();
+}
