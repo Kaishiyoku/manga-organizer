@@ -5,7 +5,13 @@
         </h2>
     </x-slot>
 
-    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-x-4 gap-y-8">
+    <div>
+        <x-button-link :href="route('recommendations.create')">
+            {{ __('Recommend me a manga') }}
+        </x-button-link>
+    </div>
+
+    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-x-4 gap-y-8 mt-8">
         @forelse ($mangas as $manga)
             <x-manga-details :manga="$manga"/>
         @empty

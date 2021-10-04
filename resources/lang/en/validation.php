@@ -154,7 +154,8 @@ return [
     */
 
     'attributes' => [
-        'is_completed' => 'Completed'
+        'is_completed' => 'Completed',
+        'manga' => 'Manga',
     ],
 
 ];

@@ -25,7 +25,9 @@ class MangaController extends Controller
     {
         $mangas = Manga::withVolumesAndSpecials()->get();
 
-        return view('manga.index', compact('mangas'));
+        return view('manga.index', [
+            'mangas' => $mangas,
+        ]);
     }
 
     public function indexPlain()
@@ -88,7 +90,10 @@ class MangaController extends Controller
         $mangas = Manga::orderBy('name')->get();
         $recommendations = Recommendation::orderBy('created_at', 'desc')->get();
 
-        return view('manga.manage', compact('mangas', 'recommendations'));
+        return view('manga.manage', [
+            'mangas' => $mangas,
+            'recommendations' => $recommendations,
+        ]);
     }
 
     /**
@@ -114,7 +119,12 @@ class MangaController extends Controller
             ];
         }))->sortByDesc('created_at')->take(5);
 
-        return view('manga.statistics', compact('mangas', 'volumes', 'specials', 'latestVolumesAndSpecials'));
+        return view('manga.statistics', [
+            'mangas' => $mangas,
+            'volumes' => $volumes,
+            'specials' => $specials,
+            'latestVolumesAndSpecials' =>$latestVolumesAndSpecials,
+        ]);
     }
 
     /**
@@ -126,7 +136,9 @@ class MangaController extends Controller
     {
         $manga = new Manga();
 
-        return view('manga.create', compact('manga'));
+        return view('manga.create', [
+            'manga' => $manga,
+        ]);
     }
 
     /**
@@ -160,7 +172,11 @@ class MangaController extends Controller
         $newVolume = new Volume();
         $newSpecial = new Special();
 
-        return view('manga.edit', compact('manga', 'newVolume', 'newSpecial'));
+        return view('manga.edit', [
+            'manga' => $manga,
+            'newVolume' => $newVolume,
+            'newSpecial' => $newSpecial,
+        ]);
     }
 
     /**

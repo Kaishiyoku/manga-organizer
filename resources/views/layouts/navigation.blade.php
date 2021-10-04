@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('mangas.statistics')" :active="request()->routeIs('mangas.statistics')">
                         {{ __('Statistics') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
+                        {{ __('Recommend manga') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -75,6 +79,10 @@
 
             <x-responsive-nav-link :href="route('mangas.statistics')" :active="request()->routeIs('mangas.statistics')">
                 {{ __('Statistics') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
+                {{ __('Recommend manga') }}
             </x-responsive-nav-link>
         </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MangaController;
+use App\Http\Controllers\RecommendationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MangaController::class, 'index'])->name('mangas.index');
 Route::get('/plain', [MangaController::class, 'indexPlain'])->name('mangas.index_plain');
 Route::get('/statistics', [MangaController::class, 'statistics'])->name('mangas.statistics');
+
+Route::resource('recommendations', RecommendationController::class, ['only' => ['create', 'store']]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
