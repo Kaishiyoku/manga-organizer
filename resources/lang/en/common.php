@@ -12,5 +12,6 @@ return [
     ],
     'volumes' => 'Volume|Volumes',
     'specials' => 'Special|Specials',
+    'mangas' => 'Manga|Mangas',
 
 ];
