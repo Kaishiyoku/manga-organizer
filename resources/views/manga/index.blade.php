@@ -7,7 +7,8 @@
 
     <div>
         <x-button-link :href="route('recommendations.create')">
-            {{ __('Recommend me a manga') }}
+            <x-heroicon-s-plus-circle class="w-5 h-5"/>
+            <span>{{ __('Recommend me a manga') }}</span>
         </x-button-link>
     </div>
 
