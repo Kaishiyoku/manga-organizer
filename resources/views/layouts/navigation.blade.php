@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex w-full">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('mangas.index') }}">
@@ -11,18 +11,26 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('mangas.index')" :active="request()->routeIs('mangas.index')">
-                        {{ __('Manga list') }}
-                    </x-nav-link>
+                <div class="flex justify-between w-full">
+                    <div class="flex-grow hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('mangas.index')" :active="request()->routeIs('mangas.index')">
+                            {{ __('Manga list') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('mangas.statistics')" :active="request()->routeIs('mangas.statistics')">
-                        {{ __('Statistics') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('mangas.statistics')" :active="request()->routeIs('mangas.statistics')">
+                            {{ __('Statistics') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
-                        {{ __('Recommend manga') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
+                            {{ __('Recommend manga') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                            {{ __('Log in') }}
+                        </x-nav-link>
+                    </div>
                 </div>
             </div>
 
@@ -83,6 +91,10 @@
 
             <x-responsive-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
                 {{ __('Recommend manga') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                {{ __('Log in') }}
             </x-responsive-nav-link>
         </div>
 
