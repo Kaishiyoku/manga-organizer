@@ -25,7 +25,7 @@ class MangaController extends Controller
     {
         $mangas = Manga::withVolumesAndSpecials()->get();
 
-        return getViewByRequestType('manga.index', compact('mangas'));
+        return view('manga.index', compact('mangas'));
     }
 
     public function indexPlain()
@@ -73,7 +73,7 @@ class MangaController extends Controller
             return $table->render();
         };
 
-        $content = generateAsciiHeading(env('APP_NAME_LONG')) . "\n\n" . implode("\n", $mangas->map($mangaMapper)->toArray());
+        $content = generateAsciiHeading(config('app.name')) . "\n\n" . implode("\n", $mangas->map($mangaMapper)->toArray());
 
         return response($content)->header('Content-Type', 'text/plain');
     }
@@ -114,7 +114,7 @@ class MangaController extends Controller
             ];
         }))->sortByDesc('created_at')->take(5);
 
-        return getViewByRequestType('manga.statistics', compact('mangas', 'volumes', 'specials', 'latestVolumesAndSpecials'));
+        return view('manga.statistics', compact('mangas', 'volumes', 'specials', 'latestVolumesAndSpecials'));
     }
 
     /**

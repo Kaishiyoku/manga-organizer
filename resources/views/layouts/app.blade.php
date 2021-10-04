@@ -43,12 +43,12 @@
             <footer>
                 <div class="pt-12 pb-8">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-x-4">
-                        <x-link url="#">
+                        <x-link :href="route('mangas.index_plain')" :active="request()->routeIs('mangas.index_plain')">
                             {{ __('List as text') }}
                         </x-link>
 
                         @if (config('app.contact_email'))
-                            <x-link :url="'mailto:' . config('app.contact_email')">
+                            <x-link :href="'mailto:' . config('app.contact_email')">
                                 {{ __('Contact me') }}
                             </x-link>
                         @endif
