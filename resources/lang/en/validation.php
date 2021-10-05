@@ -156,6 +156,9 @@ return [
     'attributes' => [
         'is_completed' => 'Completed',
         'manga' => 'Manga',
+        'name' => 'Name',
+        'mal_id' => 'MAL ID',
+        'no' => 'Number',
     ],
 
 ];

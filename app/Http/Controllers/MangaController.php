@@ -209,7 +209,7 @@ class MangaController extends Controller
      */
     public function destroy(Manga $manga)
     {
-        handleIntegrityConstraintViolation(__('manga.destroy.still_has_volumes'), function () use ($manga) {
+        handleIntegrityConstraintViolation(__('Manga still has volumes. Delete them first.'), function () use ($manga) {
             $manga->delete();
 
             flash(__('manga.destroy.success'))->success();

@@ -53,6 +53,10 @@
                         </x-slot>
 
                         <x-slot name="content">
+                            <x-dropdown-link :href="route('mangas.manage')" :active="request()->routeIs('mangas.manage', 'mangas.edit')">
+                                {{ __('Manage mangas') }}
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -98,6 +102,10 @@
             @guest
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                     {{ __('Log in') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('mangas.manage')" :active="request()->routeIs('mangas.manage', 'mangas.edit')">
+                    {{ __('Manage mangas') }}
                 </x-responsive-nav-link>
             @endguest
         </div>

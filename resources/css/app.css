@@ -1,3 +1,52 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer components {
+    /**
+     * Inputs
+     */
+    .label-required:after {
+        @apply text-red-600;
+
+        content: '*';
+    }
+
+    /**
+     * Alerts
+     */
+    .alert {
+        @apply p-4 my-4 border-l-4 sm:rounded;
+    }
+    .alert--info {
+        @apply bg-indigo-100 text-indigo-800 border-indigo-400;
+    }
+    .alert--success {
+        @apply bg-green-100 text-green-800 border-green-400;
+    }
+    .alert--warning {
+        @apply bg-yellow-100 text-yellow-800 border-yellow-400;
+    }
+    .alert--danger {
+        @apply bg-red-100 text-red-800 border-red-400;
+    }
+
+    /**
+     * Tables
+     */
+    table {
+        @apply w-full;
+    }
+    table thead tr {
+        @apply bg-gray-200 border-t border-b border-gray-300;
+    }
+    table thead tr th {
+        @apply text-left uppercase text-xs px-4 py-3;
+    }
+    table tbody tr {
+        @apply border-t border-gray-200 even:bg-gray-50 hover:bg-gray-200 hover:bg-opacity-50 transition;
+    }
+    table tbody tr td {
+        @apply px-4 py-3;
+    }
+}
