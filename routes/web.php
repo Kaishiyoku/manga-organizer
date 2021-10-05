@@ -21,8 +21,8 @@ Route::get('/statistics', [MangaController::class, 'statistics'])->name('mangas.
 
 Route::resource('recommendations', RecommendationController::class, ['only' => ['create', 'store']]);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    //
+});
 
 require __DIR__.'/auth.php';

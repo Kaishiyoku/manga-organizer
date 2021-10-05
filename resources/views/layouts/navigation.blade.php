@@ -27,9 +27,11 @@
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                            {{ __('Log in') }}
-                        </x-nav-link>
+                        @guest
+                            <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                                {{ __('Log in') }}
+                            </x-nav-link>
+                        @endguest
                     </div>
                 </div>
             </div>
@@ -93,9 +95,11 @@
                 {{ __('Recommend manga') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                {{ __('Log in') }}
-            </x-responsive-nav-link>
+            @guest
+                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Log in') }}
+                </x-responsive-nav-link>
+            @endguest
         </div>
 
         @auth
