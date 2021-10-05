@@ -1,6 +1,6 @@
 @props(['manga'])
 
-<x-card.card>
+<x-card.card hoverable>
     @if ($manga->malItem && $manga->malItem->image_url)
         <div class="text-center">
             <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="w-full"/>
