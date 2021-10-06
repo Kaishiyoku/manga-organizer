@@ -111,6 +111,10 @@
                 <x-responsive-nav-link :href="route('mangas.manage')" :active="request()->routeIs('mangas.manage', 'mangas.edit')">
                     {{ __('Manage mangas') }}
                 </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('recommendations.index')" :active="request()->routeIs('recommendations.index')">
+                    {{ __('Recommendations') }}
+                </x-responsive-nav-link>
             @endguest
         </div>
 
