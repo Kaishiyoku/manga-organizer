@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('specials', [SpecialController::class, 'store'])->name('specials.store');
         Route::delete('specials/{special}', [SpecialController::class, 'destroy'])->name('specials.destroy');
     });
+
+    Route::resource('recommendations', RecommendationController::class, ['only' => ['index', 'destroy']]);
 });
 
 require __DIR__.'/auth.php';

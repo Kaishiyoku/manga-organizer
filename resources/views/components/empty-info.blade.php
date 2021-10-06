@@ -1,3 +1,3 @@
-<p {{ $attributes->merge(['class' => 'italic text-gray-500 text-xl']) }}>
+<p {{ $attributes->merge(['class' => 'italic text-muted text-xl']) }}>
     {{ $slot }}
 </p>

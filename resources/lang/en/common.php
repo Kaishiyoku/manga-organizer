@@ -13,6 +13,9 @@ return [
     'volumes' => 'Volume|Volumes',
     'specials' => 'Special|Specials',
     'mangas' => 'Manga|Mangas',
-    'edit_manga' => 'Edit manga „:name”'
+    'edit_manga' => 'Edit manga „:name”',
+    'date_format' => [
+        'datetime' => 'm/d/Y H:i',
+    ],
 
 ];

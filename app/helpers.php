@@ -2,6 +2,7 @@
 
 use App\Models\Genre;
 use App\Models\MalItem;
+use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -60,6 +61,13 @@ if (!function_exists('formatEmpty')) {
     function formatEmpty($str, $emptyStr = '/')
     {
         return $str ? $str : $emptyStr;
+    }
+}
+
+if (!function_exists('formatDateTime')) {
+    function formatDateTime(?Carbon $date): string
+    {
+        return optional($date)->format(__('common.date_format.datetime'));
     }
 }
 

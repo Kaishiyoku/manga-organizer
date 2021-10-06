@@ -57,6 +57,10 @@
                                 {{ __('Manage mangas') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('recommendations.index')" :active="request()->routeIs('recommendations.index')">
+                                {{ __('Recommendations') }}
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

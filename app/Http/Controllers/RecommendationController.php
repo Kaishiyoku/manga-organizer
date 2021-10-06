@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 class RecommendationController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function index()
+    {
+        $recommendations = Recommendation::orderBy('created_at', 'desc')->get();
+
+        return view('recommendation.index', [
+            'recommendations' => $recommendations,
+        ]);
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
@@ -37,7 +52,7 @@ class RecommendationController extends Controller
         $recommendation->ip_address = $request->ip();
         $recommendation->save();
 
-        flash(__('recommendation.create.success'))->success();
+        flash(__('Manga recommendation sent. Thank you.'))->success();
 
         return redirect()->route('mangas.index');
     }
@@ -52,8 +67,8 @@ class RecommendationController extends Controller
     {
         $recommendation->delete();
 
-        flash(__('recommendation.destroy.success'))->success();
+        flash(__('Recommendation deleted.'))->success();
 
-        return redirect()->route('mangas.manage');
+        return redirect()->route('recommendations.index');
     }
 }
