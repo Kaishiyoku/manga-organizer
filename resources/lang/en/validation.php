@@ -159,6 +159,9 @@ return [
         'name' => 'Name',
         'mal_id' => 'MAL ID',
         'no' => 'Number',
+        'current_password' => 'Current password',
+        'new_password' => 'New password',
+        'new_password_confirmation' => 'New password (confirmation)',
     ],
 
 ];

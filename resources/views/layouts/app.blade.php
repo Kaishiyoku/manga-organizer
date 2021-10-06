@@ -51,6 +51,12 @@
                             {{ __('List as text') }}
                         </x-link>
 
+                        @auth
+                            <x-link :href="route('settings.index')" :active="request()->routeIs('settings.index', 'settings.edit_password')">
+                                {{ __('Settings') }}
+                            </x-link>
+                        @endauth
+
                         @if (config('app.contact_email'))
                             <x-link :href="'mailto:' . config('app.contact_email')">
                                 {{ __('Contact me') }}

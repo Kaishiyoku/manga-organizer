@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\VolumeController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('recommendations', RecommendationController::class, ['only' => ['index', 'destroy']]);
+
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::get('/settings/password/change', [SettingController::class, 'editPassword'])->name('settings.edit_password');
+    Route::put('/settings/password/change', [SettingController::class, 'updatePassword'])->name('settings.update_password');
 });
 
 require __DIR__.'/auth.php';
