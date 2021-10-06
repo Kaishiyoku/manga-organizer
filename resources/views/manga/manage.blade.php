@@ -17,6 +17,8 @@
             @endforeach
         </div>
     @else
-        <p class="italic text-gray-500 text-xl">{{ __('No mangas yet.') }}</p>
+        <x-empty-info>
+            {{ __('No mangas yet.') }}
+        </x-empty-info>
     @endif
 </x-app-layout>

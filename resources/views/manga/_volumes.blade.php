@@ -5,7 +5,9 @@
 
 
     @if ($manga->volumes->count() === 0)
-        <p class="px-4 pt-4 italic text-gray-500">{{ __('No volumes yet.') }}</p>
+        <x-empty-info class="px-4 pt-4">
+            {{ __('No volumes yet.') }}
+        </x-empty-info>
     @else
         <table class="table table-hover">
             <tbody>

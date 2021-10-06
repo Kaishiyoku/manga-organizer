@@ -23,7 +23,9 @@
         @forelse ($mangas as $manga)
             <x-manga-details :manga="$manga"/>
         @empty
-            <p class="italic text-gray-500 text-xl">{{ __('No mangas yet.') }}</p>
+            <x-empty-info>
+                {{ __('No mangas yet.') }}
+            </x-empty-info>
         @endforelse
     </div>
 </x-app-layout>
