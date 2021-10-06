@@ -1,183 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@layer components {
+    /**
+     * Inputs
+     */
+    .label-required:after {
+        @apply text-red-600;
 
-/* Navbar
----------------------------------------------------------------------------- */
-.navbar-link {
-    @apply transition-all duration-200 px-4 py-4 text-gray-400;
-}
-.navbar-link:hover {
-    @apply text-white bg-gray-600;
-}
+        content: '*';
+    }
 
-.navbar-link-active {
-    @apply text-white;
-}
+    /**
+     * Alerts
+     */
+    .alert {
+        @apply p-4 my-4 border-l-4 sm:rounded;
+    }
+    .alert--info {
+        @apply bg-indigo-100 text-indigo-800 border-indigo-400;
+    }
+    .alert--success {
+        @apply bg-green-100 text-green-800 border-green-400;
+    }
+    .alert--warning {
+        @apply bg-yellow-100 text-yellow-800 border-yellow-400;
+    }
+    .alert--danger {
+        @apply bg-red-100 text-red-800 border-red-400;
+    }
 
-/* Forms
----------------------------------------------------------------------------- */
-.label-default {
-    @apply block text-gray-700 text-sm font-bold mb-2;
-}
+    /**
+     * Tables
+     */
+    table {
+        @apply w-full;
+    }
+    table thead tr {
+        @apply bg-gray-200 border-t border-b border-gray-300;
+    }
+    table thead tr th {
+        @apply text-left uppercase text-xs px-4 py-3;
+    }
+    table tbody tr {
+        @apply border-t border-gray-200 even:bg-gray-50 hover:bg-gray-200 hover:bg-opacity-50 transition;
+    }
+    table tbody tr td {
+        @apply px-4 py-3;
+    }
 
-.input-default {
-    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
-}
-.input-default,
-.input-with-btn,
-.input-typeahead {
-    @apply outline-none transition-all duration-200 shadow;
-}
-.input-shadow {
-    @apply shadow;
-}
-.input-default:focus,
-.input-with-btn:focus,
-.input-typeahead:focus {
-    @apply outline-none ring ring-purple-300;
-}
-
-.input-with-btn {
-    @apply appearance-none border-l border-t border-b rounded-l w-full py-2 px-3 text-gray-700 leading-tight;
-}
-
-.input-typeahead {
-    @apply appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight;
-}
-
-.validation-error {
-    @apply text-red-500 text-xs mt-1;
-}
-
-.has-error {
-    @apply border border-red-500;
-}
-
-.has-error-alternative {
-    @apply bg-red-100 text-red-800 border border-red-400;
-}
-
-/* Buttons
----------------------------------------------------------------------------- */
-.btn-default {
-    @apply border border-purple-600 bg-purple-500 text-gray-100 py-2 px-4 rounded transition-all duration-200 shadow;
-}
-.btn-default:hover:not(:disabled),
-.btn-with-input:hover:not(:disabled) {
-    @apply border-purple-800 bg-purple-700;
-}
-.btn-default:focus,
-.btn-with-input:focus {
-    @apply outline-none ring ring-purple-300;
-}
-
-.btn-with-input {
-    @apply bg-purple-500 text-gray-100 py-2 px-4 rounded-r transition-all duration-150 border-l border-purple-600 shadow;
-}
-
-.btn-default:disabled,
-.btn-with-input:disabled {
-    @apply cursor-not-allowed border-purple-500 bg-purple-400;
-}
-
-/* Links
----------------------------------------------------------------------------- */
-.link-default {
-    @apply text-purple-700 transition-all duration-200;
-}
-.link-default:hover,
-.link-danger:hover {
-    @apply text-black;
-}
-
-.link-danger {
-    @apply text-red-700 transition-all duration-200;
-}
-
-.link-alternative {
-    @apply text-purple-700 transition-all duration-200 ease-in border-purple-300 py-2 px-4;
-}
-.link-alternative:hover {
-    @apply text-white bg-purple-500 border-purple-700;
-}
-.link-alternative:focus {
-    @apply bg-purple-700 border-purple-900;
-}
-
-/* Alerts
----------------------------------------------------------------------------- */
-.alert {
-    @apply p-4 my-4 border-l-4 rounded;
-}
-.alert-info {
-    @apply bg-blue-100 text-blue-800 border-blue-400;
-}
-.alert-success {
-    @apply bg-green-100 text-green-800 border-green-400;
-}
-.alert-warning {
-    @apply bg-yellow-100 text-yellow-800 border-yellow-400;
-}
-.alert-danger {
-    @apply bg-red-100 text-red-800 border-red-400;
-}
-
-/* Tables
----------------------------------------------------------------------------- */
-.table {
-    @apply w-full text-left;
-}
-.table th {
-    @apply bg-gray-100 font-bold text-xs text-gray-800 uppercase border-b-2 border-gray-200 py-3 px-3 tracking-wide align-middle;
-}
-.table tbody tr:nth-child(even) {
-    @apply bg-gray-50;
-}
-.table td {
-    @apply py-4 px-3 align-middle;
-}
-.table-hover tr:hover,
-.table tbody tr:nth-child(even):hover {
-    @apply bg-gray-100 transition duration-300 ease-out;
-}
-
-/* Typography
----------------------------------------------------------------------------- */
-.headline-1 {
-    @apply text-3xl mt-6 mb-2;
-}
-
-h2 {
-    @apply pb-4;
-}
-
-/* Dropdown
----------------------------------------------------------------------------- */
-.dropdown {
-    @apply rounded-md bg-white shadow-xl;
-}
-.dropdown-item {
-    @apply px-4 py-2 leading-5 text-gray-700 cursor-pointer transition-all duration-200;
-}
-.dropdown-item:hover {
-    @apply bg-gray-200 text-gray-900;
-}
-.dropdown-item:focus {
-    @apply outline-none bg-gray-100 text-gray-900;
-}
-
-.dropdown-item.dropdown-item-active {
-    @apply text-white bg-purple-500;
-}
-.dropdown-item.dropdown-item-active:hover {
-    @apply text-white bg-purple-600;
-}
-
-/* Cards
----------------------------------------------------------------------------- */
-.card {
-    @apply rounded-md overflow-hidden shadow-lg bg-white;
+    /**
+    * Typography
+    */
+    .text-muted {
+        @apply text-gray-500;
+    }
 }

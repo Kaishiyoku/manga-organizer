@@ -1,25 +1,25 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Recommend manga') }}
+        </h2>
+    </x-slot>
 
-@section('title', __('recommendation.create.title'))
+    <x-card.card>
+        <x-card.body>
+            {{ html()->modelForm($recommendation, 'post', route('recommendations.store'))->open() }}
+                <div class="mb-4">
+                    <x-label for="manga" :value="__('validation.attributes.manga')" required/>
 
-@section('content')
-    <h1 class="headline-1">{{ __('recommendation.create.title') }}</h1>
+                    <x-input id="manga" class="block mt-1 w-full" type="text" name="manga" :value="old('manga', $recommendation->manga)" required/>
 
-    {{ Form::open(['route' => 'recommendations.store', 'method' => 'post', 'role' => 'form']) }}
-        <div class="rounded overflow-hidden shadow border border-gray-200 bg-white px-6 py-4 mb-8">
-            <div class="mb-4">
-                {{ Form::label('manga', __('validation.attributes.manga'), ['class' => 'label-default']) }}
+                    <x-validation-error for="manga"/>
+                </div>
 
-                {{ Form::text('manga', old('manga', $recommendation->manga), ['class' => 'input-default' . ($errors->has('manga') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.manga')]) }}
-
-                @if ($errors->has('manga'))
-                    <p class="validation-error">
-                        {{ $errors->first('manga') }}
-                    </p>
-                @endif
-            </div>
-        </div>
-
-        {!! Html::decode(Form::button(__('recommendation.create.submit'), ['type' => 'submit', 'class' => 'btn-default'])) !!}
-    {{ Form::close() }}
-@endsection
+                <x-button>
+                    {{ __('Send') }}
+                </x-button>
+            {{ html()->closeModelForm() }}
+        </x-card.body>
+    </x-card.card>
+</x-app-layout>

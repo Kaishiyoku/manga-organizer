@@ -22,7 +22,7 @@ return [
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
-    | services your application utilizes. Set this in your ".env" file.
+    | services the application utilizes. Set this in your ".env" file.
     |
     */
 
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Berlin',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,8 +81,6 @@ return [
     */
 
     'locale' => 'en',
-
-    'available_locales' => ['de', 'en'],
 
     /*
     |--------------------------------------------------------------------------
@@ -127,6 +125,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Other config values
+    |--------------------------------------------------------------------------
+    */
+
+    'contact_email' => env('APP_CONTACT_EMAIL'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -167,9 +173,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Collective\Html\HtmlServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
-        AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -220,8 +223,9 @@ return [
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
+        'RateLimiter' => Illuminate\Support\Facades\RateLimiter::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
-        'Redis' => Illuminate\Support\Facades\Redis::class,
+        // 'Redis' => Illuminate\Support\Facades\Redis::class,
         'Request' => Illuminate\Support\Facades\Request::class,
         'Response' => Illuminate\Support\Facades\Response::class,
         'Route' => Illuminate\Support\Facades\Route::class,
@@ -233,8 +237,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

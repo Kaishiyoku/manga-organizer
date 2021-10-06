@@ -1,47 +1,41 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Change password') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-    <h1 class="headline-1">{{ __('setting.edit_password.title') }}</h1>
+    <x-card.card>
+        <x-card.body>
+            {{ html()->form('put', route('settings.update_password'))->open() }}
+                <div class="mb-4">
+                    <x-label for="old_password" :value="__('validation.attributes.old_password')" required/>
 
-    {{ Form::open(['route' => 'settings.update_password', 'method' => 'put', 'role' => 'form']) }}
-        <div class="rounded overflow-hidden shadow-lg border border-gray-200 bg-white px-6 py-4 mb-8">
-            <div class="mb-12">
-                {{ Form::label('current_password', __('validation.attributes.current_password'), ['class' => 'label-default']) }}
+                    <x-input id="old_password" class="block mt-1 w-full" type="password" name="old_password" required/>
 
-                {{ Form::password('current_password', ['class' => 'input-default' . ($errors->has('current_password') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.current_password')]) }}
+                    <x-validation-error for="old_password"/>
+                </div>
 
-                @if ($errors->has('current_password'))
-                    <p class="validation-error">
-                        {{ $errors->first('current_password') }}
-                    </p>
-                @endif
-            </div>
+                <div class="mb-4">
+                    <x-label for="new_password" :value="__('validation.attributes.new_password')" required/>
 
-            <div class="mb-4">
-                {{ Form::label('new_password', __('validation.attributes.new_password'), ['class' => 'label-default']) }}
+                    <x-input id="new_password" class="block mt-1 w-full" type="password" name="new_password" required/>
 
-                {{ Form::password('new_password', ['class' => 'input-default' . ($errors->has('new_password') ? ' has-error' : ''), 'required' => true, 'data-provide' => 'password-strength', 'placeholder' => __('validation.attributes.new_password')]) }}
+                    <x-validation-error for="new_password"/>
+                </div>
 
-                @if ($errors->has('new_password'))
-                    <p class="validation-error">
-                        {{ $errors->first('new_password') }}
-                    </p>
-                @endif
-            </div>
+                <div class="mb-4">
+                    <x-label for="new_password_confirmation" :value="__('validation.attributes.new_password_confirmation')" required/>
 
-            <div class="mb-4">
-                {{ Form::label('new_password_confirmation', __('validation.attributes.new_password_confirmation'), ['class' => 'label-default']) }}
+                    <x-input id="new_password_confirmation" class="block mt-1 w-full" type="password" name="new_password_confirmation" required/>
 
-                {{ Form::password('new_password_confirmation', ['class' => 'input-default' . ($errors->has('new_password_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.new_password_confirmation')]) }}
+                    <x-validation-error for="new_password_confirmation"/>
+                </div>
 
-                @if ($errors->has('new_password_confirmation'))
-                    <p class="validation-error">
-                        {{ $errors->first('new_password_confirmation') }}
-                    </p>
-                @endif
-            </div>
-        </div>
-
-        {{ Form::button(__('setting.edit_password.submit'), ['type' => 'submit', 'class' => 'btn-default']) }}
-    {{ Form::close() }}
-@endsection
+                <x-button>
+                    {{ __('Save') }}
+                </x-button>
+            {{ html()->closeModelForm() }}
+        </x-card.body>
+    </x-card.card>
+</x-app-layout>

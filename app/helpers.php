@@ -2,6 +2,7 @@
 
 use App\Models\Genre;
 use App\Models\MalItem;
+use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -11,21 +12,6 @@ if (!function_exists('isAsText')) {
     function isAsText()
     {
         return session()->get('is_as_text');
-    }
-}
-
-if (!function_exists('getViewByRequestType')) {
-    /**
-     * @param string|null $view
-     * @param \Illuminate\Contracts\Support\Arrayable|array $data
-     * @param array $mergeData
-     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
-     */
-    function getViewByRequestType($view = null, $data = [], $mergeData = [])
-    {
-        $prefix = session()->get('is_as_text') ? 'text.' : '';
-
-        return view($prefix . $view, $data, $mergeData);
     }
 }
 
@@ -75,6 +61,13 @@ if (!function_exists('formatEmpty')) {
     function formatEmpty($str, $emptyStr = '/')
     {
         return $str ? $str : $emptyStr;
+    }
+}
+
+if (!function_exists('formatDateTime')) {
+    function formatDateTime(?Carbon $date): string
+    {
+        return optional($date)->format(__('common.date_format.datetime'));
     }
 }
 

@@ -1,63 +1,56 @@
-@extends('layouts.app')
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
-@section('title', __('auth.login.title'))
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-@section('content')
-    <div class="flex flex-wrap justify-center">
-        <div class="w-full max-w-sm">
-            <div class="flex flex-col break-words rounded overflow-hidden shadow-lg border border-gray-200 bg-white mt-8">
-                <form class="w-full p-6" method="POST" action="{{ route('login') }}">
-                    @csrf
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <div class="mb-4">
-                        <label for="email" class="label-default">
-                            {{ __('validation.attributes.email') }}:
-                        </label>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-                        <input id="email" type="email" class="input-default @error('email') has-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('validation.attributes.email') }}" autofocus>
+            <!-- Email Address -->
+            <div>
+                <x-label for="email" :value="__('Email')" />
 
-                        @error('email')
-                        <p class="validation-error">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="password" class="label-default">
-                            {{ __('validation.attributes.password') }}:
-                        </label>
-
-                        <input id="password" type="password" class="input-default @error('password') has-error @enderror" name="password" required placeholder="{{ __('validation.attributes.password') }}">
-
-                        @error('password')
-                        <p class="validation-error">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="inline-flex items-center text-sm text-gray-700" for="remember">
-                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <span class="ml-2">{{ __('auth.passwords.remember_me') }}</span>
-                        </label>
-                    </div>
-
-                    <div class="flex flex-wrap items-center">
-                        <button type="submit" class="btn-default">
-                            {{ __('Login') }}
-                        </button>
-
-                        @if (Route::has('password.request'))
-                            <a class="text-sm text-purple-500 hover:text-purple-700 whitespace-no-wrap no-underline ml-auto" href="{{ route('password.request') }}">
-                                {{ __('auth.passwords.forgot_your_password') }}
-                            </a>
-                        @endif
-                    </div>
-                </form>
-
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
-        </div>
-    </div>
-@endsection
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="current-password" />
+            </div>
+
+            <!-- Remember Me -->
+            <div class="block mt-4">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-purple-600 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-50-200 focus:ring-opacity-50" name="remember">
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <x-button class="ml-3">
+                    {{ __('Log in') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>

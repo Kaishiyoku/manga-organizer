@@ -1,33 +1,31 @@
-@extends('layouts.app')
-
-@section('title', __('manga.statistics.title'))
-
-@section('content')
-    <h1 class="headline-1">{{ __('manga.statistics.title') }}</h1>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Statistics') }}
+        </h2>
+    </x-slot>
 
     <div class="grid lg:grid-cols-2 gap-4">
-        <div class="card">
-            <div class="px-6 py-4 mb-8">
-                <div class="font-bold text-xl mb-2">
-                    {{ __('manga.statistics.general') }}
-                </div>
+        <x-card.card>
+            <x-card.header>
+                {{ __('General') }}
+            </x-card.header>
+            <x-card.body>
+                <div>{{ trans_choice('common.mangas', $mangas->count()) }}: {{ $mangas->count() }}</div>
+                <div>{{ trans_choice('common.volumes', $volumes->count()) }}: {{ $volumes->count() }}</div>
+                <div>{{ trans_choice('common.specials', $specials->count()) }}: {{ $specials->count() }}</div>
+            </x-card.body>
+        </x-card.card>
 
-                <div>{{ trans_choice('manga.statistics.mangas', $mangas->count()) }}: {{ $mangas->count() }}</div>
-                <div>{{ trans_choice('manga.statistics.volumes', $volumes->count()) }}: {{ $volumes->count() }}</div>
-                <div>{{ trans_choice('manga.statistics.specials', $specials->count()) }}: {{ $specials->count() }}</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">
-                    {{ __('manga.statistics.latest_volumes_and_specials') }}
-                </div>
-
+        <x-card.card>
+            <x-card.header>
+                {{ __('Latest volumes and specials') }}
+            </x-card.header>
+            <x-card.body>
                 @foreach ($latestVolumesAndSpecials as $entry)
-                    <div>{{ $entry['name'] }}</div>
+                    <div>{{ Arr::get($entry, 'name') }}</div>
                 @endforeach
-            </div>
-        </div>
+            </x-card.body>
+        </x-card.card>
     </div>
-@endsection
+</x-app-layout>

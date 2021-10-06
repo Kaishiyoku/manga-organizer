@@ -1,10 +1,8 @@
 /node_modules
-/public/hot
-/public/storage
 /public/css
-/public/fonts
-/public/img
+/public/hot
 /public/js
+/public/storage
 /public/mix-manifest.json
 /storage/*.key
 /vendor
@@ -18,5 +16,3 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-.phpstorm.meta.php
-_ide_helper.php

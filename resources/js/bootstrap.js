@@ -1,21 +1,10 @@
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-try {
-     //
-} catch (e) {
-
-}
-
-/**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+import onDomReady from './utils/onDomReady';
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -36,3 +25,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+onDomReady(() => {
+    document.querySelectorAll('[data-confirm]').forEach((element) => {
+        element.addEventListener('click', (event) => {
+            const confirmationText = element.getAttribute('data-confirm');
+
+            if (!confirm(confirmationText)) {
+                event.preventDefault();
+
+                return false;
+            }
+        });
+    });
+});

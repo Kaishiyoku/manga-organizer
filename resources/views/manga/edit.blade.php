@@ -1,25 +1,31 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('common.edit_manga', ['name' => $manga->name]) }}
+        </h2>
+    </x-slot>
 
-@section('title', __('manga.edit.title', ['name' => $manga->name]))
+    <x-card.card>
+        <x-card.body>
+            {{ html()->modelForm($manga, 'put', route('mangas.update', $manga))->open() }}
+                @include('manga._form_fields')
 
-@section('content')
-    <h1 class="headline-1">{{ __('manga.edit.title', ['name' => $manga->name]) }}</h1>
-
-    {{ Form::open(['route' => ['mangas.update', $manga->id], 'method' => 'put', 'role' => 'form']) }}
-        @include('manga._form', ['submitTitle' => '<i class="fas fa-save"></i> ' . __('common.update')])
-    {{ Form::close() }}
+                <x-button>
+                    {{ __('Save') }}
+                </x-button>
+            {{ html()->closeModelForm() }}
+        </x-card.body>
+    </x-card.card>
 
     <div class="grid md:grid-cols-2 gap-4 mt-8 ">
-        <div>
-            @include('manga._volumes')
-        </div>
+        @include('manga._volumes')
 
-        <div>
-            @include('manga._specials')
-        </div>
+        @include('manga._specials')
     </div>
 
-    <div class="mt-8">
-        {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-arrow-left"></i> ' . __('common.back'), null, ['class' => 'link-default'])) !!}
+    <div class="px-4 sm:px-0 mt-8">
+        <x-link :href="route('mangas.manage')">
+            {{ __('Back') }}
+        </x-link>
     </div>
-@endsection
+</x-app-layout>

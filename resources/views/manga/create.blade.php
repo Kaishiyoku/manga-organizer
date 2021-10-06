@@ -1,15 +1,25 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Add manga') }}
+        </h2>
+    </x-slot>
 
-@section('title', __('manga.create.title'))
+    <x-card.card>
+        <x-card.body>
+            {{ html()->modelForm($manga, 'post', route('mangas.store'))->open() }}
+                @include('manga._form_fields')
 
-@section('content')
-    <h1 class="headline-1">{{ __('manga.create.title') }}</h1>
+                <x-button>
+                    {{ __('Save') }}
+                </x-button>
+            {{ html()->closeModelForm() }}
+        </x-card.body>
+    </x-card.card>
 
-    {{ Form::open(['route' => 'mangas.store', 'method' => 'post', 'role' => 'form']) }}
-        @include('manga._form', ['submitTitle' => '<i class="fas fa-save"></i> ' . __('common.create')])
-    {{ Form::close() }}
-
-    <div class="mt-8">
-        {!! Html::decode(Html::linkRoute('mangas.manage', '<i class="fas fa-arrow-left"></i> ' . __('common.back'), null, ['class' => 'link-default'])) !!}
+    <div class="px-4 sm:px-0 mt-8">
+        <x-link :href="route('mangas.manage')">
+            {{ __('Back') }}
+        </x-link>
     </div>
-@endsection
+</x-app-layout>

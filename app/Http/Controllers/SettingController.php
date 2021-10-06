@@ -2,39 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactFormSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class SettingController extends Controller
 {
     /**
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index()
     {
         return view('setting.index');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
     public function editPassword()
     {
         return view('setting.edit_password');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updatePassword(Request $request)
     {
         $user = auth()->user();
 
-        $rules = [
-            'current_password' => 'required',
-            'new_password' => 'required|confirmed|min:6'
-        ];
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed|min:8',
+        ]);
 
-        $request->validate($rules);
-
-        if (!(Hash::check($request->get('current_password'), $user->password))) {
-            flash()->error(__('setting.edit_password.current_password_wrong'));
+        if (!(Hash::check($request->get('old_password'), $user->password))) {
+            flash()->error(__('Old password wrong.'));
 
             return redirect()->route('settings.edit_password');
         }
@@ -42,7 +45,7 @@ class SettingController extends Controller
         $user->password = Hash::make($request->get('new_password'));
         $user->save();
 
-        flash()->success(__('setting.edit_password.success'));
+        flash()->success(__('New password saved.'));
 
         return redirect()->route('settings.index');
     }
