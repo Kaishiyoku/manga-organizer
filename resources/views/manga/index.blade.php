@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div>
+    <div class="px-4 sm:px-0">
         @auth
             <x-button-link :href="route('mangas.manage')">
                 <x-heroicon-s-adjustments class="w-5 h-5"/>

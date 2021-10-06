@@ -23,7 +23,7 @@
         @include('manga._specials')
     </div>
 
-    <div class="mt-8">
+    <div class="px-4 sm:px-0 mt-8">
         <x-link :href="route('mangas.manage')">
             {{ __('Back') }}
         </x-link>
