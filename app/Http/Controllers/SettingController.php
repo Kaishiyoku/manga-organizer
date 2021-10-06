@@ -32,12 +32,12 @@ class SettingController extends Controller
         $user = auth()->user();
 
         $request->validate([
-            'current_password' => 'required',
+            'old_password' => 'required',
             'new_password' => 'required|confirmed|min:8',
         ]);
 
-        if (!(Hash::check($request->get('current_password'), $user->password))) {
-            flash()->error(__('Current password wrong.'));
+        if (!(Hash::check($request->get('old_password'), $user->password))) {
+            flash()->error(__('Old password wrong.'));
 
             return redirect()->route('settings.edit_password');
         }

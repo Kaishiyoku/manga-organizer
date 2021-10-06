@@ -9,11 +9,11 @@
         <x-card.body>
             {{ html()->form('put', route('settings.update_password'))->open() }}
                 <div class="mb-4">
-                    <x-label for="current_password" :value="__('validation.attributes.current_password')" required/>
+                    <x-label for="old_password" :value="__('validation.attributes.old_password')" required/>
 
-                    <x-input id="current_password" class="block mt-1 w-full" type="password" name="current_password" required/>
+                    <x-input id="old_password" class="block mt-1 w-full" type="password" name="old_password" required/>
 
-                    <x-validation-error for="current_password"/>
+                    <x-validation-error for="old_password"/>
                 </div>
 
                 <div class="mb-4">

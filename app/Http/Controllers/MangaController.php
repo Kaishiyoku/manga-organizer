@@ -153,7 +153,7 @@ class MangaController extends Controller
         $manga = new Manga($request->all());
         $manga->save();
 
-        flash(__('manga.create.success'))->success();
+        flash(__('Manga added.'))->success();
 
         return redirect()->route('mangas.edit', $manga);
     }
@@ -193,7 +193,7 @@ class MangaController extends Controller
         $manga->is_completed = $request->get('is_completed', false);
         $manga->save();
 
-        flash(__('manga.edit.success'))->success();
+        flash(__('Manga saved.'))->success();
 
         return redirect()->route('mangas.manage');
     }
@@ -209,7 +209,7 @@ class MangaController extends Controller
         handleIntegrityConstraintViolation(__('Manga still has volumes. Delete them first.'), function () use ($manga) {
             $manga->delete();
 
-            flash(__('manga.destroy.success'))->success();
+            flash(__('Manga deleted.'))->success();
         });
 
         return redirect()->route('mangas.manage');

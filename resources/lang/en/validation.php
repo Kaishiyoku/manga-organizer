@@ -159,7 +159,7 @@ return [
         'name' => 'Name',
         'mal_id' => 'MAL ID',
         'no' => 'Number',
-        'current_password' => 'Current password',
+        'old_password' => 'Old password',
         'new_password' => 'New password',
         'new_password_confirmation' => 'New password (confirmation)',
     ],
