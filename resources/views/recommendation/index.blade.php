@@ -14,7 +14,12 @@
                             {{ $recommendation->manga }}
                         </div>
                         <div class="text-muted text-sm">
-                            {{ formatDateTime($recommendation->created_at) }}
+                            <div>
+                                {{ formatDateTime($recommendation->created_at) }}
+                            </div>
+                            <div>
+                                {{ $recommendation->ip_address }}
+                            </div>
                         </div>
                     </div>
 
