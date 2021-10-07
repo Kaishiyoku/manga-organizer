@@ -38,13 +38,13 @@
         @apply w-full;
     }
     table thead tr {
-        @apply bg-gray-200 border-t border-b border-gray-300;
+        @apply bg-gray-200 dark:bg-gray-800 border-t border-b border-gray-300 dark:border-gray-500;
     }
     table thead tr th {
         @apply text-left uppercase text-xs px-4 py-3;
     }
     table tbody tr {
-        @apply border-t border-gray-200 even:bg-gray-50 hover:bg-gray-200 hover:bg-opacity-50 transition;
+        @apply border-t border-gray-200 dark:border-gray-700 even:bg-gray-50 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:bg-opacity-50 transition;
     }
     table tbody tr td {
         @apply px-4 py-3;

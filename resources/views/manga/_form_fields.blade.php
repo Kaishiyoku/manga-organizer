@@ -7,7 +7,7 @@
         <div class="mb-4">
             <x-label for="name" :value="__('validation.attributes.name')" required/>
 
-            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $manga->name)" required/>
+            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $manga->name)"/>
 
             <x-validation-error for="name"/>
         </div>
@@ -21,9 +21,9 @@
         </div>
 
         <div class="mb-4">
-            <label for="is_completed" class="inline-flex items-center">
-                <input id="is_completed" type="checkbox" class="rounded border-gray-300 text-purple-600 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-50-200 focus:ring-opacity-50" name="is_completed">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Completed') }}</span>
+            <label for="is_completed" class="flex items-center">
+                <x-checkbox id="is_completed" name="is_completed" :value="old('is_completed', $manga->is_completed)"/>
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-500">{{ __('Completed') }}</span>
             </label>
 
             <x-validation-error for="is_completed"/>

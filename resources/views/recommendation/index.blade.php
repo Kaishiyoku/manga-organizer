@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <x-page-heading>
             {{ __('Recommendations') }}
-        </h2>
+        </x-page-heading>
     </x-slot>
 
     @if ($recommendations->isNotEmpty())
-        <x-card.card class="divide-y">
+        <x-card.card class="divide-y dark:divide-gray-800">
             @foreach ($recommendations as $recommendation)
                 <x-card.body class="flex justify-between">
                     <div>

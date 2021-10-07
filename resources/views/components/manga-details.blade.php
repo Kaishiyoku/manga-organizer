@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        <div class="text-gray-700 text-base">
+        <div class="text-gray-700 dark:text-gray-500 text-base">
             @if ($manga->malItem && $manga->malItem->url)
                 <div>{{ __('MAL score') }}: {{ formatNumber($manga->malItem->score, 2) }}</div>
             @endif
@@ -32,9 +32,9 @@
             @if ($manga->malItem)
                 <div class="pt-2">
                     @foreach ($manga->malItem->genres as $genre)
-                        <span class="inline-block rounded-full bg-gray-200 text-gray-800 px-2 py-1 text-xs mb-2">
+                        <x-badge>
                             {{ $genre->name }}
-                        </span>
+                        </x-badge>
                     @endforeach
                 </div>
             @endif
