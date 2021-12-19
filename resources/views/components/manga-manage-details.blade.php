@@ -3,7 +3,7 @@
 <x-card.card hoverable>
     @if ($manga->malItem && $manga->malItem->image_url)
         <div class="relative overflow-hidden h-40 sm:rounded-t-md flex items-center">
-            <div class="absolute w-full h-full object-cover filter blur-xl" style="background-image: url('{{ $manga->malItem->image_url }}')"></div>
+            <div class="absolute w-full h-full object-cover blur-xl" style="background-image: url('{{ $manga->malItem->image_url }}')"></div>
             <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="relative h-32 mx-auto"/>
         </div>
     @else

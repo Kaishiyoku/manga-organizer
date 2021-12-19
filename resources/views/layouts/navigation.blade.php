@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex w-full">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                <div class="shrink-0 flex items-center">
                     <a href="{{ route('mangas.index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="flex justify-between w-full">
-                    <div class="flex-grow hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="grow hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('mangas.index')" :active="request()->routeIs('mangas.index')">
                             {{ __('Manga list') }}
                         </x-nav-link>

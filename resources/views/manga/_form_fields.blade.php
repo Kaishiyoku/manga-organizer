@@ -3,7 +3,7 @@
         <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="h-48 inline-block mr-5" id="manga-image-lg-{{ $manga->id }}"/>
     @endif
 
-    <div class="flex-grow">
+    <div class="grow">
         <div class="mb-4">
             <x-label for="name" :value="__('validation.attributes.name')" required/>
 
