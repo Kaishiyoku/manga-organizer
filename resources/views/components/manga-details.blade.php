@@ -9,9 +9,9 @@
 
         <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="hidden sm:block w-full sm:h-[450px] lg:h-[375px] md:object-cover md:object-top"/>
     @else
-        <x-card.header>
-            {{ $manga->name }}
-        </x-card.header>
+        <div class="flex items-center justify-center h-80 sm:h-[450px] lg:h-[375px] bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800">
+            <x-heroicon-s-photograph class="w-3/5 sm:w-full text-gray-300 dark:text-gray-900 mix-blend-luminosity"/>
+        </div>
     @endif
 
     <x-card.body>
