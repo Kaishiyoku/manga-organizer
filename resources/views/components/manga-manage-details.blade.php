@@ -1,18 +1,18 @@
 @props(['manga'])
 
-<x-card.card hoverable>
+<x-card.card hoverable class="flex flex-col overflow-hidden">
     @if ($manga->malItem && $manga->malItem->image_url)
         <div class="relative overflow-hidden h-40 sm:rounded-t-md flex items-center">
             <div class="absolute w-full h-full object-cover blur-xl" style="background-image: url('{{ $manga->malItem->image_url }}')"></div>
             <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="relative h-32 mx-auto"/>
         </div>
     @else
-        <x-card.header>
-            {{ $manga->name }}
-        </x-card.header>
+        <div class="flex items-center justify-center h-40 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800">
+            <x-heroicon-s-photograph class="w-1/3 lg:1/2 text-gray-300 dark:text-gray-900 mix-blend-luminosity"/>
+        </div>
     @endif
 
-    <x-card.body>
+    <x-card.body class="grow">
         @if ($manga->malItem && $manga->malItem->url)
             <div class="font-bold text-xl mb-2">
                 {{ $manga->name }}

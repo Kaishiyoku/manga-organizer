@@ -130,12 +130,15 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'is_completed' => 'Komplett',
-    'manga' => 'Manga',
-    'name' => 'Name',
-    'mal_id' => 'MAL ID',
-    'no' => 'Nummer',
-    'old_password' => 'Altes Passwort',
-    'new_password' => 'Neues Passwort',
-    'new_password_confirmation' => 'Neues Passwort (Bestätigung)',
+
+    'attributes' => [
+        'is_completed' => 'Komplett',
+        'manga' => 'Manga',
+        'name' => 'Name',
+        'mal_id' => 'MAL ID',
+        'no' => 'Nummer',
+        'old_password' => 'Altes Passwort',
+        'new_password' => 'Neues Passwort',
+        'new_password_confirmation' => 'Neues Passwort (Bestätigung)',
+    ],
 ];

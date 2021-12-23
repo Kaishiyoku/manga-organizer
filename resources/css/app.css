@@ -44,7 +44,7 @@
         @apply text-left uppercase text-xs px-4 py-3;
     }
     table tbody tr {
-        @apply border-t border-gray-200 dark:border-gray-700 even:bg-gray-50 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:bg-opacity-50 transition;
+        @apply even:bg-gray-50 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:bg-opacity-50 transition;
     }
     table tbody tr td {
         @apply px-4 py-3;
