@@ -27,5 +27,20 @@
                 @endforeach
             </x-card.body>
         </x-card.card>
+
+        @if ($topFiveGenres->isNotEmpty())
+            <x-card.card>
+                <x-card.header>
+                    {{ __('Favorite genres') }}
+                </x-card.header>
+                <x-card.body>
+                    @foreach ($topFiveGenres as $genreMalItem)
+                        <x-badge>
+                            {{ $genreMalItem->genre->name }}
+                        </x-badge>
+                    @endforeach
+                </x-card.body>
+            </x-card.card>
+        @endif
     </div>
 </x-app-layout>

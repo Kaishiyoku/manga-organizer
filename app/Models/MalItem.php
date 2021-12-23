@@ -98,6 +98,6 @@ class MalItem extends Model
 
     public function genres()
     {
-        return $this->belongsToMany(Genre::class, 'genre_mal_item', 'mal_item_id', 'genre_id')->orderBy('name');
+        return $this->belongsToMany(Genre::class, 'genre_mal_item', 'mal_item_id', 'genre_id')->using(GenreMalItem::class)->orderBy('name');
     }
 }

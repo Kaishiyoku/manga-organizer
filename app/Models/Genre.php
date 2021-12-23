@@ -44,6 +44,6 @@ class Genre extends Model
 
     public function malItems()
     {
-        return $this->belongsToMany(MalItem::class)->orderBy('title');
+        return $this->belongsToMany(MalItem::class)->using(GenreMalItem::class)->orderBy('title');
     }
 }

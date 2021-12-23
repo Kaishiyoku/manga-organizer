@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GenreMalItem;
 use App\Models\MalItem;
 use App\Models\Manga;
 use App\Models\Special;
 use App\Models\Volume;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laminas\Text\Table\Column;
@@ -101,18 +103,25 @@ class MangaController extends Controller
     public function statistics()
     {
         $mangas = Manga::withVolumesAndSpecials()->get();
-        $volumes = Volume::orderBy('created_at', 'desc');
-        $specials = Special::orderBy('created_at', 'desc');
+        $volumes = Volume::orderByDesc('created_at');
+        $specials = Special::orderByDesc('created_at');
+        $topFiveGenres = GenreMalItem::query()
+            ->select(['genre_id', DB::raw('count(*) as total')])
+            ->with('genre')
+            ->groupBy('genre_id')
+            ->orderByDesc('total')
+            ->take(5)
+            ->get();
 
         $latestVolumesAndSpecials = $volumes->take(5)->get()->map(function ($volume) {
             return [
                 'created_at' => $volume->created_at,
-                'name' => $volume->manga->name . ' - ' . $volume->no
+                'name' => $volume->manga->name . ' - ' . $volume->no,
             ];
         })->merge($specials->take(5)->get()->map(function ($special) {
             return [
                 'created_at' => $special->created_at,
-                'name' => $special->manga->name . ' - ' . $special->name
+                'name' => $special->manga->name . ' - ' . $special->name,
             ];
         }))->sortByDesc('created_at')->take(5);
 
@@ -121,6 +130,7 @@ class MangaController extends Controller
             'volumes' => $volumes,
             'specials' => $specials,
             'latestVolumesAndSpecials' =>$latestVolumesAndSpecials,
+            'topFiveGenres' => $topFiveGenres,
         ]);
     }
 
