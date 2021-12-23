@@ -1,8 +1,13 @@
 @props(['manga'])
 
-<x-card.card hoverable>
+<x-card.card hoverable class="overflow-hidden">
     @if ($manga->malItem && $manga->malItem->image_url)
-        <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="w-full"/>
+        <div class="sm:hidden relative overflow-hidden h-80 sm:rounded-t-md flex items-center">
+            <div class="absolute w-full h-full object-cover blur-xl" style="background-image: url('{{ $manga->malItem->image_url }}')"></div>
+            <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="relative h-72 mx-auto"/>
+        </div>
+
+        <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="hidden sm:block w-full sm:h-[450px] lg:h-[375px] md:object-cover md:object-top"/>
     @else
         <x-card.header>
             {{ $manga->name }}
