@@ -103,13 +103,14 @@ class MangaController extends Controller
     public function statistics()
     {
         $mangas = Manga::withVolumesAndSpecials()->get();
-        $volumes = Volume::orderByDesc('created_at');
-        $specials = Special::orderByDesc('created_at');
+        $volumes = Volume::with('manga')->orderByDesc('created_at');
+        $specials = Special::with('manga')->orderByDesc('created_at');
         $topFiveGenres = GenreMalItem::query()
-            ->select(['genre_id', DB::raw('count(*) as total')])
-            ->with('genre')
-            ->groupBy('genre_id')
+            ->select(['genre_id', 'genres.name', DB::raw('count(*) as total')])
+            ->join('genres', 'genre_mal_item.genre_id', '=', 'genres.id')
+            ->groupBy(['genre_id', 'genres.name'])
             ->orderByDesc('total')
+            ->orderBy('genres.name')
             ->take(5)
             ->get();
 

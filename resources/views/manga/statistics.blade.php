@@ -34,9 +34,9 @@
                     {{ __('Favorite genres') }}
                 </x-card.header>
                 <x-card.body>
-                    @foreach ($topFiveGenres as $genreMalItem)
+                    @foreach ($topFiveGenres as $genre)
                         <x-badge>
-                            {{ $genreMalItem->genre->name }}
+                            {{ $genre->name }}
                         </x-badge>
                     @endforeach
                 </x-card.body>
