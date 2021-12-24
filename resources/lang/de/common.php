@@ -17,5 +17,7 @@ return [
     'date_format' => [
         'datetime' => 'd.m.Y H:i',
     ],
+    'volume_of_manga' => 'Band :volume von „:manga”',
+    'special_of_manga' => 'Special „:special” von „:manga”'
 
 ];

@@ -119,14 +119,14 @@ class MangaController extends Controller
             ->take(5)
             ->get()
             ->map(function ($volume) {
-                return new LatestEntry($volume->created_at, $volume->manga->name . ' - ' . $volume->no);
+                return new LatestEntry($volume->created_at, __('common.volume_of_manga', ['volume' => $volume->no, 'manga' => $volume->manga->name]));
             })
             ->merge(
                 $specials
                     ->take(5)
                     ->get()
                     ->map(function ($special) {
-                        return new LatestEntry($special->created_at, $special->manga->name . ' - ' . $special->name);
+                        return new LatestEntry($special->created_at, __('common.special_of_manga', ['special' => $special->name, 'manga' => $special->manga->name]));
                     }))
             ->sortByDesc('created_at')->take(5);
 

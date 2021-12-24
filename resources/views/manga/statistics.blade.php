@@ -5,41 +5,46 @@
         </x-page-heading>
     </x-slot>
 
-    <div class="grid lg:grid-cols-2 gap-4">
-        <x-card.card>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <x-card.card class="pb-4">
             <x-card.header>
                 {{ __('General') }}
             </x-card.header>
-            <x-card.body>
-                <div>{{ trans_choice('common.mangas', $mangas->count()) }}: {{ $mangas->count() }}</div>
-                <div>{{ trans_choice('common.volumes', $volumes->count()) }}: {{ $volumes->count() }}</div>
-                <div>{{ trans_choice('common.specials', $specials->count()) }}: {{ $specials->count() }}</div>
-            </x-card.body>
+
+            <div>
+                <x-list-item :label="trans_choice('common.mangas', $mangas->count())" :value="$mangas->count()"/>
+                <x-list-item :label="trans_choice('common.volumes', $volumes->count())" :value="$volumes->count()"/>
+                <x-list-item :label="trans_choice('common.specials', $specials->count())" :value="$specials->count()"/>
+            </div>
         </x-card.card>
 
-        <x-card.card>
+        <x-card.card class="pb-4">
             <x-card.header>
                 {{ __('Latest volumes and specials') }}
             </x-card.header>
-            <x-card.body>
+
+            <div>
                 @foreach ($latestVolumesAndSpecials as $entry)
-                    <div>{{ $entry->name }}</div>
+                    <x-list-item>
+                        {{ $entry->name }}
+                    </x-list-item>
                 @endforeach
-            </x-card.body>
+            </div>
         </x-card.card>
 
         @if ($topFiveGenres->isNotEmpty())
-            <x-card.card>
+            <x-card.card class="pb-4">
                 <x-card.header>
                     {{ __('Favorite genres') }}
                 </x-card.header>
-                <x-card.body>
+
+                <div>
                     @foreach ($topFiveGenres as $genre)
-                        <x-badge>
+                        <x-list-item>
                             {{ $genre->name }}
-                        </x-badge>
+                        </x-list-item>
                     @endforeach
-                </x-card.body>
+                </div>
             </x-card.card>
         @endif
     </div>
