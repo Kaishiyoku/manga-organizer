@@ -21,9 +21,11 @@
                             {{ __('Statistics') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
-                            {{ __('Recommend manga') }}
-                        </x-nav-link>
+                        @guest
+                            <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
+                                {{ __('Recommend manga') }}
+                            </x-nav-link>
+                        @endguest
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -99,11 +101,11 @@
                 {{ __('Statistics') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
-                {{ __('Recommend manga') }}
-            </x-responsive-nav-link>
-
             @guest
+                <x-responsive-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations.create')">
+                    {{ __('Recommend manga') }}
+                </x-responsive-nav-link>
+
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                     {{ __('Log in') }}
                 </x-responsive-nav-link>
@@ -120,10 +122,10 @@
 
         @auth
             <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200">
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-300">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</div>
                 </div>
 
                 <div class="mt-3 space-y-1">
