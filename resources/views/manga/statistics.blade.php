@@ -23,7 +23,7 @@
             </x-card.header>
             <x-card.body>
                 @foreach ($latestVolumesAndSpecials as $entry)
-                    <div>{{ Arr::get($entry, 'name') }}</div>
+                    <div>{{ $entry->name }}</div>
                 @endforeach
             </x-card.body>
         </x-card.card>

@@ -7,6 +7,7 @@ use App\Models\MalItem;
 use App\Models\Manga;
 use App\Models\Special;
 use App\Models\Volume;
+use App\ViewModels\LatestEntry;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -114,23 +115,26 @@ class MangaController extends Controller
             ->take(5)
             ->get();
 
-        $latestVolumesAndSpecials = $volumes->take(5)->get()->map(function ($volume) {
-            return [
-                'created_at' => $volume->created_at,
-                'name' => $volume->manga->name . ' - ' . $volume->no,
-            ];
-        })->merge($specials->take(5)->get()->map(function ($special) {
-            return [
-                'created_at' => $special->created_at,
-                'name' => $special->manga->name . ' - ' . $special->name,
-            ];
-        }))->sortByDesc('created_at')->take(5);
+        $latestVolumesAndSpecials = $volumes
+            ->take(5)
+            ->get()
+            ->map(function ($volume) {
+                return new LatestEntry($volume->created_at, $volume->manga->name . ' - ' . $volume->no);
+            })
+            ->merge(
+                $specials
+                    ->take(5)
+                    ->get()
+                    ->map(function ($special) {
+                        return new LatestEntry($special->created_at, $special->manga->name . ' - ' . $special->name);
+                    }))
+            ->sortByDesc('created_at')->take(5);
 
         return view('manga.statistics', [
             'mangas' => $mangas,
             'volumes' => $volumes,
             'specials' => $specials,
-            'latestVolumesAndSpecials' =>$latestVolumesAndSpecials,
+            'latestVolumesAndSpecials' => $latestVolumesAndSpecials,
             'topFiveGenres' => $topFiveGenres,
         ]);
     }
