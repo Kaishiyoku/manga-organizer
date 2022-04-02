@@ -19,6 +19,8 @@ mix
     ])
     .copyDirectory('resources/img', 'public/img');
 
-if (!mix.inProduction()) {
+if (mix.inProduction()) {
+    mix.version();
+} else {
     mix.disableSuccessNotifications();
 }
