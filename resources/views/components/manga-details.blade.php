@@ -15,15 +15,15 @@
     @endif
 
     <x-card.body>
-        @if ($manga->malItem && $manga->malItem->url)
-            <div class="font-bold text-xl mb-2">
-                {{ $manga->name }}
+        <div class="font-bold text-xl mb-2">
+            {{ $manga->name }}
 
+            @if ($manga->malItem && $manga->malItem->url)
                 <a href="{{ $manga->malItem->url }}" class="link-default text-sm" data-tooltip-content="{{ __('manga_at_myanimelist', ['name' => $manga->name]) }}">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
-            </div>
-        @endif
+            @endif
+        </div>
 
         <div class="text-gray-700 dark:text-gray-500 text-base">
             @if ($manga->malItem && $manga->malItem->url)
