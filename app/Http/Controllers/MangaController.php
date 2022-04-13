@@ -51,7 +51,7 @@ class MangaController extends Controller
             $table->appendRow($row);
 
             $row = new Row();
-            $row->appendColumn(new Column(__('manga.index.mal_score') . ':'));
+            $row->appendColumn(new Column(__('MAL score') . ':'));
             $row->appendColumn(new Column(($manga->malItem && $manga->malItem->score ? formatNumber($manga->malItem->score, 2) : 'n/a')));
             $table->appendRow($row);
 
@@ -62,14 +62,14 @@ class MangaController extends Controller
 
             if ($volumes->isNotEmpty()) {
                 $row = new Row();
-                $row->appendColumn(new Column(trans_choice('manga.volumes', $volumes) . ':'));
+                $row->appendColumn(new Column(trans_choice('common.volumes', $volumes) . ':'));
                 $row->appendColumn(new Column((string)intRangeToStr($volumes->pluck('no'))));
                 $table->appendRow($row);
             }
 
             if ($specials->isNotEmpty()) {
                 $row = new Row();
-                $row->appendColumn(new Column(trans_choice('manga.specials', $specials) . ':'));
+                $row->appendColumn(new Column(trans_choice('common.specials', $specials) . ':'));
                 $row->appendColumn(new Column($specials->implode('name', ', ')));
                 $table->appendRow($row);
             }
