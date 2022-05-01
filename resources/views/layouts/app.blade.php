@@ -44,22 +44,32 @@
                 </div>
             </main>
 
-            <footer class="pt-12 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-x-4">
-                <x-link :href="route('mangas.index_plain')" :active="request()->routeIs('mangas.index_plain')">
-                    {{ __('List as text') }}
-                </x-link>
-
-                @auth
-                    <x-link :href="route('settings.index')" :active="request()->routeIs('settings.index', 'settings.edit_password')">
-                        {{ __('Settings') }}
+            <footer class="pt-12 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="space-x-4">
+                    <x-link :href="route('mangas.index_plain')" :active="request()->routeIs('mangas.index_plain')">
+                        {{ __('List as text') }}
                     </x-link>
-                @endauth
 
-                @if (config('app.contact_email'))
-                    <x-link :href="'mailto:' . config('app.contact_email')">
-                        {{ __('Contact me') }}
-                    </x-link>
-                @endif
+                    @auth
+                        <x-link :href="route('settings.index')" :active="request()->routeIs('settings.index', 'settings.edit_password')">
+                            {{ __('Settings') }}
+                        </x-link>
+                    @endauth
+
+                    @if (config('app.contact_email'))
+                        <x-link :href="'mailto:' . config('app.contact_email')">
+                            {{ __('Contact me') }}
+                        </x-link>
+                    @endif
+                </div>
+
+                <div class="space-x-4 pt-2">
+                    @foreach (socialLinks() as $socialLink)
+                        <x-link :href="$socialLink->url">
+                            {{ $socialLink->title }}
+                        </x-link>
+                    @endforeach
+                </div>
             </footer>
         </div>
     </body>

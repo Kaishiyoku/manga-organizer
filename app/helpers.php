@@ -2,9 +2,11 @@
 
 use App\Models\Genre;
 use App\Models\MalItem;
+use App\Models\SocialLink;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 
@@ -149,5 +151,23 @@ if (!function_exists('intRangeToStr')) {
                 }, Str::of(''))
                 ->trim(', ')
         );
+    }
+}
+
+if (!function_exists('socialLinks')) {
+    /**
+     * @return Collection<SocialLink>
+     */
+    function socialLinks(): Collection
+    {
+        if (Cache::has('social-links')) {
+            return Cache::get('social-links');
+        }
+
+        $socialLinks = SocialLink::ordered()->get();
+
+        Cache::forever('social-links', $socialLinks);
+
+        return $socialLinks;
     }
 }

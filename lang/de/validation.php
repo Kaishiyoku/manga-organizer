@@ -140,5 +140,8 @@ return [
         'old_password' => 'Altes Passwort',
         'new_password' => 'Neues Passwort',
         'new_password_confirmation' => 'Neues Passwort (Bestätigung)',
+        'order' => 'Reihenfolge',
+        'url' => 'URL',
+        'title' => 'Titel',
     ],
 ];

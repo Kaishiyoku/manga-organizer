@@ -3,6 +3,7 @@
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\VolumeController;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +23,10 @@ Route::get('/', [MangaController::class, 'index'])->name('mangas.index');
 Route::get('/plain', [MangaController::class, 'indexPlain'])->name('mangas.index_plain');
 Route::get('/statistics', [MangaController::class, 'statistics'])->name('mangas.statistics');
 
-Route::resource('recommendations', RecommendationController::class, ['only' => ['create', 'store']]);
+Route::resource('recommendations', RecommendationController::class)->only(['create', 'store']);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('mangas', MangaController::class, ['except' => ['index', 'show']]);
+    Route::resource('mangas', MangaController::class)->except(['index', 'show']);
     Route::get('mangas/manage', [MangaController::class, 'manage'])->name('mangas.manage');
 
     Route::prefix('mangas/{manga}')->group(function () {
@@ -36,11 +37,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('specials/{special}', [SpecialController::class, 'destroy'])->name('specials.destroy');
     });
 
-    Route::resource('recommendations', RecommendationController::class, ['only' => ['index', 'destroy']]);
+    Route::resource('recommendations', RecommendationController::class)->only(['index', 'destroy']);
 
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('/settings/password/change', [SettingController::class, 'editPassword'])->name('settings.edit_password');
     Route::put('/settings/password/change', [SettingController::class, 'updatePassword'])->name('settings.update_password');
+
+    Route::resource('social_links', SocialLinkController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';

@@ -744,5 +744,12 @@
     "Change password": "Passwort ändern",
     "No specials yet.": "Noch keine Specials vorhanden.",
     "Favorite genres": "Lieblingsgenres",
-    "Send": "Abschicken"
+    "Send": "Abschicken",
+    "Social links": "Social Links",
+    "Add social link": "Social Link hinzufügen",
+    "No social links yet.": "Noch keine Social Links vorhanden.",
+    "Social link added.": "Social Link hinzugefügt.",
+    "Social link saved.": "Social Link gespeichert.",
+    "Social link deleted.": "Social Link gelöscht.",
+    "Edit social link": "Social Link bearbeiten"
 }

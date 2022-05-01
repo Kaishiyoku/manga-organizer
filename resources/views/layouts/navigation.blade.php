@@ -59,9 +59,15 @@
                                 {{ __('Manage mangas') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('social_links.index')" :active="request()->routeIs('social_links.*')">
+                                {{ __('Social links') }}
+                            </x-dropdown-link>
+
                             <x-dropdown-link :href="route('recommendations.index')" :active="request()->routeIs('recommendations.index')">
                                 {{ __('Recommendations') }}
                             </x-dropdown-link>
+
+                            <x-dropdown-divider/>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -112,6 +118,10 @@
             @else
                 <x-responsive-nav-link :href="route('mangas.manage')" :active="request()->routeIs('mangas.manage', 'mangas.edit')">
                     {{ __('Manage mangas') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('social_links.index')" :active="request()->routeIs('social_links.*')">
+                    {{ __('Social links') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('recommendations.index')" :active="request()->routeIs('recommendations.index')">
