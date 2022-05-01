@@ -71,6 +71,10 @@
     list_releases
 @endstory
 
+@story('cleanup')
+    deployment_cleanup
+@endstory
+
 @task('deployment_start')
     cd {{ $path }}
     echo "Deployment ({{ $date }}) started"
@@ -80,8 +84,10 @@
 
 @task('change_storage_owner_to_deployment_user')
     sudo chown -R forge:forge {{ $path }}/storage/*
-
     echo "Changed storage owner to deployment user"
+
+    sudo chown -R forge:forge {{ $release }}/bootstrap/cache
+    echo "Changed bootstrap/cache owner to deployment user"
 @endtask
 
 @task('deployment_links')
@@ -131,12 +137,16 @@
 
 @task('change_storage_owner_to_www_data')
     sudo chown -R www-data:www-data {{ $path }}/storage/*
-
     echo "Changed storage owner to www-data"
+
+    sudo chown -R www-data:www-data {{ $release }}/bootstrap/cache
+    echo "Changed bootstrap/cache owner to www-data"
 @endtask
 
 @task('deployment_cleanup')
     cd {{ $path }}/releases
+    find . -maxdepth 1 -name "20*" | sort | head -n -4 | xargs -I '{}' sudo chown -R forge:forge '{}'
+    echo "Changed releases owner to deployment user"
     find . -maxdepth 1 -name "20*" | sort | head -n -4 | xargs rm -Rf
     echo "Cleaned up old deployments"
 @endtask
@@ -145,6 +155,8 @@
     cd {{ $path }}/releases
 
     @if (isset($cleanup) && $cleanup)
+        find . -maxdepth 1 -name "20*" | sort | head -n -4 | xargs -I '{}' sudo chown -R forge:forge '{}'
+        echo "Changed releases owner to deployment user"
         find . -maxdepth 1 -name "20*" | sort | head -n -4 | xargs rm -Rf
         echo "Cleaned up old deployments"
     @endif
