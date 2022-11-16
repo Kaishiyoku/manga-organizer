@@ -73,27 +73,27 @@ if (!function_exists('formatDateTime')) {
     }
 }
 
-if (!function_exists('fetchMalItemFor')) {
+if (!function_exists('fetchAndSaveMalItemFor')) {
     /**
-     * @param int $id
+     * @param int $malId
      * @return MalItem
      */
-    function fetchAndSaveMalItemFor(int $id): MalItem
+    function fetchAndSaveMalItemFor(int $malId): MalItem
     {
-        $malItem = MalItem::firstOrNew(['mal_id' => $id]);
+        $malItem = MalItem::firstOrNew(['mal_id' => $malId]);
 
-        $mangaData = Http::get(env('MANGA_SEARCH_API_BASE_URL') . '/manga/' . $id)->json();
+        $mangaData = Http::get(config('manga.search_api_base_url') . '/manga/' . $malId)->json('data');
 
         $malItem->url = Arr::get($mangaData, 'url');
         $malItem->title = Arr::get($mangaData, 'title');
         $malItem->title_english = Arr::get($mangaData, 'title_english');
         $malItem->title_japanese = Arr::get($mangaData, 'title_japanese');
-        $malItem->title_synonyms = implode(';', Arr::get($mangaData, 'title_synonyms'));
+        $malItem->title_synonyms = implode(';', Arr::get($mangaData, 'title_synonyms', []));
         $malItem->status = Arr::get($mangaData, 'status');
-        $malItem->image_url = Arr::get($mangaData, 'image_url');
+        $malItem->image_url = Arr::get($mangaData, 'images.jpg.large_image_url');
         $malItem->volumes = Arr::get($mangaData, 'volumes');
         $malItem->chapters = Arr::get($mangaData, 'chapters');
-        $malItem->publishing = Arr::get($mangaData, 'publishing');
+        $malItem->publishing = Arr::get($mangaData, 'publishing', false);
         $malItem->rank = Arr::get($mangaData, 'rank');
         $malItem->score = Arr::get($mangaData, 'scored');
         $malItem->scored_by = Arr::get($mangaData, 'scored_by');
