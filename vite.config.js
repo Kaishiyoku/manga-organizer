@@ -8,8 +8,6 @@ export default defineConfig({
         laravel([
             'resources/css/app.css',
             'resources/js/app.js',
-            'resources/js/editor.js',
-            'node_modules/bigger-picture/dist/bigger-picture.css'
         ]),
         // react(),
         // vue({
