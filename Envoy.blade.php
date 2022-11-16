@@ -114,7 +114,7 @@
     cd {{ $release }}
     npm install --no-audit --no-fund --no-optional
     echo "Running npm..."
-    npm run {{ $env }} --silent
+    npm run {{ $env === 'production' ? 'build' : 'dev' }} --silent
 @endtask
 
 @task('deployment_cache')
@@ -154,7 +154,7 @@
 @task('deployment_option_cleanup')
     cd {{ $path }}/releases
 
-    @if (isset($cleanup) && $cleanup)
+    @if (!isset($noCleanup) && !$noCleanup)
         find . -maxdepth 1 -name "20*" | sort | head -n -4 | xargs -I '{}' sudo chown -R forge:forge '{}'
         echo "Changed releases owner to deployment user"
         find . -maxdepth 1 -name "20*" | sort | head -n -4 | xargs rm -Rf
@@ -199,4 +199,3 @@
 	@slack($slack, '#deployments', "Deployment on {$server}: {$date} complete")
 @endfinished
 --}}
-
