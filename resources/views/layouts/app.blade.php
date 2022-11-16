@@ -20,31 +20,25 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:text-gray-400 dark:bg-gray-900">
-            <img src="{{ asset('img/cover.jpg') }}" alt="{{ __('Cover') }}" class="w-full object-cover object-left-top drop-shadow-md h-[125px] sm:h-[150px] md:h-[175px] lg:h-[250px] xl:h-[300px]"/>
+            <img src="{{ asset('img/cover.jpg') }}" alt="{{ __('Cover') }}" class="w-full object-cover object-left-top ddrop-shadow-md h-[125px] sm:h-[150px] md:h-[175px] lg:h-[250px] xl:h-[300px]"/>
 
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
+                <header class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
                 </header>
             @endif
 
             <!-- Page Content -->
-            <main>
-                <div class="py-12">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        @include('flash::message')
+            <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                @include('flash::message')
 
-                        {{ $slot }}
-                    </div>
-                </div>
+                {{ $slot }}
             </main>
 
-            <footer class="pt-12 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <footer class="pt-16 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="space-x-4">
                     <x-link :href="route('mangas.index_plain')" :active="request()->routeIs('mangas.index_plain')">
                         {{ __('List as text') }}
