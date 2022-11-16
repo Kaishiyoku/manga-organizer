@@ -11,16 +11,16 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        @vite('resources/css/app.css')
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @vite('resources/js/app.js')
 
         @include('shared._favicon')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:text-gray-400 dark:bg-gray-900">
-            <img src="{{ mix('img/cover.jpg') }}" alt="{{ __('Cover') }}" class="w-full object-cover object-left-top drop-shadow-md h-[125px] sm:h-[150px] md:h-[175px] lg:h-[250px] xl:h-[300px]"/>
+            <img src="{{ asset('img/cover.jpg') }}" alt="{{ __('Cover') }}" class="w-full object-cover object-left-top drop-shadow-md h-[125px] sm:h-[150px] md:h-[175px] lg:h-[250px] xl:h-[300px]"/>
 
             @include('layouts.navigation')
 
