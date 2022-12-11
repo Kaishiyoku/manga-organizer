@@ -11,11 +11,13 @@
                 {{ __('General') }}
             </x-card.header>
 
-            <div class="divide-y divide-gray-100 dark:divide-gray-700">
-                <x-list-item :label="trans_choice('common.mangas', $mangas->count())" :value="$mangas->count()"/>
-                <x-list-item :label="trans_choice('common.volumes', $volumes->count())" :value="$volumes->count()"/>
-                <x-list-item :label="trans_choice('common.specials', $specials->count())" :value="$specials->count()"/>
-            </div>
+            <x-card.body>
+                <x-list-container>
+                    <x-list-item :label="trans_choice('common.mangas', $mangas->count())" :value="$mangas->count()"/>
+                    <x-list-item :label="trans_choice('common.volumes', $volumes->count())" :value="$volumes->count()"/>
+                    <x-list-item :label="trans_choice('common.specials', $specials->count())" :value="$specials->count()"/>
+                </x-list-container>
+            </x-card.body>
         </x-card.card>
 
         <x-card.card class="pb-4">
@@ -23,13 +25,15 @@
                 {{ __('Latest volumes and specials') }}
             </x-card.header>
 
-            <div class="divide-y divide-gray-100 dark:divide-gray-700">
-                @foreach ($latestVolumesAndSpecials as $entry)
-                    <x-list-item>
-                        {{ $entry->name }}
-                    </x-list-item>
-                @endforeach
-            </div>
+            <x-card.body>
+                <x-list-container>
+                    @foreach ($latestVolumesAndSpecials as $entry)
+                        <x-list-item>
+                            {{ $entry->name }}
+                        </x-list-item>
+                    @endforeach
+                </x-list-container>
+            </x-card.body>
         </x-card.card>
 
         @if ($topFiveGenres->isNotEmpty())
@@ -38,13 +42,15 @@
                     {{ __('Favorite genres') }}
                 </x-card.header>
 
-                <div class="divide-y divide-gray-100 dark:divide-gray-700">
-                    @foreach ($topFiveGenres as $genre)
-                        <x-list-item>
-                            {{ $genre->name }}
-                        </x-list-item>
-                    @endforeach
-                </div>
+                <x-card.body>
+                    <x-list-container>
+                        @foreach ($topFiveGenres as $genre)
+                            <x-list-item>
+                                {{ $genre->name }}
+                            </x-list-item>
+                        @endforeach
+                    </x-list-container>
+                </x-card.body>
             </x-card.card>
         @endif
     </div>
