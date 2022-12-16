@@ -161,11 +161,14 @@ class MangaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->rules());
+        $data = array_merge(
+            $request->validate($this->rules()),
+            ['is_completed' => $request->has('is_completed')],
+        );
 
         $this->createMalItemIfNecessary($request);
 
-        $manga = new Manga($request->all());
+        $manga = new Manga($data);
         $manga->save();
 
         flash(__('Manga added.'))->success();
@@ -200,13 +203,14 @@ class MangaController extends Controller
      */
     public function update(Request $request, Manga $manga)
     {
-        $request->validate($this->rules($manga));
+        $data = array_merge(
+            $request->validate($this->rules($manga)),
+            ['is_completed' => $request->boolean('is_completed')],
+        );
 
         $this->createMalItemIfNecessary($request);
 
-        $manga->fill($request->all());
-        $manga->is_completed = $request->get('is_completed', false);
-        $manga->save();
+        $manga->update($data);
 
         flash(__('Manga saved.'))->success();
 
@@ -243,7 +247,7 @@ class MangaController extends Controller
                     $query->ignore($manga->id);
                 }),
             ],
-            'is_completed' => 'boolean',
+            'is_completed' => 'nullable',
             'mal_id' => 'integer|nullable',
         ];
     }
