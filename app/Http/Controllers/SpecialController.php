@@ -18,13 +18,11 @@ class SpecialController extends Controller
      */
     public function store(Request $request, Manga $manga)
     {
-        $request->validate([
-            'name' => ['required', 'string', Rule::unique('specials', 'name')->where(function ($query) use ($manga) {
-                return $query->whereMangaId($manga->id);
-            })],
+        $data = $request->validate([
+            'name' => ['required', 'string', Rule::unique('specials', 'name')->where(fn($query) => $query->whereMangaId($manga->id))],
         ]);
 
-        $volume = new Special($request->all());
+        $volume = new Special($data);
         $manga->specials()->save($volume);
 
         flash(__('Special added.'))->success();
@@ -41,7 +39,7 @@ class SpecialController extends Controller
      */
     public function destroy(Manga $manga, Special $special)
     {
-        $manga->specials->find($special)->delete();
+        $manga->specials()->find($special)->delete();
 
         flash(__('Special deleted.'))->success();
 

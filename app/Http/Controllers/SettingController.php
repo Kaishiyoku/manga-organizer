@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
 class SettingController extends Controller
@@ -31,18 +32,18 @@ class SettingController extends Controller
     {
         $user = auth()->user();
 
-        $request->validate([
+        $data = $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed|min:8',
         ]);
 
-        if (!(Hash::check($request->get('old_password'), $user->password))) {
+        if (!(Hash::check(Arr::get($data, 'old_password'), $user->password))) {
             flash()->error(__('Old password wrong.'));
 
             return redirect()->route('settings.edit_password');
         }
 
-        $user->password = Hash::make($request->get('new_password'));
+        $user->password = Hash::make(Arr::get($data, 'new_password'));
         $user->save();
 
         flash()->success(__('New password saved.'));

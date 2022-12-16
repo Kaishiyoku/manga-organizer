@@ -14,11 +14,10 @@ class RecommendationController extends Controller
      */
     public function index()
     {
-        $recommendations = Recommendation::orderBy('created_at', 'desc')->get();
-
-        return view('recommendation.index', [
-            'recommendations' => $recommendations,
-        ]);
+        return view('recommendation.index')->with([
+                'recommendations' => Recommendation::orderByDesc('created_at')->get(),
+            ]
+        );
     }
 
 
@@ -29,10 +28,8 @@ class RecommendationController extends Controller
      */
     public function create()
     {
-        $recommendation = new Recommendation();
-
-        return view('recommendation.create', [
-            'recommendation' => $recommendation,
+        return view('recommendation.create')->with([
+            'recommendation' => new Recommendation(),
         ]);
     }
 
@@ -44,11 +41,11 @@ class RecommendationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'manga' => 'required',
         ]);
 
-        $recommendation = new Recommendation($request->all());
+        $recommendation = new Recommendation($data);
         $recommendation->ip_address = $request->ip();
         $recommendation->save();
 

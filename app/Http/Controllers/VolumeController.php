@@ -18,13 +18,11 @@ class VolumeController extends Controller
      */
     public function store(Request $request, Manga $manga)
     {
-        $request->validate([
-            'no' => ['required', 'integer', 'min:1', Rule::unique('volumes', 'no')->where(function ($query) use ($manga) {
-                return $query->whereMangaId($manga->id);
-            })],
+        $data = $request->validate([
+            'no' => ['required', 'integer', 'min:1', Rule::unique('volumes', 'no')->where(fn($query) => $query->whereMangaId($manga->id))],
         ]);
 
-        $volume = new Volume($request->all());
+        $volume = new Volume($data);
         $manga->volumes()->save($volume);
 
         flash(__('Volume added.'))->success();
@@ -41,7 +39,7 @@ class VolumeController extends Controller
      */
     public function destroy(Manga $manga, Volume $volume)
     {
-        $manga->volumes->find($volume)->delete();
+        $manga->volumes()->find($volume)->delete();
 
         flash(__('Volume deleted.'))->success();
 

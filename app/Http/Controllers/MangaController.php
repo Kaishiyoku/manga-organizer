@@ -25,10 +25,8 @@ class MangaController extends Controller
      */
     public function index()
     {
-        $mangas = Manga::withVolumesAndSpecials()->get();
-
-        return view('manga.index', [
-            'mangas' => $mangas,
+        return view('manga.index')->with([
+            'mangas' => Manga::withVolumesAndSpecials()->get(),
         ]);
     }
 
@@ -36,7 +34,7 @@ class MangaController extends Controller
     {
         $mangas = Manga::withVolumesAndSpecials()->get();
 
-        $mangaMapper = function (Manga $manga) {
+        $mangaMapperFn = function (Manga $manga) {
             $volumes = $manga->volumes;
             $specials = $manga->specials;
 
@@ -77,7 +75,7 @@ class MangaController extends Controller
             return $table->render();
         };
 
-        $content = generateAsciiHeading(config('app.name')) . "\n\n" . implode("\n", $mangas->map($mangaMapper)->toArray());
+        $content = generateAsciiHeading(config('app.name')) . "\n\n" . implode("\n", $mangas->map($mangaMapperFn)->toArray());
 
         return response($content)->header('Content-Type', 'text/plain');
     }
@@ -89,10 +87,8 @@ class MangaController extends Controller
      */
     public function manage()
     {
-        $mangas = Manga::orderBy('name')->get();
-
-        return view('manga.manage', [
-            'mangas' => $mangas,
+        return view('manga.manage')->with([
+            'mangas' => Manga::orderBy('name')->get(),
         ]);
     }
 
@@ -106,6 +102,7 @@ class MangaController extends Controller
         $mangas = Manga::withVolumesAndSpecials()->get();
         $volumes = Volume::with('manga')->orderByDesc('created_at');
         $specials = Special::with('manga')->orderByDesc('created_at');
+
         $topFiveGenres = GenreMalItem::query()
             ->select(['genre_id', 'genres.name', DB::raw('count(*) as total')])
             ->join('genres', 'genre_mal_item.genre_id', '=', 'genres.id')
@@ -118,19 +115,16 @@ class MangaController extends Controller
         $latestVolumesAndSpecials = $volumes
             ->take(5)
             ->get()
-            ->map(function ($volume) {
-                return new LatestEntry($volume->created_at, __('common.volume_of_manga', ['volume' => $volume->no, 'manga' => $volume->manga->name]));
-            })
+            ->map(fn($volume) => new LatestEntry($volume->created_at, __('common.volume_of_manga', ['volume' => $volume->no, 'manga' => $volume->manga->name])))
             ->merge(
                 $specials
                     ->take(5)
                     ->get()
-                    ->map(function ($special) {
-                        return new LatestEntry($special->created_at, __('common.special_of_manga', ['special' => $special->name, 'manga' => $special->manga->name]));
-                    }))
+                    ->map(fn($special) => new LatestEntry($special->created_at, __('common.special_of_manga', ['special' => $special->name, 'manga' => $special->manga->name])))
+            )
             ->sortByDesc('created_at')->take(5);
 
-        return view('manga.statistics', [
+        return view('manga.statistics')->with([
             'mangas' => $mangas,
             'volumes' => $volumes,
             'specials' => $specials,
@@ -146,10 +140,8 @@ class MangaController extends Controller
      */
     public function create()
     {
-        $manga = new Manga();
-
-        return view('manga.create', [
-            'manga' => $manga,
+        return view('manga.create')->with([
+            'manga' => new Manga(),
         ]);
     }
 
@@ -184,13 +176,10 @@ class MangaController extends Controller
      */
     public function edit(Manga $manga)
     {
-        $newVolume = new Volume();
-        $newSpecial = new Special();
-
-        return view('manga.edit', [
+        return view('manga.edit')->with([
             'manga' => $manga,
-            'newVolume' => $newVolume,
-            'newSpecial' => $newSpecial,
+            'newVolume' => new Volume(),
+            'newSpecial' => new Special(),
         ]);
     }
 
@@ -243,9 +232,7 @@ class MangaController extends Controller
         return [
             'name' => [
                 'required',
-                Rule::unique('mangas', 'name')->when($manga, function ($query) use ($manga) {
-                    $query->ignore($manga->id);
-                }),
+                Rule::unique('mangas', 'name')->when($manga, fn($query) => $query->ignore($manga->id)),
             ],
             'is_completed' => 'nullable',
             'mal_id' => 'integer|nullable',
