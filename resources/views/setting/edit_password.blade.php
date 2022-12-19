@@ -32,9 +32,9 @@
                     <x-validation-error for="new_password_confirmation"/>
                 </div>
 
-                <x-button>
+                <x-button.button primary type="submit">
                     {{ __('Save') }}
-                </x-button>
+                </x-button.button>
             {{ html()->closeModelForm() }}
         </x-card.body>
     </x-card.card>

@@ -6,10 +6,10 @@
     </x-slot>
 
     <div class="px-4 sm:px-0">
-        <x-button-link :href="route('social_links.create')" class="mb-8">
+        <x-button.button primary :href="route('social_links.create')">
             <x-heroicon-s-plus-circle class="w-5 h-5"/>
             <span>{{ __('Add social link') }}</span>
-        </x-button-link>
+        </x-button.button>
     </div>
 
     @if ($socialLinks->isNotEmpty())

@@ -10,9 +10,9 @@
             {{ html()->modelForm($socialLink, 'post', route('social_links.store'))->open() }}
                 @include('social_link._form_fields')
 
-                <x-button>
+                <x-button.button primary type="submit">
                     {{ __('Save') }}
-                </x-button>
+                </x-button.button>
             {{ html()->closeModelForm() }}
         </x-card.body>
     </x-card.card>

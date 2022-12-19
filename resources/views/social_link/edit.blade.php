@@ -5,7 +5,9 @@
                 {{ __('Edit social link') }}
             </x-page-heading>
 
-            <x-delete-button :action="route('social_links.destroy', $socialLink)" class="px-2 py-1"/>
+            <x-button.button danger confirm :action="route('social_links.destroy', $socialLink)" method="delete">
+                {{ __('Delete') }}
+            </x-button.button>
         </div>
     </x-slot>
 
@@ -14,9 +16,9 @@
             {{ html()->modelForm($socialLink, 'put', route('social_links.update', $socialLink))->open() }}
                 @include('social_link._form_fields')
 
-                <x-button>
+                <x-button.button primary type="submit">
                     {{ __('Save') }}
-                </x-button>
+                </x-button.button>
             {{ html()->closeModelForm() }}
         </x-card.body>
     </x-card.card>

@@ -24,7 +24,9 @@
                     </div>
 
                     <div>
-                        <x-delete-button :action="route('recommendations.destroy', $recommendation)" class="px-2 py-1"/>
+                        <x-button.button danger confirm :action="route('recommendations.destroy', $recommendation)" method="delete">
+                            {{ __ ('Delete') }}
+                        </x-button.button>
                     </div>
                 </x-card.body>
             @endforeach

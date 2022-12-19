@@ -68,11 +68,13 @@
     </x-card.body>
 
     <x-card.footer class="flex space-x-2 items-start">
-        <x-button-link :href="route('mangas.edit', $manga)" class="px-2 py-1">
+        <x-button.button primary :href="route('mangas.edit', $manga)">
             <x-heroicon-s-pencil class="w-5 h-5"/>
             <span>{{ __('Edit') }}</span>
-        </x-button-link>
+        </x-button.button>
 
-        <x-delete-button :action="route('mangas.destroy', $manga)" class="px-2 py-1"/>
+        <x-button.button danger confirm :action="route('mangas.destroy', $manga)" method="delete">
+            {{ __('Delete') }}
+        </x-button.button>
     </x-card.footer>
 </x-card.card>

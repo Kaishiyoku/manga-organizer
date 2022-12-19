@@ -50,9 +50,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-button.button primary type="submit" class="ml-4">
                     {{ __('Register') }}
-                </x-button>
+                </x-button.button>
             </div>
         </form>
     </x-auth-card>

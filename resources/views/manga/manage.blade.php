@@ -6,10 +6,10 @@
     </x-slot>
 
     <div class="px-4 sm:px-0">
-        <x-button-link :href="route('mangas.create')" class="mb-8">
+        <x-button.button primary :href="route('mangas.create')">
             <x-heroicon-s-plus-circle class="w-5 h-5"/>
             <span>{{ __('Add manga') }}</span>
-        </x-button-link>
+        </x-button.button>
     </div>
 
     @if ($mangas->isNotEmpty())

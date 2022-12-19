@@ -16,9 +16,9 @@
                     <x-validation-error for="manga"/>
                 </div>
 
-                <x-button>
+                <x-button.button primary type="submit">
                     {{ __('Send') }}
-                </x-button>
+                </x-button.button>
             {{ html()->closeModelForm() }}
         </x-card.body>
     </x-card.card>

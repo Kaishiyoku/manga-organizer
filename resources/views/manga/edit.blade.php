@@ -10,9 +10,9 @@
             {{ html()->modelForm($manga, 'put', route('mangas.update', $manga))->open() }}
                 @include('manga._form_fields')
 
-                <x-button>
+                <x-button.button primary type="submit">
                     {{ __('Save') }}
-                </x-button>
+                </x-button.button>
             {{ html()->closeModelForm() }}
         </x-card.body>
     </x-card.card>

@@ -15,7 +15,9 @@
                     <tr>
                         <td>{{ $volume->no }}</td>
                         <td class="text-right">
-                            <x-delete-button :action="route('volumes.destroy', [$manga, $volume])" class="px-2 py-1"/>
+                            <x-button.button danger confirm :action="route('volumes.destroy', [$manga, $volume])" method="delete">
+                                {{ __('Delete') }}
+                            </x-button.button>
                         </td>
                     </tr>
                 @endforeach
@@ -33,9 +35,9 @@
                 <x-validation-error for="no"/>
             </div>
 
-            <x-button>
+            <x-button.button primary type="submit">
                 {{ __('Add') }}
-            </x-button>
+            </x-button.button>
         {{ html()->closeModelForm() }}
     </x-card.body>
 </x-card.card>

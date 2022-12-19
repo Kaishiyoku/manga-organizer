@@ -15,7 +15,9 @@
                     <tr>
                         <td>{{ $special->name }}</td>
                         <td class="text-right">
-                            <x-delete-button :action="route('specials.destroy', [$manga, $special])" class="px-2 py-1"/>
+                            <x-button.button danger confirm :action="route('specials.destroy', [$manga, $special])" method="delete">
+                                {{ __('Delete') }}
+                            </x-button.button>
                         </td>
                     </tr>
                 @endforeach
@@ -33,9 +35,9 @@
                 <x-validation-error for="name"/>
             </div>
 
-            <x-button>
+            <x-button.button primary type="submit">
                 {{ __('Add') }}
-            </x-button>
+            </x-button.button>
         {{ html()->closeModelForm() }}
     </x-card.body>
 </x-card.card>
