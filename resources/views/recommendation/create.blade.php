@@ -13,7 +13,7 @@
 
                     <x-input.input id="manga" class="block mt-1 w-full" type="text" name="manga" :value="old('manga', $recommendation->manga)" required/>
 
-                    <x-validation-error for="manga"/>
+                    <x-input.validation-error for="manga"/>
                 </div>
 
                 <x-button.button primary type="submit">

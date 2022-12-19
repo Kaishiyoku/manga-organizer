@@ -32,7 +32,7 @@
 
                 <x-input.input id="special_name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $newSpecial->name)" required/>
 
-                <x-validation-error for="name"/>
+                <x-input.validation-error for="name"/>
             </div>
 
             <x-button.button primary type="submit">

@@ -13,7 +13,7 @@
 
                     <x-input.input id="old_password" class="block mt-1 w-full" type="password" name="old_password" required/>
 
-                    <x-validation-error for="old_password"/>
+                    <x-input.validation-error for="old_password"/>
                 </div>
 
                 <div class="mb-4">
@@ -21,7 +21,7 @@
 
                     <x-input.input id="new_password" class="block mt-1 w-full" type="password" name="new_password" required/>
 
-                    <x-validation-error for="new_password"/>
+                    <x-input.validation-error for="new_password"/>
                 </div>
 
                 <div class="mb-4">
@@ -29,7 +29,7 @@
 
                     <x-input.input id="new_password_confirmation" class="block mt-1 w-full" type="password" name="new_password_confirmation" required/>
 
-                    <x-validation-error for="new_password_confirmation"/>
+                    <x-input.validation-error for="new_password_confirmation"/>
                 </div>
 
                 <x-button.button primary type="submit">

@@ -32,7 +32,7 @@
 
                 <x-input.input id="volume_no" class="block mt-1 w-full" type="number" name="no" :value="old('no', $newVolume->no)" required/>
 
-                <x-validation-error for="no"/>
+                <x-input.validation-error for="no"/>
             </div>
 
             <x-button.button primary type="submit">

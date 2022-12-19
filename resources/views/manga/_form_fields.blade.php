@@ -9,7 +9,7 @@
 
             <x-input.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $manga->name)"/>
 
-            <x-validation-error for="name"/>
+            <x-input.validation-error for="name"/>
         </div>
 
         <div class="mb-4">
@@ -17,7 +17,7 @@
 
             <x-input.input id="mal_id" class="block mt-1 w-full" type="number" name="mal_id" :value="old('mal_id', $manga->mal_id)"/>
 
-            <x-validation-error for="mal_id"/>
+            <x-input.validation-error for="mal_id"/>
         </div>
 
         <div class="mb-4">
@@ -29,7 +29,7 @@
                 :checked="old('is_completed', $manga->is_completed)"
             />
 
-            <x-validation-error for="is_completed"/>
+            <x-input.validation-error for="is_completed"/>
         </div>
     </div>
 </div>
