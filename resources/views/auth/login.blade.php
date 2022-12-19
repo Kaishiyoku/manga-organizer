@@ -31,10 +31,12 @@
 
             <!-- Remember Me -->
             <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-500">{{ __('Remember me') }}</span>
-                </label>
+                <x-input.checkbox-with-label
+                    for="remember_me"
+                    name="remember_me"
+                    id="remember_me"
+                    :label="__('Remember me')"
+                />
             </div>
 
             <div class="flex items-center justify-end mt-4">

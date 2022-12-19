@@ -7,7 +7,7 @@
      * Inputs
      */
     .label-required:after {
-        @apply text-red-600;
+        @apply text-pink-600;
 
         content: '*';
     }

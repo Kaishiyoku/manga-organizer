@@ -21,10 +21,13 @@
         </div>
 
         <div class="mb-4">
-            <label for="is_completed" class="flex items-center">
-                <x-checkbox id="is_completed" name="is_completed" value="1" :checked="old('is_completed', $manga->is_completed)"/>
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-500">{{ __('Completed') }}</span>
-            </label>
+            <x-input.checkbox-with-label
+                for="is_completed"
+                name="is_completed"
+                id="is_completed"
+                :label="__('Completed')"
+                :checked="old('is_completed', $manga->is_completed)"
+            />
 
             <x-validation-error for="is_completed"/>
         </div>
