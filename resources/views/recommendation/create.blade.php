@@ -11,7 +11,7 @@
                 <div class="mb-4">
                     <x-label for="manga" :value="__('validation.attributes.manga')" required/>
 
-                    <x-input id="manga" class="block mt-1 w-full" type="text" name="manga" :value="old('manga', $recommendation->manga)" required/>
+                    <x-input.input id="manga" class="block mt-1 w-full" type="text" name="manga" :value="old('manga', $recommendation->manga)" required/>
 
                     <x-validation-error for="manga"/>
                 </div>

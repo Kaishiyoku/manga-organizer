@@ -7,7 +7,7 @@
         <div class="mb-4">
             <x-label for="name" :value="__('validation.attributes.name')" required/>
 
-            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $manga->name)"/>
+            <x-input.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $manga->name)"/>
 
             <x-validation-error for="name"/>
         </div>
@@ -15,7 +15,7 @@
         <div class="mb-4">
             <x-label for="mal_id" :value="__('validation.attributes.mal_id')"/>
 
-            <x-input id="mal_id" class="block mt-1 w-full" type="number" name="mal_id" :value="old('mal_id', $manga->mal_id)"/>
+            <x-input.input id="mal_id" class="block mt-1 w-full" type="number" name="mal_id" :value="old('mal_id', $manga->mal_id)"/>
 
             <x-validation-error for="mal_id"/>
         </div>
