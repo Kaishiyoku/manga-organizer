@@ -1,14 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" {{ $attributes }}>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" {{ $attributes }}>
     <defs>
-        <linearGradient id="linearGradient839">
-            <stop stop-color="#a855f7" offset="0"/>
-            <stop stop-color="#06b6d4" offset="1"/>
+        <style>
+            .cls-1 {
+                fill: #fff;
+            }
+
+            .cls-2 {
+                fill: url(#linear-gradient);
+            }
+        </style>
+        <linearGradient id="linear-gradient" x1="73.22" y1="73.22" x2="426.78" y2="426.78" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#9538e8"/>
+            <stop offset="1" stop-color="#0091b1"/>
         </linearGradient>
-        <linearGradient id="linearGradient841" x1="34.018" x2="41.894" y1="33.392" y2="59.534" gradientTransform="matrix(3.1959 0 0 3.1959 -100.25 -106.72)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient839"/>
-        <linearGradient id="linearGradient841-8" x1="34.018" x2="41.894" y1="33.392" y2="59.534" gradientTransform="matrix(-3.1959 0 0 3.1959 183.67 -106.72)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient839"/>
     </defs>
-    <g stroke-width="0">
-        <path d="m8.4667 9.7437e-7v70.855l14.449 12.527-0.42708-54.895 14.148 11.018v-17.972z" fill="url(#linearGradient841)"/>
-        <path d="m74.952 9.7437e-7v70.855l-14.449 12.527 0.42708-54.895-14.148 11.018v-17.972z" fill="url(#linearGradient841-8)"/>
-    </g>
+    <circle class="cls-2" cx="250" cy="250" r="250"/>
+    <path class="cls-1" d="m243.54,222.99l-96.52-110.01c-4.87-5.55-14.01-2.11-14.01,5.28v262.75c0,4.42,3.58,8,8,8h42.9c4.42,0,8-3.58,8-8v-142.39l51.66,58.39c3.18,3.6,8.8,3.6,11.98,0l51.66-58.39v142.39c0,4.42,3.58,8,8,8h42.9c4.42,0,8-3.58,8-8V118.25c0-7.38-9.15-10.82-14.01-5.28l-96.52,110.01c-3.19,3.63-8.84,3.63-12.03,0Z"/>
 </svg>
