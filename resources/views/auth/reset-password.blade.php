@@ -17,21 +17,21 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-input.label for="email" :value="__('Email')" />
 
                 <x-input.input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus/>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-input.label for="password" :value="__('Password')" />
 
                 <x-input.input id="password" class="block mt-1 w-full" type="password" name="password" required/>
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-input.label for="password_confirmation" :value="__('Confirm Password')" />
 
                 <x-input.input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required/>
             </div>

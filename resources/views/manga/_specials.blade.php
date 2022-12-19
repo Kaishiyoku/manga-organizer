@@ -28,7 +28,7 @@
     <x-card.body>
         {{ html()->modelForm($newSpecial, 'post', route('specials.store', $manga))->open() }}
             <div class="mb-4">
-                <x-label for="special_name" :value="__('validation.attributes.name')" required/>
+                <x-input.label for="special_name" :value="__('validation.attributes.name')" required/>
 
                 <x-input.input id="special_name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $newSpecial->name)" required/>
 

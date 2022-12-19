@@ -5,7 +5,7 @@
 
     <div class="grow">
         <div class="mb-4">
-            <x-label for="name" :value="__('validation.attributes.name')" required/>
+            <x-input.label for="name" :value="__('validation.attributes.name')" required/>
 
             <x-input.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $manga->name)"/>
 
@@ -13,7 +13,7 @@
         </div>
 
         <div class="mb-4">
-            <x-label for="mal_id" :value="__('validation.attributes.mal_id')"/>
+            <x-input.label for="mal_id" :value="__('validation.attributes.mal_id')"/>
 
             <x-input.input id="mal_id" class="block mt-1 w-full" type="number" name="mal_id" :value="old('mal_id', $manga->mal_id)"/>
 

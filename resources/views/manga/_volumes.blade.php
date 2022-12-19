@@ -28,7 +28,7 @@
     <x-card.body>
         {{ html()->modelForm($newVolume, 'post', route('volumes.store', $manga))->open() }}
             <div class="mb-4">
-                <x-label for="volume_no" :value="__('validation.attributes.no')" required/>
+                <x-input.label for="volume_no" :value="__('validation.attributes.no')" required/>
 
                 <x-input.input id="volume_no" class="block mt-1 w-full" type="number" name="no" :value="old('no', $newVolume->no)" required/>
 

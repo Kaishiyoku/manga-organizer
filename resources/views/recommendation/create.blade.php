@@ -9,7 +9,7 @@
         <x-card.body>
             {{ html()->modelForm($recommendation, 'post', route('recommendations.store'))->open() }}
                 <div class="mb-4">
-                    <x-label for="manga" :value="__('validation.attributes.manga')" required/>
+                    <x-input.label for="manga" :value="__('validation.attributes.manga')" required/>
 
                     <x-input.input id="manga" class="block mt-1 w-full" type="text" name="manga" :value="old('manga', $recommendation->manga)" required/>
 
