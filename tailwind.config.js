@@ -12,6 +12,8 @@ module.exports = {
         'alert--success',
         'alert--warning',
         'alert--danger',
+        'w-4',
+        'h-4',
     ],
 
     theme: {

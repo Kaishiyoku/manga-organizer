@@ -10,7 +10,7 @@
             {{ html()->modelForm($manga, 'put', route('mangas.update', $manga))->open() }}
                 @include('manga._form_fields')
 
-                <x-button.button primary type="submit">
+                <x-button.button primary type="submit" class="mt-2">
                     {{ __('Save') }}
                 </x-button.button>
             {{ html()->closeModelForm() }}

@@ -7,13 +7,13 @@
 
     <div class="px-4 sm:px-0">
         @auth
-            <x-button.button primary :href="route('mangas.manage')">
-                <x-heroicon-s-adjustments class="w-5 h-5"/>
+            <x-button.button secondary :href="route('mangas.manage')">
+                <x-heroicon-s-adjustments/>
                 <span>{{ __('Manage') }}</span>
             </x-button.button>
         @else
             <x-button.button primary :href="route('recommendations.create')">
-                <x-heroicon-s-plus-circle class="w-5 h-5"/>
+                <x-heroicon-s-plus-circle/>
                 <span>{{ __('Recommend me a manga') }}</span>
             </x-button.button>
         @endauth

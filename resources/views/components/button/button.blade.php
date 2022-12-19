@@ -1,6 +1,6 @@
 @php
     $classes = [
-        'inline-flex items-center space-x-2 transition ease-in disabled:opacity-50 disabled:cursor-not-allowed',
+        'inline-flex items-center space-x-1 transition ease-in disabled:opacity-50 disabled:cursor-not-allowed',
         'font-semibold text-xs uppercase tracking-widest border focus:outline-none focus:ring-1' => !$link,
         'shadow focus:shadow-md dark:shadow-black/25' => !$plain && !$link,
         'text-white border-purple-600 bg-purple-500 hover:border-purple-700 hover:bg-purple-600 focus:ring-purple-600 dark:border-purple-500 dark:bg-purple-600 dark:hover:border-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-500' => $primary,
@@ -14,7 +14,7 @@
 @endphp
 
 @if ($action)
-    <form class="inline-block" method="{{ $method !== 'post' ? 'post' : $method }}" action="{{ $action }}">
+    <form class="inline-block w-full" method="{{ $method !== 'post' ? 'post' : $method }}" action="{{ $action }}">
         @csrf
 
         @if ($method !== 'post')

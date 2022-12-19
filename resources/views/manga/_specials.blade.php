@@ -15,8 +15,8 @@
                     <tr>
                         <td>{{ $special->name }}</td>
                         <td class="text-right">
-                            <x-button.button danger confirm :action="route('specials.destroy', [$manga, $special])" method="delete">
-                                {{ __('Delete') }}
+                            <x-button.button danger confirm icon-only :action="route('specials.destroy', [$manga, $special])" method="delete" :title="__('Delete')">
+                                <x-heroicon-s-trash/>
                             </x-button.button>
                         </td>
                     </tr>
@@ -36,7 +36,8 @@
             </div>
 
             <x-button.button primary type="submit">
-                {{ __('Add') }}
+                <x-heroicon-s-plus/>
+                <span>{{ __('Add') }}</span>
             </x-button.button>
         {{ html()->closeModelForm() }}
     </x-card.body>

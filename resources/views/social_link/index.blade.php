@@ -6,14 +6,14 @@
     </x-slot>
 
     <div class="px-4 sm:px-0">
-        <x-button.button primary :href="route('social_links.create')">
-            <x-heroicon-s-plus-circle class="w-5 h-5"/>
+        <x-button.button secondary :href="route('social_links.create')">
+            <x-heroicon-s-plus/>
             <span>{{ __('Add social link') }}</span>
         </x-button.button>
     </div>
 
     @if ($socialLinks->isNotEmpty())
-        <x-card.card class="divide-y divide-gray-200 dark:divide-gray-700">
+        <x-card.card class="divide-y divide-gray-200 dark:divide-gray-700 mt-8">
             @foreach ($socialLinks as $socialLink)
                 <a class="group block md:flex md:justify-between md:space-x-4 px-4 py-3 transition first:rounded-t-md last:rounded-b-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ route('social_links.edit', $socialLink) }}">
                     <div class="flex space-x-2">

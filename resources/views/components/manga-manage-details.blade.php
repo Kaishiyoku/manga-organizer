@@ -2,12 +2,12 @@
 
 <x-card.card hoverable class="flex flex-col overflow-hidden">
     @if ($manga->malItem && $manga->malItem->image_url)
-        <div class="relative overflow-hidden h-40 sm:rounded-t-md flex items-center">
+        <div class="relative overflow-hidden h-48 sm:rounded-t-md flex items-center">
             <div class="absolute w-full h-full object-cover blur-xl" style="background-image: url('{{ $manga->malItem->image_url }}')"></div>
-            <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="relative h-32 mx-auto"/>
+            <img src="{{ $manga->malItem->image_url }}" alt="{{ $manga->name }}" class="relative h-40 mx-auto"/>
         </div>
     @else
-        <div class="flex items-center justify-center h-40 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800">
+        <div class="flex items-center justify-center h-48 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800">
             <x-heroicon-s-photograph class="w-1/3 lg:1/2 text-gray-300 dark:text-gray-900 mix-blend-luminosity"/>
         </div>
     @endif
@@ -67,14 +67,15 @@
         </div>
     </x-card.body>
 
-    <x-card.footer class="flex space-x-2 items-start">
-        <x-button.button primary :href="route('mangas.edit', $manga)">
-            <x-heroicon-s-pencil class="w-5 h-5"/>
+    <x-card.footer class="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0 items-start">
+        <x-button.button secondary :href="route('mangas.edit', $manga)" class="w-full md:w-auto">
+            <x-heroicon-s-pencil/>
             <span>{{ __('Edit') }}</span>
         </x-button.button>
 
-        <x-button.button danger confirm :action="route('mangas.destroy', $manga)" method="delete">
-            {{ __('Delete') }}
+        <x-button.button danger confirm :action="route('mangas.destroy', $manga)" method="delete" class="w-full md:w-auto">
+            <x-heroicon-s-trash/>
+            <span>{{ __('Delete') }}</span>
         </x-button.button>
     </x-card.footer>
 </x-card.card>
