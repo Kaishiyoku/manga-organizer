@@ -29,7 +29,7 @@ Installation
 1. Download the latest release: https://github.com/Kaishiyoku/manga-organizer/releases/latest
 2. run `composer install --no-dev --no-scripts`
 3. run `php artisan migrate`
-4. run `php artisan user:create`
+4. run `php artisan make:user`
 5. run `npm install`
 6. run `npm run prod`
 7. copy the .env.example file and fill in the necessary values:  
