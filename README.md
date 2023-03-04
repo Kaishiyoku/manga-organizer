@@ -61,5 +61,5 @@ MIT (https://github.com/Kaishiyoku/manga-organizer/blob/master/LICENSE)
 Author
 ======
 Twitter: [@kaishiyoku](https://twitter.com/kaishiyoku)  
-Website: www.andreas-wiedel.de  
+Website: https://andreas-wiedel.de  
 MAL: [kaishiyoku](https://myanimelist.net/profile/Kaishiyoku)
